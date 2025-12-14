@@ -1,1 +1,33 @@
+title: halfism | Personal Portfolio
+email: contact@halfism.dev
+description: >-
+  A passionate developer focused on creating meaningful and efficient solutions through code.
+baseurl: ""
+url: "https://halfism.github.io"
+twitter_username: halfism_dev
+github_username: halfism
 theme: jekyll-theme-hacker
+
+# 启用处理 sass
+sass:
+  style: compressed
+
+# 构建设置
+markdown: kramdown
+highlighter: rouge
+
+# 插件
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# 排除不需要处理的文件
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
