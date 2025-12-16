@@ -1,0 +1,477 @@
+---
+layout: default
+title: Gallery
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | {{ site.title }}</title>
+    <meta name="description" content="Photo gallery showcasing my travels, nature photography, and tech events">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        dark: '#1D2939',
+                        light: '#F9FAFB',
+                        accent: '#722ED1'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .lightbox {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+            .lightbox.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            .lightbox-content {
+                max-width: 90%;
+                max-height: 90%;
+                object-fit: contain;
+            }
+            .lightbox-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+            }
+            .lightbox-nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+                padding: 10px;
+            }
+            .lightbox-prev {
+                left: 20px;
+            }
+            .lightbox-next {
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 text-gray-800 overflow-x-hidden">
+<!-- Navigation Bar -->
+<header id="navbar" class="fixed w-full top-0 z-50 transition-custom bg-white/90 backdrop-blur-sm shadow-sm">
+    <div class="container mx-auto px-4 md:px-6 py-4">
+        <nav class="flex items-center justify-between">
+            <a href="/" class="text-2xl font-bold text-primary flex items-center gap-2">
+                <span class="bg-primary text-white p-1 rounded">H</span>
+                halfism
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/#about" class="font-medium hover:text-primary transition-custom">About</a>
+                <a href="/#projects" class="font-medium hover:text-primary transition-custom">Projects</a>
+                <a href="/#skills" class="font-medium hover:text-primary transition-custom">Skills</a>
+                <a href="/gallery.html" class="font-medium hover:text-primary transition-custom">Gallery</a>
+                <a href="/#contact" class="font-medium hover:text-primary transition-custom">Contact</a>
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom flex items-center gap-2">
+                    <i class="fa fa-github"></i> GitHub
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="fa fa-bars text-2xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+            <div class="flex flex-col space-y-3">
+                <a href="/#about" class="font-medium hover:text-primary transition-custom py-2">About</a>
+                <a href="/#projects" class="font-medium hover:text-primary transition-custom py-2">Projects</a>
+                <a href="/#skills" class="font-medium hover:text-primary transition-custom py-2">Skills</a>
+                <a href="/gallery.html" class="font-medium hover:text-primary transition-custom py-2">Gallery</a>
+                <a href="/#contact" class="font-medium hover:text-primary transition-custom py-2">Contact</a>
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom flex items-center justify-center gap-2">
+                    <i class="fa fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="pt-24">
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center">
+                <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold text-dark mb-4">Photo Gallery</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Explore moments captured from my travels, nature encounters, and tech events</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <!-- Albums Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Travel Album -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="/img/travel/img1.jpg" alt="Travel Album" class="w-full h-full object-cover group-hover:scale-105 transition-custom duration-500">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="text-white text-xl font-medium">View Album</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Travel Adventures</h3>
+                        <p class="text-gray-600 mb-4">Journey through breathtaking landscapes and cultural experiences</p>
+                        <button onclick="openAlbum('travel')" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                            Explore Photos <i class="fa fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Nature Album -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="/img/nature/img1.jpg" alt="Nature Album" class="w-full h-full object-cover group-hover:scale-105 transition-custom duration-500">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="text-white text-xl font-medium">View Album</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Nature Wonders</h3>
+                        <p class="text-gray-600 mb-4">Beautiful moments from the natural world around us</p>
+                        <button onclick="openAlbum('nature')" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                            Explore Photos <i class="fa fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tech Album -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="/img/tech/img1.jpg" alt="Tech Album" class="w-full h-full object-cover group-hover:scale-105 transition-custom duration-500">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="text-white text-xl font-medium">View Album</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Tech Events</h3>
+                        <p class="text-gray-600 mb-4">Memorable moments from conferences, meetups, and tech gatherings</p>
+                        <button onclick="openAlbum('tech')" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                            Explore Photos <i class="fa fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Albums -->
+            <div id="albums-container">
+                <!-- Travel Album -->
+                <div id="travel-album" class="album-section hidden mb-16">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-2xl font-bold text-dark">Travel Adventures</h2>
+                        <button onclick="closeAlbum('travel')" class="text-gray-500 hover:text-primary">
+                            <i class="fa fa-times text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('travel', 0)">
+                            <img src="/img/travel/img1.jpg" alt="Travel Image 1" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('travel', 1)">
+                            <img src="/img/travel/img2.jpg" alt="Travel Image 2" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('travel', 2)">
+                            <img src="/img/travel/img3.jpg" alt="Travel Image 3" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nature Album -->
+                <div id="nature-album" class="album-section hidden mb-16">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-2xl font-bold text-dark">Nature Wonders</h2>
+                        <button onclick="closeAlbum('nature')" class="text-gray-500 hover:text-primary">
+                            <i class="fa fa-times text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('nature', 0)">
+                            <img src="/img/nature/img1.jpg" alt="Nature Image 1" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('nature', 1)">
+                            <img src="/img/nature/img2.jpg" alt="Nature Image 2" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('nature', 2)">
+                            <img src="/img/nature/img3.jpg" alt="Nature Image 3" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Album -->
+                <div id="tech-album" class="album-section hidden mb-16">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-2xl font-bold text-dark">Tech Events</h2>
+                        <button onclick="closeAlbum('tech')" class="text-gray-500 hover:text-primary">
+                            <i class="fa fa-times text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('tech', 0)">
+                            <img src="/img/tech/img1.jpg" alt="Tech Image 1" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('tech', 1)">
+                            <img src="/img/tech/img2.jpg" alt="Tech Image 2" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox('tech', 2)">
+                            <img src="/img/tech/img3.jpg" alt="Tech Image 3" class="w-full h-64 object-cover group-hover:scale-105 transition-custom duration-500">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                                <i class="fa fa-search-plus text-white text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" class="lightbox-content">
+    <div class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</div>
+    <div class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <a href="/" class="text-2xl font-bold flex items-center gap-2">
+                    <span class="bg-white text-primary p-1 rounded">H</span>
+                    halfism
+                </a>
+                <p class="text-gray-400 mt-2">Passionate developer creating meaningful solutions</p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-custom">
+                    <i class="fa fa-github"></i>
+                </a>
+                <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-blue-500 hover:text-white transition-custom">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-blue-700 hover:text-white transition-custom">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-red-600 hover:text-white transition-custom">
+                    <i class="fa fa-youtube-play"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm">&copy; {{ 'now' | date: "%Y" }} halfism. All rights reserved.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition-custom">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition-custom">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition-custom">Cookie Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-custom z-50">
+    <i class="fa fa-arrow-up"></i>
+</button>
+
+<script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('py-2', 'shadow');
+            navbar.classList.remove('py-4');
+
+            backToTop.classList.remove('opacity-0', 'invisible');
+            backToTop.classList.add('opacity-100', 'visible');
+        } else {
+            navbar.classList.add('py-4');
+            navbar.classList.remove('py-2', 'shadow');
+
+            backToTop.classList.add('opacity-0', 'invisible');
+            backToTop.classList.remove('opacity-100', 'visible');
+        }
+    });
+
+    // Back to Top
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Album navigation
+    function openAlbum(albumName) {
+        // Hide all albums
+        document.querySelectorAll('.album-section').forEach(section => {
+            section.classList.add('hidden');
+        });
+        
+        // Show selected album
+        document.getElementById(`${albumName}-album`).classList.remove('hidden');
+        
+        // Scroll to albums container
+        document.getElementById('albums-container').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function closeAlbum(albumName) {
+        document.getElementById(`${albumName}-album`).classList.add('hidden');
+    }
+
+    // Lightbox functionality
+    let currentAlbum = '';
+    let currentIndex = 0;
+    const albums = {
+        travel: ['/img/travel/img1.jpg', '/img/travel/img2.jpg', '/img/travel/img3.jpg'],
+        nature: ['/img/nature/img1.jpg', '/img/nature/img2.jpg', '/img/nature/img3.jpg'],
+        tech: ['/img/tech/img1.jpg', '/img/tech/img2.jpg', '/img/tech/img3.jpg']
+    };
+
+    function openLightbox(album, index) {
+        currentAlbum = album;
+        currentIndex = index;
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        lightboxImg.src = albums[album][index];
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function changeImage(direction) {
+        const albumImages = albums[currentAlbum];
+        currentIndex += direction;
+        
+        if (currentIndex < 0) {
+            currentIndex = albumImages.length - 1;
+        } else if (currentIndex >= albumImages.length) {
+            currentIndex = 0;
+        }
+        
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = albumImages[currentIndex];
+    }
+
+    // Close lightbox when clicking on the background
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeLightbox();
+        }
+    });
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('lightbox').classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeImage(1);
+            }
+        }
+    });
+</script>
+</body>
+</html>
