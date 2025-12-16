@@ -402,14 +402,23 @@ title: Gallery
         });
         
         // Show selected album
-        document.getElementById(`${albumName}-album`).classList.remove('hidden');
+        const albumElement = document.getElementById(`${albumName}-album`);
+        if (albumElement) {
+            albumElement.classList.remove('hidden');
+        }
         
         // Scroll to albums container
-        document.getElementById('albums-container').scrollIntoView({ behavior: 'smooth' });
+        const albumsContainer = document.getElementById('albums-container');
+        if (albumsContainer) {
+            albumsContainer.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
     function closeAlbum(albumName) {
-        document.getElementById(`${albumName}-album`).classList.add('hidden');
+        const albumElement = document.getElementById(`${albumName}-album`);
+        if (albumElement) {
+            albumElement.classList.add('hidden');
+        }
     }
 
     // Lightbox functionality
@@ -422,25 +431,37 @@ title: Gallery
     };
 
     function openLightbox(album, index) {
+        // Check if album and index are valid
+        if (!albums[album] || index < 0 || index >= albums[album].length) {
+            console.error('Invalid album or index');
+            return;
+        }
+        
         currentAlbum = album;
         currentIndex = index;
         
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         
-        lightboxImg.src = albums[album][index];
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (lightbox && lightboxImg && albums[album] && albums[album][index]) {
+            lightboxImg.src = albums[album][index];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     function closeLightbox() {
         const lightbox = document.getElementById('lightbox');
-        lightbox.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        if (lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     }
 
     function changeImage(direction) {
         const albumImages = albums[currentAlbum];
+        if (!albumImages) return;
+        
         currentIndex += direction;
         
         if (currentIndex < 0) {
@@ -450,19 +471,27 @@ title: Gallery
         }
         
         const lightboxImg = document.getElementById('lightbox-img');
-        lightboxImg.src = albumImages[currentIndex];
+        if (lightboxImg) {
+            lightboxImg.src = albumImages[currentIndex];
+        }
     }
 
     // Close lightbox when clicking on the background
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeLightbox();
+    document.addEventListener('DOMContentLoaded', function() {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeLightbox();
+                }
+            });
         }
     });
 
     // Keyboard navigation for lightbox
     document.addEventListener('keydown', function(e) {
-        if (document.getElementById('lightbox').classList.contains('active')) {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox && lightbox.classList.contains('active')) {
             if (e.key === 'Escape') {
                 closeLightbox();
             } else if (e.key === 'ArrowLeft') {
