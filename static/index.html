@@ -49,7 +49,7 @@ layout: default
     </style>
 </head>
 <body class="font-inter bg-gray-50 text-gray-800 overflow-x-hidden">
-<!-- Navigation Bar -->
+<!-- 导航栏 -->
 <header id="navbar" class="fixed w-full top-0 z-50 transition-custom bg-white/90 backdrop-blur-sm shadow-sm">
     <div class="container mx-auto px-4 md:px-6 py-4">
         <nav class="flex items-center justify-between">
@@ -58,7 +58,7 @@ layout: default
                 halfism
             </a>
 
-            <!-- Desktop Navigation -->
+            <!-- 桌面导航 -->
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="font-medium hover:text-primary transition-custom">About</a>
                 <a href="#projects" class="font-medium hover:text-primary transition-custom">Projects</a>
@@ -67,21 +67,15 @@ layout: default
                 <a href="https://github.com/{{ site.github_username }}" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom flex items-center gap-2">
                     <i class="fa fa-github"></i> GitHub
                 </a>
-                <div class="flex items-center space-x-2">
-                    <span class="text-sm">English</span>
-                    <button id="lang-toggle" class="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-300 transition-colors">
-                        中文
-                    </button>
-                </div>
             </div>
 
-            <!-- Mobile Menu Button -->
+            <!-- 移动端菜单按钮 -->
             <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
                 <i class="fa fa-bars text-2xl"></i>
             </button>
         </nav>
 
-        <!-- Mobile Navigation Menu -->
+        <!-- 移动端导航菜单 -->
         <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
             <div class="flex flex-col space-y-3">
                 <a href="#about" class="font-medium hover:text-primary transition-custom py-2">About</a>
@@ -91,19 +85,13 @@ layout: default
                 <a href="https://github.com/{{ site.github_username }}" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom flex items-center justify-center gap-2">
                     <i class="fa fa-github"></i> GitHub
                 </a>
-                <div class="flex items-center justify-center space-x-2 pt-2">
-                    <span class="text-sm">English</span>
-                    <button id="mobile-lang-toggle" class="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-300 transition-colors">
-                        中文
-                    </button>
-                </div>
             </div>
         </div>
     </div>
 </header>
 
 <main>
-    <!-- Hero Section -->
+    <!-- 英雄区域 -->
     <section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-br from-blue-50 to-indigo-50">
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex flex-col md:flex-row items-center gap-10">
@@ -144,7 +132,7 @@ layout: default
                         </div>
                         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/30 rounded-2xl blur-3xl -z-10"></div>
 
-                        <!-- Floating Skill Tags -->
+                        <!-- 浮动技能标签 -->
                         <div class="absolute -top-4 -left-4 bg-white p-3 rounded-lg shadow-lg flex items-center gap-2 transform rotate-[-5deg] hover:rotate-0 transition-custom">
                             <i class="fa fa-code text-primary text-xl"></i>
                             <span class="font-medium">Developer</span>
@@ -159,7 +147,7 @@ layout: default
         </div>
     </section>
 
-    <!-- About Me -->
+    <!-- 关于我 -->
     <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-16">
@@ -211,7 +199,7 @@ layout: default
         </div>
     </section>
 
-    <!-- Projects Showcase -->
+    <!-- 项目展示 -->
     <section id="projects" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-16">
@@ -221,7 +209,7 @@ layout: default
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
+                <!-- 项目卡片 1 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                     <div class="relative overflow-hidden">
                         <img src="https://picsum.photos/seed/project1/600/400" alt="Project 1" class="w-full h-52 object-cover group-hover:scale-105 transition-custom duration-500">
@@ -243,7 +231,7 @@ layout: default
                     </div>
                 </div>
 
-                <!-- Project Card 2 -->
+                <!-- 项目卡片 2 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                     <div class="relative overflow-hidden">
                         <img src="https://picsum.photos/seed/project2/600/400" alt="Project 2" class="w-full h-52 object-cover group-hover:scale-105 transition-custom duration-500">
@@ -265,7 +253,7 @@ layout: default
                     </div>
                 </div>
 
-                <!-- Project Card 3 -->
+                <!-- 项目卡片 3 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                     <div class="relative overflow-hidden">
                         <img src="https://picsum.photos/seed/project3/600/400" alt="Project 3" class="w-full h-52 object-cover group-hover:scale-105 transition-custom duration-500">
@@ -287,7 +275,7 @@ layout: default
                     </div>
                 </div>
 
-                <!-- Project Card 4 -->
+                <!-- 项目卡片 4 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                     <div class="relative overflow-hidden">
                         <img src="https://picsum.photos/seed/project4/600/400" alt="Project 4" class="w-full h-52 object-cover group-hover:scale-105 transition-custom duration-500">
@@ -309,7 +297,7 @@ layout: default
                     </div>
                 </div>
 
-                <!-- Project Card 5 -->
+                <!-- 项目卡片 5 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                     <div class="relative overflow-hidden">
                         <img src="https://picsum.photos/seed/project5/600/400" alt="Project 5" class="w-full h-52 object-cover group-hover:scale-105 transition-custom duration-500">
@@ -331,7 +319,7 @@ layout: default
                     </div>
                 </div>
 
-                <!-- Project Card 6 -->
+                <!-- 项目卡片 6 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                     <div class="relative overflow-hidden">
                         <img src="https://picsum.photos/seed/project6/600/400" alt="Project 6" class="w-full h-52 object-cover group-hover:scale-105 transition-custom duration-500">
@@ -362,7 +350,7 @@ layout: default
         </div>
     </section>
 
-    <!-- Skills Showcase -->
+    <!-- 技能展示 -->
     <section id="skills" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-16">
@@ -372,7 +360,7 @@ layout: default
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Skills Chart -->
+                <!-- 技能图表 -->
                 <div class="bg-gray-50 p-6 rounded-xl">
                     <h3 class="text-xl font-bold mb-6">Technical Proficiency</h3>
                     <div class="h-80">
@@ -380,10 +368,10 @@ layout: default
                     </div>
                 </div>
 
-                <!-- Skills List -->
+                <!-- 技能列表 -->
                 <div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Skills Category 1 -->
+                        <!-- 技能类别 1 -->
                         <div class="bg-gray-50 p-6 rounded-xl">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -419,7 +407,7 @@ layout: default
                             </ul>
                         </div>
 
-                        <!-- Skills Category 2 -->
+                        <!-- 技能类别 2 -->
                         <div class="bg-gray-50 p-6 rounded-xl">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
@@ -455,7 +443,7 @@ layout: default
                             </ul>
                         </div>
 
-                        <!-- Skills Category 3 -->
+                        <!-- 技能类别 3 -->
                         <div class="bg-gray-50 p-6 rounded-xl">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
@@ -491,7 +479,7 @@ layout: default
                             </ul>
                         </div>
 
-                        <!-- Skills Category 4 -->
+                        <!-- 技能类别 4 -->
                         <div class="bg-gray-50 p-6 rounded-xl">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
@@ -532,7 +520,7 @@ layout: default
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- 联系部分 -->
     <section id="contact" class="py-20 bg-gradient-to-br from-primary/5 to-indigo-50">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-16">
@@ -635,7 +623,7 @@ layout: default
     </section>
 </main>
 
-<!-- Footer -->
+<!-- 页脚 -->
 <footer class="bg-dark text-white py-12">
     <div class="container mx-auto px-4 md:px-6">
         <div class="flex flex-col md:flex-row justify-between items-center">
@@ -674,13 +662,13 @@ layout: default
     </div>
 </footer>
 
-<!-- Back to Top Button -->
+<!-- 回到顶部按钮 -->
 <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-custom z-50">
     <i class="fa fa-arrow-up"></i>
 </button>
 
 <script>
-    // Mobile Menu Toggle
+    // 移动端菜单切换
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -688,7 +676,7 @@ layout: default
         mobileMenu.classList.toggle('hidden');
     });
 
-    // Navbar Scroll Effect
+    // 导航栏滚动效果
     const navbar = document.getElementById('navbar');
     const backToTop = document.getElementById('back-to-top');
 
@@ -708,7 +696,7 @@ layout: default
         }
     });
 
-    // Smooth Scrolling
+    // 平滑滚动
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -723,7 +711,7 @@ layout: default
                     behavior: 'smooth'
                 });
 
-                // Close mobile menu
+                // 关闭移动菜单
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
@@ -731,7 +719,7 @@ layout: default
         });
     });
 
-    // Back to Top
+    // 回到顶部
     backToTop.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
@@ -739,18 +727,7 @@ layout: default
         });
     });
 
-    // Language Switching Functionality
-    const langToggle = document.getElementById('lang-toggle');
-    const mobileLangToggle = document.getElementById('mobile-lang-toggle');
-
-    function switchLanguage() {
-        window.location.href = '/index_zh.html';
-    }
-
-    langToggle.addEventListener('click', switchLanguage);
-    mobileLangToggle.addEventListener('click', switchLanguage);
-
-    // Skills Chart
+    // 技能图表
     const ctx = document.getElementById('skillsChart').getContext('2d');
     new Chart(ctx, {
         type: 'radar',
