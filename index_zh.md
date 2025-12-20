@@ -131,11 +131,15 @@ lang: zh
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-custom">Web 应用程序</h3>
-                        <p class="text-gray-600 mb-4">具有响应式设计和现代 UI 组件的全功能 Web 应用程序。</p>
+                        <p class="text-gray-600 mb-4">具有响应式设计和现代 UI 组件的全功能 Web 应用程序。实现了用户认证、实时数据同步和个性化仪表板等功能。</p>
                         <div class="flex flex-wrap gap-2 mb-5">
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">React</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Node.js</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">MongoDB</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-3"><i class="fa fa-star mr-1"></i> 120</span>
+                            <span><i class="fa fa-code-fork mr-1"></i> 35</span>
                         </div>
                         <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
                             在 GitHub 上查看 <i class="fa fa-arrow-right ml-1"></i>
@@ -153,11 +157,15 @@ lang: zh
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-custom">数据分析工具</h3>
-                        <p class="text-gray-600 mb-4">具有高级统计功能的数据可视化和分析的强大工具。</p>
+                        <p class="text-gray-600 mb-4">具有高级统计功能的数据可视化和分析的强大工具。帮助用户识别数据趋势，生成报告并做出数据驱动的决策。</p>
                         <div class="flex flex-wrap gap-2 mb-5">
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Python</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Pandas</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Matplotlib</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-3"><i class="fa fa-star mr-1"></i> 89</span>
+                            <span><i class="fa fa-code-fork mr-1"></i> 24</span>
                         </div>
                         <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
                             在 GitHub 上查看 <i class="fa fa-arrow-right ml-1"></i>
@@ -175,11 +183,15 @@ lang: zh
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-custom">API 服务</h3>
-                        <p class="text-gray-600 mb-4">具有身份验证和速率限制功能的高性能 RESTful API 服务。</p>
+                        <p class="text-gray-600 mb-4">具有身份验证和速率限制功能的高性能 RESTful API 服务。支持数千个并发请求，平均响应时间低于 50ms。</p>
                         <div class="flex flex-wrap gap-2 mb-5">
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Go</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">PostgreSQL</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Docker</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-3"><i class="fa fa-star mr-1"></i> 210</span>
+                            <span><i class="fa fa-code-fork mr-1"></i> 67</span>
                         </div>
                         <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
                             在 GitHub 上查看 <i class="fa fa-arrow-right ml-1"></i>
@@ -197,11 +209,15 @@ lang: zh
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-custom">移动应用</h3>
-                        <p class="text-gray-600 mb-4">具有离线功能和同步特性的跨平台移动应用程序。</p>
+                        <p class="text-gray-600 mb-4">具有离线功能和同步特性的跨平台移动应用程序。已在 App Store 和 Google Play 上获得 4.8 星评分。</p>
                         <div class="flex flex-wrap gap-2 mb-5">
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Flutter</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Firebase</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Redux</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-3"><i class="fa fa-star mr-1"></i> 156</span>
+                            <span><i class="fa fa-code-fork mr-1"></i> 42</span>
                         </div>
                         <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
                             在 GitHub 上查看 <i class="fa fa-arrow-right ml-1"></i>
@@ -219,11 +235,15 @@ lang: zh
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-custom">CI/CD 流水线</h3>
-                        <p class="text-gray-600 mb-4">具有测试、构建和部署阶段的自动化部署流水线。</p>
+                        <p class="text-gray-600 mb-4">具有测试、构建和部署阶段的自动化部署流水线。将部署时间从 2 小时缩短到 15 分钟，减少了 90% 的人为错误。</p>
                         <div class="flex flex-wrap gap-2 mb-5">
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">GitHub Actions</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Kubernetes</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Terraform</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-3"><i class="fa fa-star mr-1"></i> 98</span>
+                            <span><i class="fa fa-code-fork mr-1"></i> 31</span>
                         </div>
                         <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
                             在 GitHub 上查看 <i class="fa fa-arrow-right ml-1"></i>
@@ -241,11 +261,15 @@ lang: zh
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-custom">机器学习模型</h3>
-                        <p class="text-gray-600 mb-4">具有用户友好界面的预测分析机器学习模型。</p>
+                        <p class="text-gray-600 mb-4">具有用户友好界面的预测分析机器学习模型。准确率达到 94%，已成功应用于多个业务场景。</p>
                         <div class="flex flex-wrap gap-2 mb-5">
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">TensorFlow</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Keras</span>
                             <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Flask</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-3"><i class="fa fa-star mr-1"></i> 142</span>
+                            <span><i class="fa fa-code-fork mr-1"></i> 53</span>
                         </div>
                         <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
                             在 GitHub 上查看 <i class="fa fa-arrow-right ml-1"></i>
@@ -486,6 +510,16 @@ lang: zh
                                     <p class="text-gray-600 mt-1">全球开发者</p>
                                 </div>
                             </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                                    <i class="fa fa-calendar text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">预约通话</h4>
+                                    <a href="#" class="text-primary hover:underline mt-1 inline-block">安排一对一咨询</a>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mt-10">
@@ -495,6 +529,16 @@ lang: zh
                                 <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">开源协作</span>
                                 <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">技术演讲</span>
                                 <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">指导新人</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">代码审查</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">架构咨询</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="font-medium text-gray-900 mb-4">客户评价</h4>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-600 italic">"Halfism是一位出色的专业人士，他不仅技术能力出众，而且沟通能力很强。我们的项目在他的帮助下提前完成了交付。"</p>
+                                <p class="text-gray-900 font-medium mt-3">— 张总, 科技公司CEO</p>
                             </div>
                         </div>
                     </div>
