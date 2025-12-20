@@ -6,22 +6,17 @@ baseurl: ""
 url: "https://halfism.github.io"
 twitter_username: halfism_dev
 github_username: halfism
-theme: jekyll-theme-hacker
 
-# 启用处理 sass
-sass:
-  style: compressed
-
-# 构建设置
+# Build settings
 markdown: kramdown
 highlighter: rouge
 
-# 插件
+# Plugins
 plugins:
   - jekyll-sitemap
   - jekyll-feed
 
-# 排除不需要处理的文件
+# Exclude from processing
 exclude:
   - README.md
   - Gemfile
@@ -31,3 +26,8 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - static/
+
+# Localization settings
+languages: ["en", "zh"]
+default_lang: "en"

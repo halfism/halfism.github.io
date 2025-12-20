@@ -1,0 +1,70 @@
+<!-- Navigation Bar -->
+<header id="navbar" class="fixed w-full top-0 z-50 transition-custom bg-white/90 backdrop-blur-sm shadow-sm">
+    <div class="container mx-auto px-4 md:px-6 py-4">
+        <nav class="flex items-center justify-between">
+            <a href="/" class="text-2xl font-bold text-primary flex items-center gap-2">
+                <span class="bg-primary text-white p-1 rounded">H</span>
+                halfism
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/#about" class="font-medium hover:text-primary transition-custom">About</a>
+                <a href="/#projects" class="font-medium hover:text-primary transition-custom">Projects</a>
+                <a href="/#skills" class="font-medium hover:text-primary transition-custom">Skills</a>
+                <a href="/gallery.html" class="font-medium hover:text-primary transition-custom">Gallery</a>
+                <a href="/#contact" class="font-medium hover:text-primary transition-custom">Contact</a>
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom flex items-center gap-2">
+                    <i class="fa fa-github"></i> GitHub
+                </a>
+                {% if page.lang %}
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm">{% if page.lang == "en" %}English{% else %}中文{% endif %}</span>
+                    {% if page.lang == "en" %}
+                    <a href="/index_zh.html" class="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-300 transition-colors">
+                        中文
+                    </a>
+                    {% else %}
+                    <a href="/index_en.html" class="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-300 transition-colors">
+                        English
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="fa fa-bars text-2xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+            <div class="flex flex-col space-y-3">
+                <a href="/#about" class="font-medium hover:text-primary transition-custom py-2">About</a>
+                <a href="/#projects" class="font-medium hover:text-primary transition-custom py-2">Projects</a>
+                <a href="/#skills" class="font-medium hover:text-primary transition-custom py-2">Skills</a>
+                <a href="/gallery.html" class="font-medium hover:text-primary transition-custom py-2">Gallery</a>
+                <a href="/#contact" class="font-medium hover:text-primary transition-custom py-2">Contact</a>
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom flex items-center justify-center gap-2">
+                    <i class="fa fa-github"></i> GitHub
+                </a>
+                {% if page.lang %}
+                <div class="flex items-center justify-center space-x-2 pt-2">
+                    <span class="text-sm">{% if page.lang == "en" %}English{% else %}中文{% endif %}</span>
+                    {% if page.lang == "en" %}
+                    <a href="/index_zh.html" class="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-300 transition-colors">
+                        中文
+                    </a>
+                    {% else %}
+                    <a href="/index_en.html" class="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-300 transition-colors">
+                        English
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,38 @@
+<!-- Footer -->
+<footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <a href="/" class="text-2xl font-bold flex items-center gap-2">
+                    <span class="bg-white text-primary p-1 rounded">H</span>
+                    halfism
+                </a>
+                <p class="text-gray-400 mt-2">Passionate developer creating meaningful solutions</p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-custom">
+                    <i class="fa fa-github"></i>
+                </a>
+                <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-blue-500 hover:text-white transition-custom">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-blue-700 hover:text-white transition-custom">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-red-600 hover:text-white transition-custom">
+                    <i class="fa fa-youtube-play"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm">&copy; {{ 'now' | date: "%Y" }} halfism. All rights reserved.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition-custom">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition-custom">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition-custom">Cookie Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
