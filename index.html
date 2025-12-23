@@ -8,7 +8,7 @@ lang: zh
 
 <main class="pt-20">
     <!-- 英雄区域 -->
-    <section class="py-16 md:py-24 bg-white">
+    <section class="py-16 md:py-24 neumorphic-bg">
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/2 space-y-4">
@@ -19,19 +19,18 @@ lang: zh
                         一位热爱通过代码创造有意义且高效解决方案的开发者。
                     </p>
                     <div class="flex flex-wrap gap-3 pt-2">
-                        <a href="#projects" class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg transition-custom font-medium">
+                        <a href="#projects" class="neumorphic-button primary">
                             查看我的作品
                         </a>
-                        <a href="#contact" class="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-lg transition-custom font-medium border border-gray-200">
+                        <a href="#contact" class="neumorphic-button">
                             联系我
                         </a>
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
                     <div class="w-64 h-64 md:w-80 md:h-80 relative">
-                        <div class="absolute inset-0 bg-primary rounded-full opacity-10"></div>
-                        <div class="absolute inset-4 bg-gray-200 rounded-full flex items-center justify-center">
-                            <span class="text-4xl font-bold text-gray-400">H</span>
+                        <div class="neumorphic-icon w-full h-full rounded-full flex items-center justify-center">
+                            <span class="text-4xl font-bold text-primary">H</span>
                         </div>
                     </div>
                 </div>
@@ -40,7 +39,7 @@ lang: zh
     </section>
 
     <!-- 关于我 -->
-    <section id="about" class="py-16 bg-gray-50">
+    <section id="about" class="py-16 neumorphic-bg">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
                 <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark mb-3">关于我</h2>
@@ -48,7 +47,7 @@ lang: zh
             </div>
 
             <div class="max-w-3xl mx-auto">
-                <div class="bg-white rounded-xl p-6 shadow-sm">
+                <div class="neumorphic-card p-6">
                     <p class="text-gray-700 mb-4 leading-relaxed">
                         你好！我是 <strong class="text-primary">halfism</strong>，一位对创造高效、美观且实用软件充满热情的开发者。我喜欢解决复杂问题，并通过代码将想法变为现实。
                     </p>
@@ -64,7 +63,7 @@ lang: zh
     </section>
 
     <!-- 项目展示 -->
-    <section id="projects" class="py-16 bg-white">
+    <section id="projects" class="py-16 neumorphic-bg">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
                 <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark mb-3">我的项目</h2>
@@ -74,56 +73,50 @@ lang: zh
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- 项目卡片 1 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom">
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-2">Web 应用程序</h3>
-                        <p class="text-gray-600 text-sm mb-3">具有响应式设计和现代 UI 组件的全功能 Web 应用程序。</p>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">React</span>
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">Node.js</span>
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">MongoDB</span>
-                        </div>
-                        <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
-                            在 GitHub 上查看 <i class="fa fa-arrow-right text-xs"></i>
-                        </a>
+                <div class="neumorphic-card p-5">
+                    <h3 class="text-lg font-bold mb-2">Web 应用程序</h3>
+                    <p class="text-gray-600 text-sm mb-3">具有响应式设计和现代 UI 组件的全功能 Web 应用程序。</p>
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">React</span>
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">Node.js</span>
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">MongoDB</span>
                     </div>
+                    <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
+                        在 GitHub 上查看 <i class="fa fa-arrow-right text-xs"></i>
+                    </a>
                 </div>
 
                 <!-- 项目卡片 2 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom">
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-2">数据分析工具</h3>
-                        <p class="text-gray-600 text-sm mb-3">具有高级统计功能的数据可视化和分析的强大工具。</p>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">Python</span>
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">Pandas</span>
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">Matplotlib</span>
-                        </div>
-                        <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
-                            在 GitHub 上查看 <i class="fa fa-arrow-right text-xs"></i>
-                        </a>
+                <div class="neumorphic-card p-5">
+                    <h3 class="text-lg font-bold mb-2">数据分析工具</h3>
+                    <p class="text-gray-600 text-sm mb-3">具有高级统计功能的数据可视化和分析的强大工具。</p>
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">Python</span>
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">Pandas</span>
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">Matplotlib</span>
                     </div>
+                    <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
+                        在 GitHub 上查看 <i class="fa fa-arrow-right text-xs"></i>
+                    </a>
                 </div>
 
                 <!-- 项目卡片 3 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom">
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-2">API 服务</h3>
-                        <p class="text-gray-600 text-sm mb-3">具有身份验证和速率限制功能的高性能 RESTful API 服务。</p>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">Go</span>
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">PostgreSQL</span>
-                            <span class="bg-white text-gray-700 text-xs px-2 py-1 rounded">Docker</span>
-                        </div>
-                        <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
-                            在 GitHub 上查看 <i class="fa fa-arrow-right text-xs"></i>
-                        </a>
+                <div class="neumorphic-card p-5">
+                    <h3 class="text-lg font-bold mb-2">API 服务</h3>
+                    <p class="text-gray-600 text-sm mb-3">具有身份验证和速率限制功能的高性能 RESTful API 服务。</p>
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">Go</span>
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">PostgreSQL</span>
+                        <span class="neumorphic-button reverse text-xs px-2 py-1 rounded text-gray-700 bg-transparent">Docker</span>
                     </div>
+                    <a href="https://github.com/{{ site.github_username }}" target="_blank" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
+                        在 GitHub 上查看 <i class="fa fa-arrow-right text-xs"></i>
+                    </a>
                 </div>
             </div>
 
             <div class="text-center mt-10">
-                <a href="https://github.com/{{ site.github_username }}?tab=repositories" target="_blank" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg transition-custom font-medium">
+                <a href="https://github.com/{{ site.github_username }}?tab=repositories" target="_blank" class="neumorphic-button primary">
                     查看所有项目 <i class="fa fa-github"></i>
                 </a>
             </div>
@@ -131,7 +124,7 @@ lang: zh
     </section>
 
     <!-- 技能展示 -->
-    <section id="skills" class="py-16 bg-gray-50">
+    <section id="skills" class="py-16 neumorphic-bg">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
                 <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark mb-3">我的技能</h2>
@@ -140,74 +133,98 @@ lang: zh
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                <div class="bg-white p-5 rounded-lg shadow-sm">
+                <div class="neumorphic-card p-5">
                     <h4 class="font-bold mb-3 text-gray-800">前端开发</h4>
                     <ul class="space-y-2 text-sm">
                         <li class="flex justify-between">
                             <span class="text-gray-600">React/Vue</span>
-                            <span class="text-gray-500">90%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 90%"></div>
+                            </div>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">HTML/CSS</span>
-                            <span class="text-gray-500">95%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 95%"></div>
+                            </div>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">JavaScript</span>
-                            <span class="text-gray-500">90%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 90%"></div>
+                            </div>
                         </li>
                     </ul>
                 </div>
 
-                <div class="bg-white p-5 rounded-lg shadow-sm">
+                <div class="neumorphic-card p-5">
                     <h4 class="font-bold mb-3 text-gray-800">后端开发</h4>
                     <ul class="space-y-2 text-sm">
                         <li class="flex justify-between">
                             <span class="text-gray-600">Node.js</span>
-                            <span class="text-gray-500">85%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 85%"></div>
+                            </div>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">Python</span>
-                            <span class="text-gray-500">85%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 85%"></div>
+                            </div>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">Go</span>
-                            <span class="text-gray-500">75%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 75%"></div>
+                            </div>
                         </li>
                     </ul>
                 </div>
 
-                <div class="bg-white p-5 rounded-lg shadow-sm">
+                <div class="neumorphic-card p-5">
                     <h4 class="font-bold mb-3 text-gray-800">数据库</h4>
                     <ul class="space-y-2 text-sm">
                         <li class="flex justify-between">
                             <span class="text-gray-600">MongoDB</span>
-                            <span class="text-gray-500">85%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 85%"></div>
+                            </div>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">PostgreSQL</span>
-                            <span class="text-gray-500">80%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 80%"></div>
+                            </div>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">Redis</span>
-                            <span class="text-gray-500">70%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 70%"></div>
+                            </div>
                         </li>
                     </ul>
                 </div>
 
-                <div class="bg-white p-5 rounded-lg shadow-sm">
+                <div class="neumorphic-card p-5">
                     <h4 class="font-bold mb-3 text-gray-800">DevOps</h4>
                     <ul class="space-y-2 text-sm">
                         <li class="flex justify-between">
                             <span class="text-gray-600">Docker</span>
-                            <span class="text-gray-500">85%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 85%"></div>
+                            </div>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">Git</span>
-                            <span class="text-gray-500">90%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 90%"></div>
+                            </div>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">CI/CD</span>
-                            <span class="text-gray-500">80%</span>
+                            <div class="neumorphic-progress-container w-1/2 ml-2">
+                                <div class="neumorphic-progress-bar" style="width: 80%"></div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -216,7 +233,7 @@ lang: zh
     </section>
 
     <!-- 联系部分 -->
-    <section id="contact" class="py-16 bg-white">
+    <section id="contact" class="py-16 neumorphic-bg">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
                 <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark mb-3">联系我</h2>
@@ -226,12 +243,12 @@ lang: zh
 
             <div class="max-w-4xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="neumorphic-card p-6">
                         <h3 class="text-lg font-bold mb-4">联系信息</h3>
 
                         <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="neumorphic-icon w-10 h-10 flex-shrink-0">
                                     <i class="fa fa-envelope text-primary text-sm"></i>
                                 </div>
                                 <div>
@@ -240,8 +257,8 @@ lang: zh
                                 </div>
                             </div>
 
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="neumorphic-icon w-10 h-10 flex-shrink-0">
                                     <i class="fa fa-github text-primary text-sm"></i>
                                 </div>
                                 <div>
@@ -250,8 +267,8 @@ lang: zh
                                 </div>
                             </div>
 
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="neumorphic-icon w-10 h-10 flex-shrink-0">
                                     <i class="fa fa-twitter text-primary text-sm"></i>
                                 </div>
                                 <div>
@@ -262,32 +279,32 @@ lang: zh
                         </div>
                     </div>
 
-                    <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="neumorphic-card p-6">
                         <h3 class="text-lg font-bold mb-4">给我留言</h3>
 
                         <form>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
-                                    <input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary transition-custom text-sm" placeholder="张三">
+                                    <input type="text" id="name" class="neumorphic-input text-sm" placeholder="张三">
                                 </div>
                                 <div>
                                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
-                                    <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary transition-custom text-sm" placeholder="zhangsan@example.com">
+                                    <input type="email" id="email" class="neumorphic-input text-sm" placeholder="zhangsan@example.com">
                                 </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">主题</label>
-                                <input type="text" id="subject" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary transition-custom text-sm" placeholder="项目咨询">
+                                <input type="text" id="subject" class="neumorphic-input text-sm" placeholder="项目咨询">
                             </div>
 
                             <div class="mb-4">
                                 <label for="message" class="block text-sm font-medium text-gray-700 mb-1">消息</label>
-                                <textarea id="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary transition-custom text-sm" placeholder="告诉我你的项目..."></textarea>
+                                <textarea id="message" rows="3" class="neumorphic-textarea text-sm" placeholder="告诉我你的项目..."></textarea>
                             </div>
 
-                            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white px-4 py-2.5 rounded-lg transition-custom font-medium text-sm">
+                            <button type="submit" class="w-full neumorphic-button primary">
                                 发送消息
                             </button>
                         </form>

@@ -1,0 +1,423 @@
+/* 拟态风格 (Neumorphism) 样式 */
+
+/* 基础拟态容器 */
+.neumorphic-container {
+  background: #e0e5ec;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 
+    8px 8px 16px #b8bec7, 
+    -8px -8px 16px #ffffff;
+}
+
+/* 拟态按钮 */
+.neumorphic-button {
+  background: #e0e5ec;
+  border-radius: 50px;
+  border: none;
+  color: #656a73;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 
+    6px 6px 12px #b8bec7, 
+    -6px -6px 12px #ffffff;
+  transition: all 0.3s ease;
+  position: relative;
+  outline: none;
+}
+
+.neumorphic-button:hover {
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  color: #165DFF;
+}
+
+.neumorphic-button:active {
+  box-shadow: 
+    inset 6px 6px 12px #b8bec7, 
+    inset -6px -6px 12px #ffffff;
+}
+
+.neumorphic-button.primary {
+  color: #165DFF;
+}
+
+.neumorphic-button.accent {
+  color: #722ED1;
+}
+
+/* 拟态卡片 */
+.neumorphic-card {
+  background: #e0e5ec;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 
+    8px 8px 16px #b8bec7, 
+    -8px -8px 16px #ffffff;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.neumorphic-card:hover {
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+/* 拟态输入框 */
+.neumorphic-input {
+  background: #e0e5ec;
+  border-radius: 12px;
+  border: none;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #656a73;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.neumorphic-input:focus {
+  box-shadow: 
+    inset 6px 6px 12px #b8bec7, 
+    inset -6px -6px 12px #ffffff,
+    0 0 0 2px rgba(22, 93, 255, 0.2);
+}
+
+/* 拟态选择框 */
+.neumorphic-select {
+  background: #e0e5ec;
+  border-radius: 12px;
+  border: none;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #656a73;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  outline: none;
+  width: 100%;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23656a73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 36px;
+}
+
+/* 拟态开关 */
+.neumorphic-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.neumorphic-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.neumorphic-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #e0e5ec;
+  border-radius: 34px;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  transition: .4s;
+}
+
+.neumorphic-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 
+    2px 2px 4px #b8bec7, 
+    -2px -2px 4px #ffffff;
+  transition: .4s;
+}
+
+.neumorphic-switch input:checked + .neumorphic-slider {
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+.neumorphic-switch input:checked + .neumorphic-slider:before {
+  transform: translateX(26px);
+  box-shadow: 
+    2px 2px 4px #b8bec7, 
+    -2px -2px 4px #ffffff;
+}
+
+/* 拟态图标 */
+.neumorphic-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0e5ec;
+  box-shadow: 
+    6px 6px 12px #b8bec7, 
+    -6px -6px 12px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-icon:hover {
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+/* 拟态圆形按钮 */
+.neumorphic-circle-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: #e0e5ec;
+  box-shadow: 
+    6px 6px 12px #b8bec7, 
+    -6px -6px 12px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #656a73;
+  font-size: 18px;
+}
+
+.neumorphic-circle-btn:hover {
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+.neumorphic-circle-btn:active {
+  box-shadow: 
+    inset 6px 6px 12px #b8bec7, 
+    inset -6px -6px 12px #ffffff;
+}
+
+/* 拟态进度条 */
+.neumorphic-progress-container {
+  width: 100%;
+  background: #e0e5ec;
+  border-radius: 10px;
+  height: 20px;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  overflow: hidden;
+}
+
+.neumorphic-progress-bar {
+  height: 100%;
+  background: #165DFF;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* 拟态文本框 */
+.neumorphic-textarea {
+  background: #e0e5ec;
+  border-radius: 12px;
+  border: none;
+  padding: 16px;
+  font-size: 16px;
+  color: #656a73;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  outline: none;
+  width: 100%;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-textarea:focus {
+  box-shadow: 
+    inset 6px 6px 12px #b8bec7, 
+    inset -6px -6px 12px #ffffff,
+    0 0 0 2px rgba(22, 93, 255, 0.2);
+}
+
+/* 拟态复选框 */
+.neumorphic-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.neumorphic-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.neumorphic-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background: #e0e5ec;
+  border-radius: 6px;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+.neumorphic-checkbox:hover input ~ .neumorphic-checkmark {
+  box-shadow: 
+    inset 6px 6px 12px #b8bec7, 
+    inset -6px -6px 12px #ffffff;
+}
+
+.neumorphic-checkbox input:checked ~ .neumorphic-checkmark {
+  background: #165DFF;
+  box-shadow: 
+    2px 2px 4px #b8bec7, 
+    -2px -2px 4px #ffffff;
+}
+
+.neumorphic-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.neumorphic-checkbox input:checked ~ .neumorphic-checkmark:after {
+  display: block;
+}
+
+.neumorphic-checkbox .neumorphic-checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* 拟态单选按钮 */
+.neumorphic-radio {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.neumorphic-radio input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.neumorphic-radio-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background: #e0e5ec;
+  border-radius: 50%;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+.neumorphic-radio input:checked ~ .neumorphic-radio-mark {
+  background: #e0e5ec;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+.neumorphic-radio input:checked ~ .neumorphic-radio-mark:after {
+  display: block;
+}
+
+.neumorphic-radio-mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 6px;
+  left: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #165DFF;
+}
+
+/* 反转拟态效果 - 用于浅色背景 */
+.neumorphic-container.reverse,
+.neumorphic-card.reverse,
+.neumorphic-button.reverse,
+.neumorphic-input.reverse,
+.neumorphic-select.reverse,
+.neumorphic-icon.reverse,
+.neumorphic-circle-btn.reverse,
+.neumorphic-textarea.reverse {
+  background: #ffffff;
+  box-shadow: 
+    8px 8px 16px #d6dce6, 
+    -8px -8px 16px #ffffff;
+}
+
+.neumorphic-button.reverse,
+.neumorphic-input.reverse,
+.neumorphic-select.reverse,
+.neumorphic-icon.reverse,
+.neumorphic-circle-btn.reverse,
+.neumorphic-textarea.reverse {
+  box-shadow: 
+    6px 6px 12px #d6dce6, 
+    -6px -6px 12px #ffffff;
+}
+
+.neumorphic-input.reverse,
+.neumorphic-select.reverse,
+.neumorphic-textarea.reverse {
+  box-shadow: 
+    inset 4px 4px 8px #d6dce6, 
+    inset -4px -4px 8px #ffffff;
+}
+
+.neumorphic-button.reverse:hover,
+.neumorphic-card.reverse:hover {
+  box-shadow: 
+    inset 4px 4px 8px #d6dce6, 
+    inset -4px -4px 8px #ffffff;
+}
+
+.neumorphic-button.reverse:active {
+  box-shadow: 
+    inset 6px 6px 12px #d6dce6, 
+    inset -6px -6px 12px #ffffff;
+}

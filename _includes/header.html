@@ -3,29 +3,29 @@
     <div class="container mx-auto px-4 md:px-6 py-4">
         <nav class="flex items-center justify-between">
             <a href="/" class="text-xl font-bold text-primary flex items-center gap-2">
-                <span class="bg-primary text-white p-1 rounded text-sm">H</span>
+                <span class="neumorphic-icon w-8 h-8 flex items-center justify-center text-sm">H</span>
                 halfism
             </a>
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center space-x-6">
-                <a href="/#about" class="font-medium hover:text-primary transition-custom">关于</a>
-                <a href="/#projects" class="font-medium hover:text-primary transition-custom">项目</a>
-                <a href="/#skills" class="font-medium hover:text-primary transition-custom">技能</a>
-                <a href="/gallery.html" class="font-medium hover:text-primary transition-custom">相册</a>
-                <a href="/blog.html" class="font-medium hover:text-primary transition-custom">博客</a>
-                <a href="/#contact" class="font-medium hover:text-primary transition-custom">联系</a>
+                <a href="/#about" class="neumorphic-button reverse text-sm px-3 py-1.5 text-gray-700 bg-transparent font-medium">关于</a>
+                <a href="/#projects" class="neumorphic-button reverse text-sm px-3 py-1.5 text-gray-700 bg-transparent font-medium">项目</a>
+                <a href="/#skills" class="neumorphic-button reverse text-sm px-3 py-1.5 text-gray-700 bg-transparent font-medium">技能</a>
+                <a href="/gallery.html" class="neumorphic-button reverse text-sm px-3 py-1.5 text-gray-700 bg-transparent font-medium">相册</a>
+                <a href="/blog.html" class="neumorphic-button reverse text-sm px-3 py-1.5 text-gray-700 bg-transparent font-medium">博客</a>
+                <a href="/#contact" class="neumorphic-button reverse text-sm px-3 py-1.5 text-gray-700 bg-transparent font-medium">联系</a>
                 <a href="https://github.com/{{ site.github_username }}" target="_blank" class="text-gray-700 hover:text-primary transition-custom flex items-center gap-2">
                     <i class="fa fa-github text-lg"></i>
                 </a>
                 {% if page.lang %}
                 <div class="flex items-center space-x-2">
                     {% if page.lang == "en" %}
-                    <a href="/index_zh.html" class="text-sm hover:text-primary transition-colors">
+                    <a href="/index_zh.html" class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">
                         中文
                     </a>
                     {% else %}
-                    <a href="/index_en.html" class="text-sm hover:text-primary transition-colors">
+                    <a href="/index_en.html" class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">
                         EN
                     </a>
                     {% endif %}
@@ -42,23 +42,23 @@
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
             <div class="flex flex-col space-y-3">
-                <a href="/#about" class="font-medium hover:text-primary transition-custom py-2">关于</a>
-                <a href="/#projects" class="font-medium hover:text-primary transition-custom py-2">项目</a>
-                <a href="/#skills" class="font-medium hover:text-primary transition-custom py-2">技能</a>
-                <a href="/gallery.html" class="font-medium hover:text-primary transition-custom py-2">相册</a>
-                <a href="/blog.html" class="font-medium hover:text-primary transition-custom py-2">博客</a>
-                <a href="/#contact" class="font-medium hover:text-primary transition-custom py-2">联系</a>
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="text-gray-700 hover:text-primary transition-custom py-2 flex items-center gap-2">
+                <a href="/#about" class="neumorphic-button reverse text-gray-700 bg-transparent py-2">关于</a>
+                <a href="/#projects" class="neumorphic-button reverse text-gray-700 bg-transparent py-2">项目</a>
+                <a href="/#skills" class="neumorphic-button reverse text-gray-700 bg-transparent py-2">技能</a>
+                <a href="/gallery.html" class="neumorphic-button reverse text-gray-700 bg-transparent py-2">相册</a>
+                <a href="/blog.html" class="neumorphic-button reverse text-gray-700 bg-transparent py-2">博客</a>
+                <a href="/#contact" class="neumorphic-button reverse text-gray-700 bg-transparent py-2">联系</a>
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="neumorphic-button reverse text-gray-700 bg-transparent py-2 flex items-center gap-2">
                     <i class="fa fa-github"></i> GitHub
                 </a>
                 {% if page.lang %}
                 <div class="flex items-center space-x-4 pt-2">
                     {% if page.lang == "en" %}
-                    <a href="/index_zh.html" class="text-sm hover:text-primary transition-colors">
+                    <a href="/index_zh.html" class="neumorphic-button reverse text-gray-700 bg-transparent">
                         中文
                     </a>
                     {% else %}
-                    <a href="/index_en.html" class="text-sm hover:text-primary transition-colors">
+                    <a href="/index_en.html" class="neumorphic-button reverse text-gray-700 bg-transparent">
                         English
                     </a>
                     {% endif %}

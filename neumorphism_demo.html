@@ -1,0 +1,160 @@
+---
+layout: default
+title: 拟态风格示例
+---
+
+{% include header.html %}
+
+<main class="pt-20">
+    <section class="py-16 neumorphic-bg min-h-screen">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-dark mb-4">拟态风格设计</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">体验现代拟态设计风格，柔和的阴影和高光效果创造立体感</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- 拟态按钮示例 -->
+                <div class="neumorphic-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 text-center">拟态按钮</h2>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button class="neumorphic-button">普通按钮</button>
+                        <button class="neumorphic-button primary">主要按钮</button>
+                        <button class="neumorphic-button accent">强调按钮</button>
+                        <button class="neumorphic-button reverse">反转按钮</button>
+                    </div>
+                </div>
+
+                <!-- 拟态输入框示例 -->
+                <div class="neumorphic-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 text-center">拟态输入框</h2>
+                    <div class="space-y-4">
+                        <input type="text" class="neumorphic-input" placeholder="输入文本...">
+                        <input type="email" class="neumorphic-input" placeholder="输入邮箱...">
+                        <textarea class="neumorphic-textarea" placeholder="输入文本..." rows="3"></textarea>
+                    </div>
+                </div>
+
+                <!-- 拟态卡片示例 -->
+                <div class="neumorphic-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 text-center">拟态卡片</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="neumorphic-card p-4">
+                            <h3 class="font-bold mb-2">卡片 1</h3>
+                            <p class="text-sm text-gray-600">这是一个拟态风格的卡片示例</p>
+                        </div>
+                        <div class="neumorphic-card p-4">
+                            <h3 class="font-bold mb-2">卡片 2</h3>
+                            <p class="text-sm text-gray-600">另一个拟态风格的卡片</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 拟态图标和圆形按钮 -->
+                <div class="neumorphic-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 text-center">拟态图标和按钮</h2>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="neumorphic-icon">
+                            <i class="fa fa-home text-xl"></i>
+                        </div>
+                        <div class="neumorphic-icon">
+                            <i class="fa fa-user text-xl"></i>
+                        </div>
+                        <div class="neumorphic-icon">
+                            <i class="fa fa-cog text-xl"></i>
+                        </div>
+                        <button class="neumorphic-circle-btn">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <button class="neumorphic-circle-btn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 拟态开关和复选框 -->
+                <div class="neumorphic-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 text-center">拟态选择组件</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <label class="neumorphic-switch">
+                                <input type="checkbox">
+                                <span class="neumorphic-slider"></span>
+                            </label>
+                            <span class="ml-3">开关选项</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <label class="neumorphic-checkbox">
+                                <input type="checkbox" checked>
+                                <span class="neumorphic-checkmark"></span>
+                            </label>
+                            <span>复选框选项 1</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <label class="neumorphic-checkbox">
+                                <input type="checkbox">
+                                <span class="neumorphic-checkmark"></span>
+                            </label>
+                            <span>复选框选项 2</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <label class="neumorphic-radio">
+                                <input type="radio" name="radio" checked>
+                                <span class="neumorphic-radio-mark"></span>
+                            </label>
+                            <span>单选按钮 1</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <label class="neumorphic-radio">
+                                <input type="radio" name="radio">
+                                <span class="neumorphic-radio-mark"></span>
+                            </label>
+                            <span>单选按钮 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 拟态进度条和选择框 -->
+                <div class="neumorphic-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 text-center">其他组件</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>进度</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="neumorphic-progress-container">
+                                <div class="neumorphic-progress-bar" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <select class="neumorphic-select">
+                            <option>选择一个选项</option>
+                            <option>选项 1</option>
+                            <option>选项 2</option>
+                            <option>选项 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 拟态容器示例 -->
+            <div class="neumorphic-container p-8 mt-12 max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold mb-4 text-center">拟态容器</h2>
+                <p class="text-center text-gray-700 mb-6">
+                    这是一个拟态风格的容器，使用柔和的阴影和高光效果创造立体感
+                </p>
+                <div class="flex justify-center gap-4">
+                    <button class="neumorphic-button">了解更多</button>
+                    <button class="neumorphic-button accent">开始使用</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% include footer.html %}
