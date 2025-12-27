@@ -220,6 +220,138 @@
     inset -6px -6px 12px #ffffff;
 }
 
+/* 拟态时钟 */
+.neumorphic-clock {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #e0e5ec;
+  box-shadow: 
+    inset 8px 8px 16px #b8bec7, 
+    inset -8px -8px 16px #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neumorphic-clock .clock-center {
+  width: 12px;
+  height: 12px;
+  background: #656a73;
+  border-radius: 50%;
+  position: relative;
+  z-index: 10;
+}
+
+.neumorphic-clock .clock-hand {
+  position: absolute;
+  background: #656a73;
+  transform-origin: bottom center;
+  border-radius: 4px;
+}
+
+.neumorphic-clock .hour-hand {
+  width: 6px;
+  height: 50px;
+  top: 50px;
+}
+
+.neumorphic-clock .minute-hand {
+  width: 4px;
+  height: 70px;
+  top: 30px;
+}
+
+.neumorphic-clock .second-hand {
+  width: 2px;
+  height: 80px;
+  top: 20px;
+  background: #ff4757;
+}
+
+.neumorphic-clock .clock-marks {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.clock-mark {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 2px;
+  height: 10px;
+  background: #656a73;
+  transform-origin: bottom center;
+  margin-left: -1px;
+}
+
+.clock-mark.major {
+  width: 3px;
+  height: 15px;
+  background: #165DFF;
+}
+
+/* 拟态数字显示 */
+.neumorphic-display {
+  background: #e0e5ec;
+  border-radius: 16px;
+  padding: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
+  font-weight: bold;
+  color: #656a73;
+  letter-spacing: 2px;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  text-align: center;
+  min-width: 200px;
+}
+
+/* 拟态滑块 */
+.neumorphic-slider-container {
+  width: 100%;
+  height: 20px;
+  background: #e0e5ec;
+  border-radius: 10px;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  position: relative;
+  cursor: pointer;
+}
+
+.neumorphic-slider-progress {
+  height: 100%;
+  background: #165DFF;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.neumorphic-slider-handle {
+  width: 30px;
+  height: 30px;
+  background: #e0e5ec;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 
+    4px 4px 8px #b8bec7, 
+    -4px -4px 8px #ffffff;
+  cursor: grab;
+}
+
+.neumorphic-slider-handle:active {
+  cursor: grabbing;
+  box-shadow: 
+    6px 6px 12px #b8bec7, 
+    -6px -6px 12px #ffffff;
+}
+
 /* 拟态进度条 */
 .neumorphic-progress-container {
   width: 100%;
@@ -420,4 +552,196 @@
   box-shadow: 
     inset 6px 6px 12px #d6dce6, 
     inset -6px -6px 12px #ffffff;
+}
+
+/* 暗色模式拟态效果 */
+[data-theme="dark"] .neumorphic-container,
+[data-theme="dark"] .neumorphic-card,
+[data-theme="dark"] .neumorphic-button,
+[data-theme="dark"] .neumorphic-input,
+[data-theme="dark"] .neumorphic-select,
+[data-theme="dark"] .neumorphic-icon,
+[data-theme="dark"] .neumorphic-circle-btn,
+[data-theme="dark"] .neumorphic-textarea {
+  background: #1e293b;
+  box-shadow: 
+    8px 8px 16px #1a2332, 
+    -8px -8px 16px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-button:hover,
+[data-theme="dark"] .neumorphic-card:hover {
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-button:active {
+  box-shadow: 
+    inset 6px 6px 12px #1a2332, 
+    inset -6px -6px 12px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-input,
+[data-theme="dark"] .neumorphic-select,
+[data-theme="dark"] .neumorphic-textarea {
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .neumorphic-input:focus,
+[data-theme="dark"] .neumorphic-textarea:focus {
+  box-shadow: 
+    inset 6px 6px 12px #1a2332, 
+    inset -6px -6px 12px #222f45,
+    0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme="dark"] .neumorphic-slider {
+  background: #1e293b;
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-slider:before {
+  background: #334155;
+  box-shadow: 
+    2px 2px 4px #1a2332, 
+    -2px -2px 4px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-checkmark {
+  background: #1e293b;
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-checkmark:after {
+  border-color: #93c5fd;
+}
+
+[data-theme="dark"] .neumorphic-radio-mark {
+  background: #1e293b;
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-radio-mark:after {
+  background: #60a5fa;
+}
+
+[data-theme="dark"] .neumorphic-progress-container {
+  background: #1e293b;
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-progress-bar {
+  background: #60a5fa;
+}
+
+/* 暗色模式反转拟态效果 */
+[data-theme="dark"] .neumorphic-container.reverse,
+[data-theme="dark"] .neumorphic-card.reverse,
+[data-theme="dark"] .neumorphic-button.reverse,
+[data-theme="dark"] .neumorphic-input.reverse,
+[data-theme="dark"] .neumorphic-select.reverse,
+[data-theme="dark"] .neumorphic-icon.reverse,
+[data-theme="dark"] .neumorphic-circle-btn.reverse,
+[data-theme="dark"] .neumorphic-textarea.reverse {
+  background: #0f172a;
+  box-shadow: 
+    8px 8px 16px #0c1220, 
+    -8px -8px 16px #121c38;
+}
+
+[data-theme="dark"] .neumorphic-button.reverse,
+[data-theme="dark"] .neumorphic-input.reverse,
+[data-theme="dark"] .neumorphic-select.reverse,
+[data-theme="dark"] .neumorphic-icon.reverse,
+[data-theme="dark"] .neumorphic-circle-btn.reverse,
+[data-theme="dark"] .neumorphic-textarea.reverse {
+  box-shadow: 
+    6px 6px 12px #0c1220, 
+    -6px -6px 12px #121c38;
+}
+
+[data-theme="dark"] .neumorphic-input.reverse,
+[data-theme="dark"] .neumorphic-select.reverse,
+[data-theme="dark"] .neumorphic-textarea.reverse {
+  box-shadow: 
+    inset 4px 4px 8px #0c1220, 
+    inset -4px -4px 8px #121c38;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .neumorphic-button.reverse:hover,
+[data-theme="dark"] .neumorphic-card.reverse:hover {
+  box-shadow: 
+    inset 4px 4px 8px #0c1220, 
+    inset -4px -4px 8px #121c38;
+}
+
+[data-theme="dark"] .neumorphic-button.reverse:active {
+  box-shadow: 
+    inset 6px 6px 12px #0c1220, 
+    inset -6px -6px 12px #121c38;
+}
+
+/* 暗色模式时钟 */
+[data-theme="dark"] .neumorphic-clock {
+  background: #1e293b;
+  box-shadow: 
+    inset 8px 8px 16px #1a2332, 
+    inset -8px -8px 16px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-clock .clock-center {
+  background: #94a3b8;
+}
+
+[data-theme="dark"] .neumorphic-clock .clock-hand {
+  background: #94a3b8;
+}
+
+[data-theme="dark"] .neumorphic-clock .clock-mark {
+  background: #94a3b8;
+}
+
+[data-theme="dark"] .neumorphic-clock .clock-mark.major {
+  background: #60a5fa;
+}
+
+/* 暗色模式数字显示 */
+[data-theme="dark"] .neumorphic-display {
+  background: #1e293b;
+  color: #e2e8f0;
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+/* 暗色模式滑块 */
+[data-theme="dark"] .neumorphic-slider-container {
+  background: #1e293b;
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-slider-progress {
+  background: #60a5fa;
+}
+
+[data-theme="dark"] .neumorphic-slider-handle {
+  background: #1e293b;
+  box-shadow: 
+    4px 4px 8px #1a2332, 
+    -4px -4px 8px #222f45;
 }

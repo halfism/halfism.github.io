@@ -153,8 +153,81 @@ title: 拟态风格示例
                     <button class="neumorphic-button accent">开始使用</button>
                 </div>
             </div>
+
+            <!-- 高级组件示例 -->
+            <div class="neumorphic-container p-8 mt-12 max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold mb-6 text-center">高级组件</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex flex-col items-center">
+                        <h3 class="text-lg font-bold mb-4">拟态时钟</h3>
+                        <div class="neumorphic-clock">
+                            <div class="clock-marks" id="clock-marks-demo">
+                                <!-- 时钟刻度将通过JS生成 -->
+                            </div>
+                            <div class="clock-hand hour-hand" id="hour-hand-demo"></div>
+                            <div class="clock-hand minute-hand" id="minute-hand-demo"></div>
+                            <div class="clock-hand second-hand" id="second-hand-demo"></div>
+                            <div class="clock-center"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <h3 class="text-lg font-bold mb-4">数字显示</h3>
+                        <div class="neumorphic-display" id="digital-clock-demo">00:00:00</div>
+                        <p class="mt-4 text-center text-gray-600">实时显示当前时间</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+            </div>
         </div>
     </section>
 </main>
 
 {% include footer.html %}
+
+<script>
+function updateClockDemo() {
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  
+  // 更新数字时钟
+  const digitalClock = document.getElementById('digital-clock-demo');
+  digitalClock.textContent = 
+    String(hours).padStart(2, '0') + ':' + 
+    String(minutes).padStart(2, '0') + ':' + 
+    String(seconds).padStart(2, '0');
+  
+  // 计算角度
+  const hourDeg = (hours % 12) * 30 + minutes * 0.5;
+  const minuteDeg = minutes * 6 + seconds * 0.1;
+  const secondDeg = seconds * 6;
+  
+  // 应用旋转
+  document.getElementById('hour-hand-demo').style.transform = `rotate(${hourDeg}deg)`;
+  document.getElementById('minute-hand-demo').style.transform = `rotate(${minuteDeg}deg)`;
+  document.getElementById('second-hand-demo').style.transform = `rotate(${secondDeg}deg)`;
+}
+
+// 初始化时钟刻度
+function initClockMarksDemo() {
+  const clockMarks = document.getElementById('clock-marks-demo');
+  for (let i = 0; i < 60; i++) {
+    const mark = document.createElement('div');
+    mark.className = `clock-mark ${i % 5 === 0 ? 'major' : ''}`;
+    mark.style.transform = `rotate(${i * 6}deg)`;
+    clockMarks.appendChild(mark);
+  }
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded', function() {
+  initClockMarksDemo();
+  setInterval(updateClockDemo, 1000);
+  updateClockDemo(); // 立即更新一次
+});
+</script>
