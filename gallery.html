@@ -3,211 +3,68 @@ layout: default
 title: Gallery
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Gallery | {{ site.title }}</title>
-    <meta name="description" content="Photo gallery showcasing my travels, nature photography, and tech events">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#165DFF',
-                        secondary: '#36CFC9',
-                        dark: '#1D2939',
-                        light: '#F9FAFB',
-                        accent: '#722ED1'
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .transition-custom {
-                transition: all 0.3s ease;
-            }
-            .lightbox {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease;
-            }
-            .lightbox.active {
-                opacity: 1;
-                visibility: visible;
-            }
-            .lightbox-content {
-                max-width: 90%;
-                max-height: 90%;
-                object-fit: contain;
-            }
-            .lightbox-close {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                color: white;
-                font-size: 30px;
-                cursor: pointer;
-            }
-            .lightbox-nav {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                color: white;
-                font-size: 30px;
-                cursor: pointer;
-                padding: 10px;
-            }
-            .lightbox-prev {
-                left: 20px;
-            }
-            .lightbox-next {
-                right: 20px;
-            }
-        }
-    </style>
-</head>
-<body class="font-inter bg-white text-gray-800 overflow-x-hidden">
-<!-- Navigation Bar -->
-<header id="navbar" class="fixed w-full top-0 z-50 bg-white border-b border-gray-100">
-    <div class="container mx-auto px-4 md:px-6 py-4">
-        <nav class="flex items-center justify-between">
-            <a href="/" class="text-xl font-bold text-primary flex items-center gap-2">
-                <span class="bg-primary text-white p-1 rounded text-sm">H</span>
-                halfism
-            </a>
-
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="/#about" class="font-medium hover:text-primary transition-custom">About</a>
-                <a href="/#projects" class="font-medium hover:text-primary transition-custom">Projects</a>
-                <a href="/#skills" class="font-medium hover:text-primary transition-custom">Skills</a>
-                <a href="/gallery.html" class="font-medium text-primary transition-custom">Gallery</a>
-                <a href="/blog.html" class="font-medium hover:text-primary transition-custom">Blog</a>
-                <a href="/#contact" class="font-medium hover:text-primary transition-custom">Contact</a>
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="text-gray-700 hover:text-primary transition-custom flex items-center gap-2">
-                    <i class="fa fa-github text-lg"></i>
-                </a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
-                <i class="fa fa-bars text-xl"></i>
-            </button>
-        </nav>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
-            <div class="flex flex-col space-y-3">
-                <a href="/#about" class="font-medium hover:text-primary transition-custom py-2">About</a>
-                <a href="/#projects" class="font-medium hover:text-primary transition-custom py-2">Projects</a>
-                <a href="/#skills" class="font-medium hover:text-primary transition-custom py-2">Skills</a>
-                <a href="/gallery.html" class="font-medium text-primary transition-custom py-2">Gallery</a>
-                <a href="/blog.html" class="font-medium hover:text-primary transition-custom py-2">Blog</a>
-                <a href="/#contact" class="font-medium hover:text-primary transition-custom py-2">Contact</a>
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="text-gray-700 hover:text-primary transition-custom py-2 flex items-center gap-2">
-                    <i class="fa fa-github"></i> GitHub
-                </a>
-            </div>
-        </div>
-    </div>
-</header>
+{% include header.html %}
 
 <main class="pt-20">
     <!-- Hero Section -->
-    <section class="py-12 bg-white">
+    <section class="py-12 neumorphic-bg">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center">
-                <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-3">Photo Gallery</h1>
-                <p class="text-gray-600 max-w-2xl mx-auto">Explore moments captured from my travels, nature encounters, and tech events</p>
+                <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-3">相册</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">探索我旅行、自然风光和科技活动中的精彩瞬间</p>
                 <div class="w-12 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="py-12 bg-gray-50">
+    <section class="py-12 neumorphic-bg">
         <div class="container mx-auto px-4 md:px-6">
             <!-- Albums Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 <!-- Travel Album -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom">
-                    <div class="relative overflow-hidden h-48">
+                <div class="neumorphic-card p-5">
+                    <div class="relative overflow-hidden h-48 mb-4">
                         <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-2">Travel Adventures</h3>
-                        <p class="text-gray-600 text-sm mb-3">Journey through breathtaking landscapes and cultural experiences</p>
-                        <div class="flex items-center text-xs text-gray-500 mb-3">
-                            <span class="mr-3"><i class="fa fa-image mr-1"></i> 12 photos</span>
-                        </div>
-                        <button onclick="openAlbum('travel')" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
-                            Explore Photos <i class="fa fa-arrow-right text-xs ml-1"></i>
-                        </button>
+                    <h3 class="text-lg font-bold mb-2">旅行见闻</h3>
+                    <p class="text-gray-600 text-sm mb-3">壮丽的自然风光和文化体验之旅</p>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <span class="mr-3"><i class="fa fa-image mr-1"></i> 12 张照片</span>
                     </div>
+                    <button onclick="openAlbum('travel')" class="neumorphic-button">
+                        浏览照片 <i class="fa fa-arrow-right text-xs ml-1"></i>
+                    </button>
                 </div>
 
                 <!-- Nature Album -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom">
-                    <div class="relative overflow-hidden h-48">
+                <div class="neumorphic-card p-5">
+                    <div class="relative overflow-hidden h-48 mb-4">
                         <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-2">Nature Wonders</h3>
-                        <p class="text-gray-600 text-sm mb-3">Beautiful moments from the natural world around us</p>
-                        <div class="flex items-center text-xs text-gray-500 mb-3">
-                            <span class="mr-3"><i class="fa fa-image mr-1"></i> 15 photos</span>
-                        </div>
-                        <button onclick="openAlbum('nature')" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
-                            Explore Photos <i class="fa fa-arrow-right text-xs ml-1"></i>
-                        </button>
+                    <h3 class="text-lg font-bold mb-2">自然奇观</h3>
+                    <p class="text-gray-600 text-sm mb-3">来自我们周围自然世界的美丽时刻</p>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <span class="mr-3"><i class="fa fa-image mr-1"></i> 15 张照片</span>
                     </div>
+                    <button onclick="openAlbum('nature')" class="neumorphic-button">
+                        浏览照片 <i class="fa fa-arrow-right text-xs ml-1"></i>
+                    </button>
                 </div>
 
                 <!-- Tech Album -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom">
-                    <div class="relative overflow-hidden h-48">
+                <div class="neumorphic-card p-5">
+                    <div class="relative overflow-hidden h-48 mb-4">
                         <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-2">Tech Events</h3>
-                        <p class="text-gray-600 text-sm mb-3">Memorable moments from conferences, meetups, and tech gatherings</p>
-                        <div class="flex items-center text-xs text-gray-500 mb-3">
-                            <span class="mr-3"><i class="fa fa-image mr-1"></i> 18 photos</span>
-                        </div>
-                        <button onclick="openAlbum('tech')" class="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline">
-                            Explore Photos <i class="fa fa-arrow-right text-xs ml-1"></i>
-                        </button>
+                    <h3 class="text-lg font-bold mb-2">科技活动</h3>
+                    <p class="text-gray-600 text-sm mb-3">会议、聚会和技术活动中的难忘时刻</p>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <span class="mr-3"><i class="fa fa-image mr-1"></i> 18 张照片</span>
                     </div>
+                    <button onclick="openAlbum('tech')" class="neumorphic-button">
+                        浏览照片 <i class="fa fa-arrow-right text-xs ml-1"></i>
+                    </button>
                 </div>
             </div>
 
@@ -216,19 +73,19 @@ title: Gallery
                 <!-- Travel Album -->
                 <div id="travel-album" class="album-section hidden mb-12">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-bold text-dark">Travel Adventures</h2>
-                        <button onclick="closeAlbum('travel')" class="text-gray-500 hover:text-primary">
-                            <i class="fa fa-times text-xl"></i>
+                        <h2 class="text-xl font-bold text-dark">旅行见闻</h2>
+                        <button onclick="closeAlbum('travel')" class="neumorphic-button">
+                            <i class="fa fa-times"></i>
                         </button>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
                     </div>
@@ -237,19 +94,19 @@ title: Gallery
                 <!-- Nature Album -->
                 <div id="nature-album" class="album-section hidden mb-12">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-bold text-dark">Nature Wonders</h2>
-                        <button onclick="closeAlbum('nature')" class="text-gray-500 hover:text-primary">
-                            <i class="fa fa-times text-xl"></i>
+                        <h2 class="text-xl font-bold text-dark">自然奇观</h2>
+                        <button onclick="closeAlbum('nature')" class="neumorphic-button">
+                            <i class="fa fa-times"></i>
                         </button>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
                     </div>
@@ -258,19 +115,19 @@ title: Gallery
                 <!-- Tech Album -->
                 <div id="tech-album" class="album-section hidden mb-12">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-bold text-dark">Tech Events</h2>
-                        <button onclick="closeAlbum('tech')" class="text-gray-500 hover:text-primary">
-                            <i class="fa fa-times text-xl"></i>
+                        <h2 class="text-xl font-bold text-dark">科技活动</h2>
+                        <button onclick="closeAlbum('tech')" class="neumorphic-button">
+                            <i class="fa fa-times"></i>
                         </button>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
-                        <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                        <div class="neumorphic-card group relative overflow-hidden rounded-lg cursor-pointer">
                             <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
                         </div>
                     </div>
@@ -288,46 +145,18 @@ title: Gallery
     <div class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</div>
 </div>
 
-<!-- Footer -->
-<footer class="bg-gray-50 text-gray-600 py-8 border-t border-gray-200">
-    <div class="container mx-auto px-4 md:px-6">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <a href="/" class="text-xl font-bold flex items-center gap-2 text-gray-800">
-                    <span class="bg-primary text-white p-1 rounded text-sm">H</span>
-                    halfism
-                </a>
-                <p class="text-gray-500 mt-1 text-sm">Passionate developer creating meaningful solutions</p>
-            </div>
-
-            <div class="flex items-center gap-3">
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-custom">
-                    <i class="fa fa-github text-sm"></i>
-                </a>
-                <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-blue-500 hover:text-white transition-custom">
-                    <i class="fa fa-twitter text-sm"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="border-t border-gray-200 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-500 text-sm">&copy; {{ 'now' | date: "%Y" }} halfism. All rights reserved.</p>
-            <div class="flex gap-4 mt-4 md:mt-0">
-                <a href="#" class="text-gray-500 hover:text-primary text-sm transition-custom">Privacy</a>
-                <a href="#" class="text-gray-500 hover:text-primary text-sm transition-custom">Terms</a>
-            </div>
-        </div>
-    </div>
-</footer>
+{% include footer.html %}
 
 <script>
     // Mobile Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
 
     // Album navigation
     function openAlbum(albumName) {
@@ -423,5 +252,3 @@ title: Gallery
         }
     });
 </script>
-</body>
-</html>

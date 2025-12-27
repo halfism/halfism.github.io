@@ -745,3 +745,201 @@
     4px 4px 8px #1a2332, 
     -4px -4px 8px #222f45;
 }
+
+/* 拟态图片容器 */
+.neumorphic-img {
+  border-radius: 12px;
+  box-shadow: 
+    8px 8px 16px #b8bec7, 
+    -8px -8px 16px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-img:hover {
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+/* 暗色模式拟态图片容器 */
+[data-theme="dark"] .neumorphic-img {
+  box-shadow: 
+    8px 8px 16px #1a2332, 
+    -8px -8px 16px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-img:hover {
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+/* 拟态标签 */
+.neumorphic-tag {
+  background: #e0e5ec;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  box-shadow: 
+    4px 4px 8px #b8bec7, 
+    -4px -4px 8px #ffffff;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-tag:hover {
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+/* 暗色模式拟态标签 */
+[data-theme="dark"] .neumorphic-tag {
+  background: #1e293b;
+  box-shadow: 
+    4px 4px 8px #1a2332, 
+    -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-tag:hover {
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+/* 拟态进度条容器 */
+.neumorphic-progress-container {
+  width: 100%;
+  background: #e0e5ec;
+  border-radius: 10px;
+  height: 20px;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+  overflow: hidden;
+}
+
+.neumorphic-progress-bar {
+  height: 100%;
+  background: #165DFF;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* 暗色模式拟态进度条 */
+[data-theme="dark"] .neumorphic-progress-container {
+  background: #1e293b;
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-progress-bar {
+  background: #60a5fa;
+}
+
+/* 拟态轮播图 */
+.neumorphic-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 
+    8px 8px 16px #b8bec7, 
+    -8px -8px 16px #ffffff;
+}
+
+/* 暗色模式拟态轮播图 */
+[data-theme="dark"] .neumorphic-carousel {
+  box-shadow: 
+    8px 8px 16px #1a2332, 
+    -8px -8px 16px #222f45;
+}
+
+/* 拟态导航按钮 */
+.neumorphic-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e5ec;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    6px 6px 12px #b8bec7, 
+    -6px -6px 12px #ffffff;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-nav-btn:hover {
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+.neumorphic-nav-btn.prev {
+  left: 10px;
+}
+
+.neumorphic-nav-btn.next {
+  right: 10px;
+}
+
+/* 暗色模式拟态导航按钮 */
+[data-theme="dark"] .neumorphic-nav-btn {
+  background: #1e293b;
+  box-shadow: 
+    6px 6px 12px #1a2332, 
+    -6px -6px 12px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-nav-btn:hover {
+  box-shadow: 
+    inset 4px 4px 8px #1a2332, 
+    inset -4px -4px 8px #222f45;
+}
+
+/* 拟态分页指示器 */
+.neumorphic-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.neumorphic-pagination-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e0e5ec;
+  border: none;
+  box-shadow: 
+    4px 4px 8px #b8bec7, 
+    -4px -4px 8px #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-pagination-dot.active {
+  background: #165DFF;
+  box-shadow: 
+    inset 4px 4px 8px #b8bec7, 
+    inset -4px -4px 8px #ffffff;
+}
+
+/* 暗色模式拟态分页指示器 */
+[data-theme="dark"] .neumorphic-pagination-dot {
+  background: #1e293b;
+  box-shadow: 
+    4px 4px 8px #1a2332, 
+    -4px -4px 8px #222f45;
+}
+
+[data-theme="dark"] .neumorphic-pagination-dot.active {
+  background: #60a5fa;
+}
