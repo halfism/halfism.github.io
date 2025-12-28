@@ -1,0 +1,263 @@
+---
+layout: default
+title: 拟态组件展示
+permalink: /components/
+---
+
+<div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-4 text-gray-800">拟态风格组件展示</h1>
+        <p class="text-center text-gray-600 mb-12">基于 neumorphism 设计理念的 UI 组件库</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 基础组件 -->
+            <div class="neumorphic-card p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">基础组件</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">按钮</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="neumorphic-button">普通按钮</button>
+                            <button class="neumorphic-button primary">主要按钮</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">输入框</h3>
+                        <input type="text" class="neumorphic-input" placeholder="输入文本...">
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">选择框</h3>
+                        <select class="neumorphic-select">
+                            <option>选项1</option>
+                            <option>选项2</option>
+                            <option>选项3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 高级组件 -->
+            <div class="neumorphic-card p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">高级组件</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">计数器</h3>
+                        <div class="neumorphic-counter">
+                            <button class="neumorphic-counter-btn" id="decrement">-</button>
+                            <div class="neumorphic-counter-value" id="counterValue">0</div>
+                            <button class="neumorphic-counter-btn" id="increment">+</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">选项卡</h3>
+                        <div class="neumorphic-tabs">
+                            <div class="neumorphic-tab active">首页</div>
+                            <div class="neumorphic-tab">关于</div>
+                            <div class="neumorphic-tab">联系</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">下拉菜单</h3>
+                        <div class="neumorphic-dropdown w-full">
+                            <button class="neumorphic-dropdown-btn w-full">
+                                选择选项 <span class="ml-2">▼</span>
+                            </button>
+                            <div class="neumorphic-dropdown-content">
+                                <div class="neumorphic-dropdown-item">选项1</div>
+                                <div class="neumorphic-dropdown-item">选项2</div>
+                                <div class="neumorphic-dropdown-item">选项3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 交互组件 -->
+            <div class="neumorphic-card p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">交互组件</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">搜索框</h3>
+                        <div class="neumorphic-search">
+                            <input type="text" placeholder="搜索...">
+                            <button class="neumorphic-search-btn">🔍</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">工具提示</h3>
+                        <div class="neumorphic-tooltip">
+                            <button class="neumorphic-button">悬停查看</button>
+                            <span class="tooltip-text">这是一个工具提示</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">徽章</h3>
+                        <div class="neumorphic-badge">
+                            <button class="neumorphic-button">消息</button>
+                            <span class="badge-count">3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 状态组件 -->
+            <div class="neumorphic-card p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">状态组件</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">通知</h3>
+                        <div class="neumorphic-notification success">
+                            <div>操作成功完成！</div>
+                            <button class="neumorphic-notification-close">×</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">开关</h3>
+                        <label class="neumorphic-toggle">
+                            <input type="checkbox" checked>
+                            <span class="neumorphic-toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">加载器</h3>
+                        <div class="neumorphic-loader mx-auto"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 仪表盘组件 -->
+            <div class="neumorphic-card p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">仪表盘组件</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">仪表盘</h3>
+                        <div class="neumorphic-gauge mx-auto w-48 h-24">
+                            <div class="gauge-fill" style="transform: rotate(120deg);"></div>
+                            <div class="gauge-center w-16 h-16"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">进度条</h3>
+                        <div class="neumorphic-progress-container">
+                            <div class="neumorphic-progress-bar" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">滑块</h3>
+                        <div class="neumorphic-slider-container">
+                            <div class="neumorphic-slider-progress" style="width: 40%;"></div>
+                            <div class="neumorphic-slider-handle" style="left: 40%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 表单组件 -->
+            <div class="neumorphic-card p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">表单组件</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">复选框</h3>
+                        <label class="neumorphic-checkbox">
+                            <input type="checkbox" checked>
+                            <span class="neumorphic-checkmark"></span>
+                            同意条款
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">单选按钮</h3>
+                        <label class="neumorphic-radio">
+                            <input type="radio" name="radio" checked>
+                            <span class="neumorphic-radio-mark"></span>
+                            选项1
+                        </label>
+                        <label class="neumorphic-radio ml-4">
+                            <input type="radio" name="radio">
+                            <span class="neumorphic-radio-mark"></span>
+                            选项2
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium mb-2 text-gray-700">文本域</h3>
+                        <textarea class="neumorphic-textarea" placeholder="输入文本..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 计数器功能
+    document.addEventListener('DOMContentLoaded', function() {
+        const counterValue = document.getElementById('counterValue');
+        const incrementBtn = document.getElementById('increment');
+        const decrementBtn = document.getElementById('decrement');
+        let count = 0;
+        
+        if(incrementBtn && decrementBtn && counterValue) {
+            incrementBtn.addEventListener('click', () => {
+                count++;
+                counterValue.textContent = count;
+            });
+            
+            decrementBtn.addEventListener('click', () => {
+                count--;
+                counterValue.textContent = count;
+            });
+        }
+        
+        // 选项卡功能
+        const tabs = document.querySelectorAll('.neumorphic-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+        
+        // 下拉菜单功能
+        const dropdownBtn = document.querySelector('.neumorphic-dropdown-btn');
+        const dropdownContent = document.querySelector('.neumorphic-dropdown-content');
+        
+        if(dropdownBtn && dropdownContent) {
+            dropdownBtn.addEventListener('click', () => {
+                dropdownContent.classList.toggle('show');
+            });
+            
+            // 点击其他地方关闭下拉菜单
+            document.addEventListener('click', (e) => {
+                if (!dropdownBtn.contains(e.target)) {
+                    dropdownContent.classList.remove('show');
+                }
+            });
+        }
+        
+        // 通知关闭功能
+        const notificationClose = document.querySelector('.neumorphic-notification-close');
+        if(notificationClose) {
+            notificationClose.addEventListener('click', () => {
+                const notification = notificationClose.closest('.neumorphic-notification');
+                if(notification) notification.style.display = 'none';
+            });
+        }
+    });
+</script>

@@ -22,8 +22,8 @@ lang: zh
                         <a href="#projects" class="neumorphic-button primary">
                             查看我的作品
                         </a>
-                        <a href="#contact" class="neumorphic-button">
-                            联系我
+                        <a href="/components.html" class="neumorphic-button">
+                            组件展示
                         </a>
                     </div>
                     <div class="flex items-center gap-3 pt-4">
@@ -482,7 +482,7 @@ lang: zh
                                     <i class="fa fa-twitter text-primary text-sm"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-medium text-gray-900">Twitter</h4>
+                                    <h4 class="font-bold text-gray-900">Twitter</h4>
                                     <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" class="text-primary hover:underline mt-1 inline-block">@{{ site.twitter_username }}</a>
                                 </div>
                             </div>

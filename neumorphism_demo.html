@@ -177,6 +177,89 @@ title: 拟态风格示例
                     </div>
                 </div>
             </div>
+            
+            <!-- 新增：高级拟态组件 -->
+            <div class="neumorphic-container p-8 mt-12 max-w-6xl mx-auto">
+                <h2 class="text-2xl font-bold mb-6 text-center">高级拟态组件</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 计数器组件 -->
+                    <div class="neumorphic-card p-6">
+                        <h3 class="text-lg font-bold mb-4">计数器</h3>
+                        <div class="neumorphic-counter">
+                            <button class="neumorphic-counter-btn" id="decrement-demo">-</button>
+                            <div class="neumorphic-counter-value" id="counterValue-demo">0</div>
+                            <button class="neumorphic-counter-btn" id="increment-demo">+</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 选项卡组件 -->
+                    <div class="neumorphic-card p-6">
+                        <h3 class="text-lg font-bold mb-4">选项卡</h3>
+                        <div class="neumorphic-tabs">
+                            <div class="neumorphic-tab active">首页</div>
+                            <div class="neumorphic-tab">关于</div>
+                            <div class="neumorphic-tab">联系</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 下拉菜单组件 -->
+                    <div class="neumorphic-card p-6">
+                        <h3 class="text-lg font-bold mb-4">下拉菜单</h3>
+                        <div class="neumorphic-dropdown w-full">
+                            <button class="neumorphic-dropdown-btn w-full">
+                                选择选项 <span class="ml-2">▼</span>
+                            </button>
+                            <div class="neumorphic-dropdown-content">
+                                <div class="neumorphic-dropdown-item">选项1</div>
+                                <div class="neumorphic-dropdown-item">选项2</div>
+                                <div class="neumorphic-dropdown-item">选项3</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 搜索框组件 -->
+                    <div class="neumorphic-card p-6">
+                        <h3 class="text-lg font-bold mb-4">搜索框</h3>
+                        <div class="neumorphic-search">
+                            <input type="text" placeholder="搜索...">
+                            <button class="neumorphic-search-btn">🔍</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 通知组件 -->
+                    <div class="neumorphic-card p-6">
+                        <h3 class="text-lg font-bold mb-4">通知</h3>
+                        <div class="neumorphic-notification success">
+                            <div>操作成功完成！</div>
+                            <button class="neumorphic-notification-close">×</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 滑动开关组件 -->
+                    <div class="neumorphic-card p-6">
+                        <h3 class="text-lg font-bold mb-4">滑动开关</h3>
+                        <label class="neumorphic-toggle">
+                            <input type="checkbox" checked>
+                            <span class="neumorphic-toggle-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <!-- 仪表盘组件 -->
+                    <div class="neumorphic-card p-6">
+                        <h3 class="text-lg font-bold mb-4">仪表盘</h3>
+                        <div class="neumorphic-gauge mx-auto w-48 h-24">
+                            <div class="gauge-fill" style="transform: rotate(120deg);"></div>
+                            <div class="gauge-center w-16 h-16"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 加载器组件 -->
+                    <div class="neumorphic-card p-6">
+                        <h3 class="text-lg font-bold mb-4">加载器</h3>
+                        <div class="neumorphic-loader mx-auto"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </main>
@@ -224,10 +307,77 @@ function initClockMarksDemo() {
   }
 }
 
-// 初始化
+// 计数器功能
+function initCounterDemo() {
+    const counterValue = document.getElementById('counterValue-demo');
+    const incrementBtn = document.getElementById('increment-demo');
+    const decrementBtn = document.getElementById('decrement-demo');
+    let count = 0;
+    
+    if(incrementBtn && decrementBtn && counterValue) {
+        incrementBtn.addEventListener('click', () => {
+            count++;
+            counterValue.textContent = count;
+        });
+        
+        decrementBtn.addEventListener('click', () => {
+            count--;
+            counterValue.textContent = count;
+        });
+    }
+}
+
+// 选项卡功能
+function initTabsDemo() {
+    const tabs = document.querySelectorAll('.neumorphic-tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+        });
+    });
+}
+
+// 下拉菜单功能
+function initDropdownDemo() {
+    const dropdownBtn = document.querySelector('.neumorphic-dropdown-btn');
+    const dropdownContent = document.querySelector('.neumorphic-dropdown-content');
+    
+    if(dropdownBtn && dropdownContent) {
+        dropdownBtn.addEventListener('click', () => {
+            dropdownContent.classList.toggle('show');
+        });
+        
+        // 点击其他地方关闭下拉菜单
+        document.addEventListener('click', (e) => {
+            if (!dropdownBtn.contains(e.target)) {
+                dropdownContent.classList.remove('show');
+            }
+        });
+    }
+}
+
+// 通知关闭功能
+function initNotificationDemo() {
+    const notificationClose = document.querySelector('.neumorphic-notification-close');
+    if(notificationClose) {
+        notificationClose.addEventListener('click', () => {
+            const notification = notificationClose.closest('.neumorphic-notification');
+            if(notification) notification.style.display = 'none';
+        });
+    }
+}
+
+// 初始化所有功能
 document.addEventListener('DOMContentLoaded', function() {
   initClockMarksDemo();
   setInterval(updateClockDemo, 1000);
   updateClockDemo(); // 立即更新一次
+  
+  // 初始化新增的高级组件功能
+  initCounterDemo();
+  initTabsDemo();
+  initDropdownDemo();
+  initNotificationDemo();
 });
 </script>

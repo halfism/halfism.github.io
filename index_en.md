@@ -22,8 +22,8 @@ lang: en
                         <a href="#projects" class="neumorphic-button primary">
                             View My Work
                         </a>
-                        <a href="#contact" class="neumorphic-button">
-                            Get In Touch
+                        <a href="/components.html" class="neumorphic-button">
+                            Component Showcase
                         </a>
                     </div>
                     <div class="flex items-center gap-3 pt-4">
