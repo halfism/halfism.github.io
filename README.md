@@ -1,119 +1,80 @@
 # halfism.github.io
 
-个人作品集网站，使用 Jekyll 构建并托管在 GitHub Pages 上。
+个人作品集网站，采用现代化设计风格，使用 Jekyll 构建并托管在 GitHub Pages 上。
 
 ## 简介
 
-这是一个现代化的个人作品集网站，展示了我的技能、项目经验和摄影作品。网站采用响应式设计，可以在各种设备上完美显示。
+这是一个现代化的个人作品集网站，灵感来源于 Apple 和 Vue.js 的设计语言，主打**简约、扁平与毛玻璃（Glassmorphism）**风格。网站展示了我的技能、项目经验和摄影作品，致力于提供流畅的用户体验。
 
-主要特性：
-- 响应式设计，适配桌面端和移动端
-- 多语言支持（英语/中文切换）
-- 项目展示区，展示技术栈和项目详情
-- 技能雷达图和进度条展示技术能力
-- 图片画廊，展示旅行、自然和技术活动照片
-- 博客文章，分享技术见解和经验
-- 联系表单和社交媒体链接
+**主要特性：**
+
+*   **现代化 UI 设计**：摒弃了过时的拟态风格，采用清爽的卡片式布局、渐变文字和精致的毛玻璃效果。
+*   **深色模式支持**：完美支持亮色/深色主题切换，默认自动跟随系统偏好，并提供手动切换开关。
+*   **多语言支持**：内置中文（默认）和英文双语支持，可一键切换语言环境。
+*   **响应式布局**：基于 Tailwind 风格的实用类构建，在桌面、平板和移动设备上均有完美表现。
+*   **丰富的展示模块**：
+    *   **个人概览**：动态 Hero 区域。
+    *   **技能雷达**：直观展示技术栈掌握情况。
+    *   **项目作品**：卡片式展示个人项目。
+    *   **画廊相册**：瀑布流/网格布局展示摄影作品（支持灯箱查看）。
+    *   **博客系统**：分享技术文章与见解。
 
 ## 技术栈
 
-- [Jekyll](https://jekyllrb.com/) - 静态网站生成器
-- [Tailwind CSS](https://tailwindcss.com/) - CSS 框架
-- [Font Awesome](https://fontawesome.com/) - 图标库
-- [Chart.js](https://www.chartjs.org/) - 图表库
-- GitHub Pages - 托管服务
+*   **[Jekyll](https://jekyllrb.com/)** - 静态网站生成器
+*   **HTML5 & CSS3** - 语义化标签与 CSS 变量（Custom Properties）实现主题切换
+*   **Vanilla JavaScript** - 原生 JS 实现交互逻辑（无重型框架依赖）
+*   **[Font Awesome](https://fontawesome.com/)** - 矢量图标库
+*   **GitHub Pages** - 免费的静态托管服务
 
 ## 项目结构
 
 ```
 .
-├── _config.yml          # Jekyll 配置文件
-├── index.html           # 主页（英文版）
-├── index_en.html        # 英文版主页
-├── index_zh.html        # 中文版主页
-├── gallery.html         # 图片画廊页面
-├── blog.html            # 博客页面
-├── README.md            # 项目说明文档
+├── _config.yml          # Jekyll 站点配置文件
+├── _layouts/            # 页面布局模板
+│   └── default.html     # 默认布局（包含主题切换逻辑）
+├── _includes/           # 可复用组件
+│   ├── header.html      # 顶部导航栏（含语言/主题开关）
+│   └── footer.html      # 底部页脚
+├── assets/
+│   └── css/
+│       └── style.css    # 核心样式表（CSS 变量、Utility Classes）
+├── index.html           # 网站首页（默认中文）
+├── index_en.md          # 英文版首页内容
+├── index_zh.md          # 中文版首页内容（备份/源文件）
+├── gallery.html         # 摄影画廊页面
+├── blog.html            # 博客文章列表页
 └── img/                 # 图片资源目录
-    ├── travel/          # 旅行相册
-    ├── nature/          # 自然相册
-    └── tech/            # 技术活动相册
 ```
 
 ## 本地运行
 
-确保已安装 Ruby 和 Jekyll：
+确保您的环境中已安装 Ruby 和 Jekyll。
 
-```bash
-# 安装依赖
-bundle install
+1.  **安装依赖**
 
-# 本地运行
-bundle exec jekyll serve
+    ```bash
+    bundle install
+    ```
 
-# 或者使用
-jekyll serve
-```
+2.  **启动本地服务器**
 
-访问 http://localhost:4000 查看网站。
+    ```bash
+    bundle exec jekyll serve
+    ```
 
-## 配置说明
+3.  **访问网站**
 
-在 [_config.yml](_config.yml) 文件中可以配置以下内容：
+    打开浏览器访问 `http://localhost:4000` 即可查看效果。
 
-- 站点标题和描述
-- 社交媒体用户名
-- Google Analytics 跟踪 ID
-- SEO 设置
-- 插件配置
+## 自定义配置
 
-## 页面说明
+您可以在 `_config.yml` 中修改以下配置：
 
-### 主页 ([index.html](index.html))
-
-主页包含以下部分：
-- 个人简介和联系方式
-- 技能展示（雷达图和详细列表）
-- 项目展示（6个示例项目）
-- 联系方式和表单
-
-### 画廊页面 ([gallery.html](gallery.html))
-
-画廊页面展示了三个不同主题的相册：
-- 旅行相册
-- 自然风光
-- 技术活动
-
-每个相册都有灯箱效果查看大图功能。
-
-### 博客页面 ([blog.html](blog.html))
-
-博客页面展示了技术文章和教程：
-- 最新博客文章列表
-- 文章分类和标签
-- 响应式分页系统
-
-### 多语言支持
-
-网站支持中英文切换：
-- 英文版：[index.html](index.html) 和 [index_en.html](index_en.html)
-- 中文版：[index_zh.html](index_zh.html)
-
-## 自定义内容
-
-要自定义网站内容，可以修改以下文件：
-
-1. **个人信息**：修改 [_config.yml](_config.yml) 中的站点信息
-2. **主页内容**：编辑 [index.html](index.html) 文件
-3. **画廊图片**：替换 [img](img/) 目录下的图片
-4. **项目信息**：修改主页中的项目卡片部分
-5. **技能信息**：修改主页中的技能展示部分
-6. **博客文章**：在博客页面添加实际文章内容
-
-## 部署
-
-网站自动部署到 GitHub Pages，只需将更改推送到 `main` 分支即可。
+*   **基本信息**：`title`, `email`, `description`, `github_username`
+*   **构建设置**：`markdown`, `theme`, `plugins`
 
 ## 许可证
 
-该项目基于 MIT 许可证开源，详情请见 [LICENSE](LICENSE) 文件。
+MIT License
