@@ -81,6 +81,8 @@
             const themeIcon = document.getElementById('theme-icon');
             const themeIconMobile = document.getElementById('theme-icon-mobile');
             const themeIconFooter = document.getElementById('theme-icon-footer');
+            const themeSwitchKnob = document.getElementById('theme-switch-knob');
+            const themeSwitchIcon = document.getElementById('theme-switch-icon');
             
             if (themeIcon) {
                 themeIcon.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
@@ -92,6 +94,21 @@
             
             if (themeIconFooter) {
                 themeIconFooter.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
+            }
+
+            // Update new Switch UI
+            if (themeSwitchKnob) {
+                if (theme === 'dark') {
+                    themeSwitchKnob.classList.remove('translate-x-1');
+                    themeSwitchKnob.classList.add('translate-x-6');
+                } else {
+                    themeSwitchKnob.classList.add('translate-x-1');
+                    themeSwitchKnob.classList.remove('translate-x-6');
+                }
+            }
+
+            if (themeSwitchIcon) {
+                themeSwitchIcon.className = theme === 'light' ? 'fa fa-sun-o text-yellow-500' : 'fa fa-moon-o text-gray-700';
             }
         }
 
