@@ -30,38 +30,36 @@
         }
     </script>
 
-    <link rel="stylesheet" href="/assets/css/neumorphism.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style type="text/tailwindcss">
         @layer utilities {
             .content-auto {
                 content-visibility: auto;
             }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .transition-custom {
-                transition: all 0.3s ease;
-            }
-            .neumorphic-bg {
-                background: linear-gradient(135deg, #e0e5ec, #d6dce6);
-            }
-            
-            [data-theme="dark"] .neumorphic-bg {
-                background: linear-gradient(135deg, #1e293b, #0f172a);
-            }
         }
     </style>
 </head>
-<body class="font-inter bg-white text-gray-800 overflow-x-hidden" data-theme="light">
+<body class="font-inter antialiased" data-theme="light">
     {{ content }}
 
     <script>
         // Theme Management
         function initializeTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.body.setAttribute('data-theme', savedTheme);
-            updateThemeIcon(savedTheme);
+            // Check for saved theme or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            const theme = savedTheme || systemTheme;
+            
+            document.body.setAttribute('data-theme', theme);
+            updateThemeIcon(theme);
+            
+            // Add dark class to html for Tailwind dark mode if needed
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
         }
 
         function toggleTheme() {
@@ -71,6 +69,12 @@
             document.body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
+            
+            if (newTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
         }
 
         function updateThemeIcon(theme) {

@@ -6,209 +6,66 @@ title: 相册
 {% include header.html %}
 
 <main class="pt-20">
-    <section class="py-16 neumorphic-bg min-h-screen">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="text-center mb-16">
-                <h1 class="text-4xl font-bold text-dark mb-4">作品相册</h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">展示我的项目截图、设计作品和开发过程</p>
-            </div>
+<section class="py-24 min-h-screen">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">作品画廊</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">展示我的设计与创意作品</p>
+    </div>
 
-            <!-- 筛选按钮 -->
-            <div class="neumorphic-card p-4 mb-8">
-                <div class="flex flex-wrap justify-center gap-3">
-                    <button class="neumorphic-button active">全部</button>
-                    <button class="neumorphic-button">Web应用</button>
-                    <button class="neumorphic-button">移动应用</button>
-                    <button class="neumorphic-button">设计系统</button>
-                    <button class="neumorphic-button">组件库</button>
-                </div>
-            </div>
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button class="px-6 py-2 rounded-full bg-blue-600 text-white shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all filter-btn active" data-filter="all">
+        全部
+      </button>
+      <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="web">
+        Web设计
+      </button>
+      <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="app">
+        App界面
+      </button>
+      <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="illustration">
+        插画
+      </button>
+    </div>
 
-            <!-- 相册网格 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 项目 1 -->
-                <div class="neumorphic-card group overflow-hidden">
-                    <div class="relative">
-                        <img src="https://picsum.photos/seed/webapp1/600/400" alt="Web应用项目" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold">现代Web应用</h3>
-                                <p class="text-gray-200 text-sm">响应式设计，用户体验优化</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-bold text-lg">Web应用项目</h3>
-                            <span class="neumorphic-tag">Web</span>
-                        </div>
-                        <p class="text-gray-600 mt-2">使用React和Node.js构建的现代化Web应用，注重用户体验和性能优化。</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <div class="flex gap-2">
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">React</span>
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">Node.js</span>
-                            </div>
-                            <button class="neumorphic-circle-btn">
-                                <i class="fa fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 项目 2 -->
-                <div class="neumorphic-card group overflow-hidden">
-                    <div class="relative">
-                        <img src="https://picsum.photos/seed/mobileapp/600/400" alt="移动应用项目" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold">跨平台移动应用</h3>
-                                <p class="text-gray-200 text-sm">Flutter开发，多平台支持</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-bold text-lg">移动应用项目</h3>
-                            <span class="neumorphic-tag">Mobile</span>
-                        </div>
-                        <p class="text-gray-600 mt-2">使用Flutter开发的跨平台移动应用，支持iOS和Android双平台。</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <div class="flex gap-2">
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">Flutter</span>
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">Firebase</span>
-                            </div>
-                            <button class="neumorphic-circle-btn">
-                                <i class="fa fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 项目 3 -->
-                <div class="neumorphic-card group overflow-hidden">
-                    <div class="relative">
-                        <img src="https://picsum.photos/seed/designsystem/600/400" alt="设计系统项目" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold">拟态设计系统</h3>
-                                <p class="text-gray-200 text-sm">UI组件库，设计规范</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-bold text-lg">设计系统项目</h3>
-                            <span class="neumorphic-tag">Design</span>
-                        </div>
-                        <p class="text-gray-600 mt-2">创建的拟态设计（Neumorphism）组件库，包含多种UI组件和设计规范。</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <div class="flex gap-2">
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">CSS</span>
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">组件库</span>
-                            </div>
-                            <button class="neumorphic-circle-btn">
-                                <i class="fa fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 项目 4 -->
-                <div class="neumorphic-card group overflow-hidden">
-                    <div class="relative">
-                        <img src="https://picsum.photos/seed/dashboard/600/400" alt="仪表板项目" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold">数据仪表板</h3>
-                                <p class="text-gray-200 text-sm">数据可视化，实时监控</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-bold text-lg">仪表板项目</h3>
-                            <span class="neumorphic-tag">Dashboard</span>
-                        </div>
-                        <p class="text-gray-600 mt-2">数据可视化仪表板，实时展示关键业务指标和数据分析结果。</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <div class="flex gap-2">
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">D3.js</span>
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">Chart.js</span>
-                            </div>
-                            <button class="neumorphic-circle-btn">
-                                <i class="fa fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 项目 5 -->
-                <div class="neumorphic-card group overflow-hidden">
-                    <div class="relative">
-                        <img src="https://picsum.photos/seed/ecommerce/600/400" alt="电商项目" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold">电商平台</h3>
-                                <p class="text-gray-200 text-sm">购物体验，支付集成</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-bold text-lg">电商项目</h3>
-                            <span class="neumorphic-tag">E-commerce</span>
-                        </div>
-                        <p class="text-gray-600 mt-2">完整的电商平台解决方案，包含购物车、支付、订单管理等功能。</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <div class="flex gap-2">
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">Vue.js</span>
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">Express</span>
-                            </div>
-                            <button class="neumorphic-circle-btn">
-                                <i class="fa fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 项目 6 -->
-                <div class="neumorphic-card group overflow-hidden">
-                    <div class="relative">
-                        <img src="https://picsum.photos/seed/api/600/400" alt="API项目" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold">API服务</h3>
-                                <p class="text-gray-200 text-sm">高性能，可扩展</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-bold text-lg">API项目</h3>
-                            <span class="neumorphic-tag">API</span>
-                        </div>
-                        <p class="text-gray-600 mt-2">高性能RESTful API服务，支持高并发访问和完整的认证授权机制。</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <div class="flex gap-2">
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">Go</span>
-                                <span class="neumorphic-button reverse text-xs px-2 py-1 text-gray-700 bg-transparent">PostgreSQL</span>
-                            </div>
-                            <button class="neumorphic-circle-btn">
-                                <i class="fa fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 加载更多按钮 -->
-            <div class="text-center mt-12">
-                <button class="neumorphic-button primary">
-                    加载更多 <i class="fa fa-arrow-down ml-2"></i>
-                </button>
-            </div>
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Item 1 -->
+      <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="web">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+        <img src="https://via.placeholder.com/600x450" alt="Project 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
+          <span class="text-blue-400 text-sm font-medium mb-2 block">Web Design</span>
+          <h3 class="text-xl font-bold text-white mb-2">企业官网重构</h3>
+          <p class="text-gray-300 text-sm">现代化响应式设计，提升用户体验</p>
         </div>
-    </section>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="app">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+        <img src="https://via.placeholder.com/600x450" alt="Project 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
+          <span class="text-blue-400 text-sm font-medium mb-2 block">Mobile App</span>
+          <h3 class="text-xl font-bold text-white mb-2">健康管理App</h3>
+          <p class="text-gray-300 text-sm">清新的界面风格，直观的数据可视化</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="illustration">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+        <img src="https://via.placeholder.com/600x450" alt="Project 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
+          <span class="text-blue-400 text-sm font-medium mb-2 block">Illustration</span>
+          <h3 class="text-xl font-bold text-white mb-2">城市印象系列</h3>
+          <p class="text-gray-300 text-sm">扁平风格插画，描绘城市生活百态</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 {% include footer.html %}
