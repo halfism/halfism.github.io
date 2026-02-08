@@ -6,66 +6,483 @@ title: 相册
 {% include header.html %}
 
 <main class="pt-20">
-<section class="py-24 min-h-screen">
-  <div class="container mx-auto px-4 md:px-6">
-    <div class="max-w-3xl mx-auto text-center mb-16">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">作品画廊</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400">展示我的设计与创意作品</p>
-    </div>
+  <section class="py-24 min-h-screen">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">作品画廊</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400">展示我的设计与创意作品</p>
+      </div>
 
-    <!-- Filter Buttons -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
-      <button class="px-6 py-2 rounded-full bg-blue-600 text-white shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all filter-btn active" data-filter="all">
-        全部
-      </button>
-      <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="web">
-        Web设计
-      </button>
-      <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="app">
-        App界面
-      </button>
-      <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="illustration">
-        插画
-      </button>
-    </div>
-
-    <!-- Gallery Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Item 1 -->
-      <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="web">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-        <img src="https://via.placeholder.com/600x450" alt="Project 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-        <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
-          <span class="text-blue-400 text-sm font-medium mb-2 block">Web Design</span>
-          <h3 class="text-xl font-bold text-white mb-2">企业官网重构</h3>
-          <p class="text-gray-300 text-sm">现代化响应式设计，提升用户体验</p>
+      <!-- Admin Controls (Hidden by default, shown when editing is enabled) -->
+      <div id="admin-controls" class="mb-8 p-4 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hidden">
+        <div class="flex flex-wrap gap-4 items-center justify-between">
+          <div class="flex gap-2">
+            <button id="toggle-edit-mode" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+              <i class="fa fa-edit mr-2"></i>编辑模式
+            </button>
+            <button id="add-new-image" class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors">
+              <i class="fa fa-plus mr-2"></i>添加图片
+            </button>
+            <button id="save-gallery" class="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors">
+              <i class="fa fa-save mr-2"></i>保存
+            </button>
+          </div>
+          
+          <div class="flex gap-2">
+            <label class="flex items-center gap-2 bg-white dark:bg-gray-700 px-4 py-2 rounded-lg cursor-pointer">
+              <i class="fa fa-upload text-gray-500"></i>
+              <span>上传图片</span>
+              <input type="file" id="image-upload" accept="image/*" multiple class="hidden">
+            </label>
+            <select id="layout-selector" class="bg-white dark:bg-gray-700 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600">
+              <option value="grid-1">单列布局</option>
+              <option value="grid-2" selected>双列布局</option>
+              <option value="grid-3">三列布局</option>
+              <option value="masonry">瀑布流布局</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <!-- Item 2 -->
-      <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="app">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-        <img src="https://via.placeholder.com/600x450" alt="Project 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-        <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
-          <span class="text-blue-400 text-sm font-medium mb-2 block">Mobile App</span>
-          <h3 class="text-xl font-bold text-white mb-2">健康管理App</h3>
-          <p class="text-gray-300 text-sm">清新的界面风格，直观的数据可视化</p>
+      <!-- Upload Modal -->
+      <div id="upload-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-2xl mx-4">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">上传新图片</h3>
+            <button id="close-upload-modal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">选择图片</label>
+            <input type="file" id="new-image-file" accept="image/*" multiple class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700">
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">分类</label>
+            <select id="new-image-category" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700">
+              <option value="web">Web设计</option>
+              <option value="app">App界面</option>
+              <option value="illustration">插画</option>
+              <option value="photo">摄影</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">标题</label>
+            <input type="text" id="new-image-title" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700" placeholder="输入图片标题">
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">描述</label>
+            <textarea id="new-image-description" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700" placeholder="输入图片描述" rows="3"></textarea>
+          </div>
+          
+          <div class="flex justify-end gap-2">
+            <button id="cancel-upload" class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+              取消
+            </button>
+            <button id="confirm-upload" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+              上传
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Item 3 -->
-      <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="illustration">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-        <img src="https://via.placeholder.com/600x450" alt="Project 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-        <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
-          <span class="text-blue-400 text-sm font-medium mb-2 block">Illustration</span>
-          <h3 class="text-xl font-bold text-white mb-2">城市印象系列</h3>
-          <p class="text-gray-300 text-sm">扁平风格插画，描绘城市生活百态</p>
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button class="px-6 py-2 rounded-full bg-blue-600 text-white shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all filter-btn active" data-filter="all">
+          全部
+        </button>
+        <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="web">
+          Web设计
+        </button>
+        <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="app">
+          App界面
+        </button>
+        <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="illustration">
+          插画
+        </button>
+        <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all filter-btn" data-filter="photo">
+          摄影
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Item 1 -->
+        <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="web" draggable="true">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+          <img src="https://via.placeholder.com/600x450" alt="Project 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
+            <span class="text-blue-400 text-sm font-medium mb-2 block">Web Design</span>
+            <h3 class="text-xl font-bold text-white mb-2">企业官网重构</h3>
+            <p class="text-gray-300 text-sm">现代化响应式设计，提升用户体验</p>
+          </div>
+          <!-- Edit controls -->
+          <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+            <button class="edit-btn w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-colors">
+              <i class="fa fa-edit text-xs"></i>
+            </button>
+            <button class="delete-btn w-8 h-8 rounded-full bg-red-500/80 dark:bg-red-600/80 flex items-center justify-center text-white hover:bg-red-600 dark:hover:bg-red-700 transition-colors">
+              <i class="fa fa-trash text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="app" draggable="true">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+          <img src="https://via.placeholder.com/600x450" alt="Project 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
+            <span class="text-blue-400 text-sm font-medium mb-2 block">Mobile App</span>
+            <h3 class="text-xl font-bold text-white mb-2">健康管理App</h3>
+            <p class="text-gray-300 text-sm">清新的界面风格，直观的数据可视化</p>
+          </div>
+          <!-- Edit controls -->
+          <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+            <button class="edit-btn w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-colors">
+              <i class="fa fa-edit text-xs"></i>
+            </button>
+            <button class="delete-btn w-8 h-8 rounded-full bg-red-500/80 dark:bg-red-600/80 flex items-center justify-center text-white hover:bg-red-600 dark:hover:bg-red-700 transition-colors">
+              <i class="fa fa-trash text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item" data-category="illustration" draggable="true">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+          <img src="https://via.placeholder.com/600x450" alt="Project 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
+            <span class="text-blue-400 text-sm font-medium mb-2 block">Illustration</span>
+            <h3 class="text-xl font-bold text-white mb-2">城市印象系列</h3>
+            <p class="text-gray-300 text-sm">扁平风格插画，描绘城市生活百态</p>
+          </div>
+          <!-- Edit controls -->
+          <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+            <button class="edit-btn w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-colors">
+              <i class="fa fa-edit text-xs"></i>
+            </button>
+            <button class="delete-btn w-8 h-8 rounded-full bg-red-500/80 dark:bg-red-600/80 flex items-center justify-center text-white hover:bg-red-600 dark:hover:bg-red-700 transition-colors">
+              <i class="fa fa-trash text-xs"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </main>
+
+<script>
+// Gallery management functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // State management
+  let editMode = false;
+  let galleryData = JSON.parse(localStorage.getItem('galleryData')) || [
+    {
+      id: 1,
+      src: 'https://via.placeholder.com/600x450',
+      alt: 'Project 1',
+      category: 'web',
+      title: '企业官网重构',
+      description: '现代化响应式设计，提升用户体验',
+      caption: 'Web Design'
+    },
+    {
+      id: 2,
+      src: 'https://via.placeholder.com/600x450',
+      alt: 'Project 2',
+      category: 'app',
+      title: '健康管理App',
+      description: '清新的界面风格，直观的数据可视化',
+      caption: 'Mobile App'
+    },
+    {
+      id: 3,
+      src: 'https://via.placeholder.com/600x450',
+      alt: 'Project 3',
+      category: 'illustration',
+      title: '城市印象系列',
+      description: '扁平风格插画，描绘城市生活百态',
+      caption: 'Illustration'
+    }
+  ];
+  
+  // DOM Elements
+  const adminControls = document.getElementById('admin-controls');
+  const toggleEditModeBtn = document.getElementById('toggle-edit-mode');
+  const addNewImageBtn = document.getElementById('add-new-image');
+  const saveGalleryBtn = document.getElementById('save-gallery');
+  const uploadModal = document.getElementById('upload-modal');
+  const closeUploadModalBtn = document.getElementById('close-upload-modal');
+  const cancelUploadBtn = document.getElementById('cancel-upload');
+  const confirmUploadBtn = document.getElementById('confirm-upload');
+  const imageUploadInput = document.getElementById('image-upload');
+  const newImageFileInput = document.getElementById('new-image-file');
+  const newImageCategoryInput = document.getElementById('new-image-category');
+  const newImageTitleInput = document.getElementById('new-image-title');
+  const newImageDescriptionInput = document.getElementById('new-image-description');
+  const layoutSelector = document.getElementById('layout-selector');
+  const galleryGrid = document.getElementById('gallery-grid');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  
+  // Toggle edit mode
+  toggleEditModeBtn.addEventListener('click', function() {
+    editMode = !editMode;
+    adminControls.classList.toggle('hidden', !editMode);
+    toggleEditModeBtn.innerHTML = editMode ? '<i class="fa fa-eye mr-2"></i>预览模式' : '<i class="fa fa-edit mr-2"></i>编辑模式';
+    
+    // Show/hide edit controls on gallery items
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+      const editControls = item.querySelector('.opacity-0');
+      if (editControls) {
+        editControls.classList.toggle('hidden', !editMode);
+        editControls.classList.toggle('opacity-0', !editMode);
+        editControls.classList.toggle('opacity-100', editMode);
+      }
+    });
+  });
+  
+  // Open upload modal
+  addNewImageBtn.addEventListener('click', function() {
+    uploadModal.classList.remove('hidden');
+  });
+  
+  // Close upload modal
+  closeUploadModalBtn.addEventListener('click', function() {
+    uploadModal.classList.add('hidden');
+    resetUploadForm();
+  });
+  
+  cancelUploadBtn.addEventListener('click', function() {
+    uploadModal.classList.add('hidden');
+    resetUploadForm();
+  });
+  
+  // Reset upload form
+  function resetUploadForm() {
+    newImageFileInput.value = '';
+    newImageCategoryInput.value = 'web';
+    newImageTitleInput.value = '';
+    newImageDescriptionInput.value = '';
+  }
+  
+  // Confirm upload
+  confirmUploadBtn.addEventListener('click', function() {
+    const files = newImageFileInput.files;
+    if (files.length === 0) {
+      alert('请选择至少一张图片');
+      return;
+    }
+    
+    Array.from(files).forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const newImage = {
+          id: Date.now(),
+          src: e.target.result,
+          alt: newImageTitleInput.value || file.name,
+          category: newImageCategoryInput.value,
+          title: newImageTitleInput.value || '新图片',
+          description: newImageDescriptionInput.value || '图片描述',
+          caption: getCategoryLabel(newImageCategoryInput.value)
+        };
+        
+        galleryData.push(newImage);
+        renderGallery();
+      };
+      reader.readAsDataURL(file);
+    });
+    
+    uploadModal.classList.add('hidden');
+    resetUploadForm();
+  });
+  
+  // Get category label
+  function getCategoryLabel(category) {
+    const labels = {
+      'web': 'Web Design',
+      'app': 'Mobile App',
+      'illustration': 'Illustration',
+      'photo': 'Photography',
+      'other': 'Other'
+    };
+    return labels[category] || category;
+  }
+  
+  // Save gallery
+  saveGalleryBtn.addEventListener('click', function() {
+    localStorage.setItem('galleryData', JSON.stringify(galleryData));
+    alert('画廊已保存！');
+  });
+  
+  // Layout selector
+  layoutSelector.addEventListener('change', function() {
+    const layoutClass = this.value;
+    galleryGrid.className = 'grid gap-8';
+    
+    switch(layoutClass) {
+      case 'grid-1':
+        galleryGrid.classList.add('grid-cols-1');
+        break;
+      case 'grid-2':
+        galleryGrid.classList.add('grid-cols-1', 'md:grid-cols-2');
+        break;
+      case 'grid-3':
+        galleryGrid.classList.add('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
+        break;
+      case 'masonry':
+        galleryGrid.classList.add('columns-1', 'md:columns-2', 'lg:columns-3', 'space-y-8');
+        break;
+    }
+  });
+  
+  // Filter buttons
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const filter = this.getAttribute('data-filter');
+      
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+      this.classList.add('active', 'bg-blue-600', 'text-white');
+      
+      // Filter gallery items
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+  
+  // Render gallery
+  function renderGallery() {
+    galleryGrid.innerHTML = '';
+    
+    galleryData.forEach((item, index) => {
+      const galleryItem = document.createElement('div');
+      galleryItem.className = 'group relative overflow-hidden rounded-2xl card-base aspect-[4/3] gallery-item';
+      galleryItem.setAttribute('data-category', item.category);
+      galleryItem.setAttribute('draggable', 'true');
+      
+      galleryItem.innerHTML = `
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+        <img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
+          <span class="text-blue-400 text-sm font-medium mb-2 block">${item.caption}</span>
+          <h3 class="text-xl font-bold text-white mb-2">${item.title}</h3>
+          <p class="text-gray-300 text-sm">${item.description}</p>
+        </div>
+        <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+          <button class="edit-btn w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-colors">
+            <i class="fa fa-edit text-xs"></i>
+          </button>
+          <button class="delete-btn w-8 h-8 rounded-full bg-red-500/80 dark:bg-red-600/80 flex items-center justify-center text-white hover:bg-red-600 dark:hover:bg-red-700 transition-colors">
+            <i class="fa fa-trash text-xs"></i>
+          </button>
+        </div>
+      `;
+      
+      galleryGrid.appendChild(galleryItem);
+      
+      // Add event listeners to the new item
+      const deleteBtn = galleryItem.querySelector('.delete-btn');
+      const editBtn = galleryItem.querySelector('.edit-btn');
+      
+      deleteBtn.addEventListener('click', function() {
+        if (confirm('确定要删除这张图片吗？')) {
+          galleryData.splice(index, 1);
+          renderGallery();
+        }
+      });
+      
+      editBtn.addEventListener('click', function() {
+        // Open edit modal with current data
+        newImageTitleInput.value = item.title;
+        newImageDescriptionInput.value = item.description;
+        newImageCategoryInput.value = item.category;
+        // Note: We can't set the file input value for security reasons, so we'll skip the image preview
+        uploadModal.dataset.editingId = item.id;
+        uploadModal.classList.remove('hidden');
+      });
+    });
+    
+    // Re-add drag and drop functionality if in edit mode
+    if (editMode) {
+      addDragAndDropFunctionality();
+    }
+  }
+  
+  // Drag and drop functionality
+  function addDragAndDropFunctionality() {
+    const items = document.querySelectorAll('.gallery-item');
+    
+    items.forEach(item => {
+      item.addEventListener('dragstart', handleDragStart);
+      item.addEventListener('dragover', handleDragOver);
+      item.addEventListener('drop', handleDrop);
+    });
+  }
+  
+  let draggedItem = null;
+  
+  function handleDragStart(e) {
+    draggedItem = this;
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+  }
+  
+  function handleDragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+  }
+  
+  function handleDrop(e) {
+    e.stopPropagation();
+    
+    if (draggedItem !== this) {
+      // Swap the items in the data array
+      const items = Array.from(document.querySelectorAll('.gallery-item'));
+      const fromIndex = items.indexOf(draggedItem);
+      const toIndex = items.indexOf(this);
+      
+      // Swap elements in galleryData array
+      const temp = galleryData[fromIndex];
+      galleryData[fromIndex] = galleryData[toIndex];
+      galleryData[toIndex] = temp;
+      
+      // Re-render gallery to reflect new order
+      renderGallery();
+    }
+    
+    return false;
+  }
+  
+  // Initialize gallery
+  renderGallery();
+  
+  // Handle direct image upload via the header upload button
+  imageUploadInput.addEventListener('change', function(e) {
+    const files = e.target.files;
+    if (files.length > 0) {
+      // Automatically trigger the add new image flow
+      addNewImageBtn.click();
+      
+      // Pre-fill the file input in the modal
+      // Note: We can't programmatically set the file input value, so we'll just let the user re-select
+    }
+  });
+});
+</script>
 
 {% include footer.html %}
