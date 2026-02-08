@@ -279,22 +279,29 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
+    // Process each selected file
     Array.from(files).forEach(file => {
       if (!file.type.startsWith('image/')) return;
       
       const reader = new FileReader();
       reader.onload = function(e) {
         const newImage = {
-          id: Date.now(),
+          id: Date.now(), // Use timestamp as unique ID
           src: e.target.result,
           alt: newImageTitleInput.value || file.name,
           category: newImageCategoryInput.value,
-          title: newImageTitleInput.value || '新图片',
+          title: newImageTitleInput.value || file.name.split('.')[0],
           description: newImageDescriptionInput.value || '图片描述',
           caption: getCategoryLabel(newImageCategoryInput.value)
         };
         
+        // Add to gallery data
         galleryData.push(newImage);
+        
+        // Save to localStorage immediately
+        localStorage.setItem('galleryData', JSON.stringify(galleryData));
+        
+        // Re-render gallery to show new image
         renderGallery();
       };
       reader.readAsDataURL(file);
@@ -400,7 +407,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
       deleteBtn.addEventListener('click', function() {
         if (confirm('确定要删除这张图片吗？')) {
-          galleryData.splice(index, 1);
+          // Remove from gallery data
+          galleryData = galleryData.filter(img => img.id !== item.id);
+          
+          // Save to localStorage
+          localStorage.setItem('galleryData', JSON.stringify(galleryData));
+          
+          // Re-render gallery
           renderGallery();
         }
       });
@@ -410,7 +423,8 @@ document.addEventListener('DOMContentLoaded', function() {
         newImageTitleInput.value = item.title;
         newImageDescriptionInput.value = item.description;
         newImageCategoryInput.value = item.category;
-        // Note: We can't set the file input value for security reasons, so we'll skip the image preview
+        
+        // Store the ID of the item being edited
         uploadModal.dataset.editingId = item.id;
         uploadModal.classList.remove('hidden');
       });
@@ -461,6 +475,9 @@ document.addEventListener('DOMContentLoaded', function() {
       galleryData[fromIndex] = galleryData[toIndex];
       galleryData[toIndex] = temp;
       
+      // Save to localStorage
+      localStorage.setItem('galleryData', JSON.stringify(galleryData));
+      
       // Re-render gallery to reflect new order
       renderGallery();
     }
@@ -480,6 +497,54 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Pre-fill the file input in the modal
       // Note: We can't programmatically set the file input value, so we'll just let the user re-select
+    }
+  });
+  
+  // Add event listener for edit confirmation when editing existing images
+  document.addEventListener('click', function(e) {
+    if (e.target.id === 'confirm-upload' && uploadModal.dataset.editingId) {
+      // Editing an existing image
+      const editingId = parseInt(uploadModal.dataset.editingId);
+      const imageIndex = galleryData.findIndex(img => img.id === editingId);
+      
+      if (imageIndex !== -1) {
+        // Update the existing image
+        galleryData[imageIndex].title = newImageTitleInput.value || galleryData[imageIndex].title;
+        galleryData[imageIndex].description = newImageDescriptionInput.value || galleryData[imageIndex].description;
+        galleryData[imageIndex].category = newImageCategoryInput.value;
+        galleryData[imageIndex].caption = getCategoryLabel(newImageCategoryInput.value);
+        
+        // If new files were selected, update the image source
+        const files = newImageFileInput.files;
+        if (files.length > 0) {
+          const file = files[0];
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              galleryData[imageIndex].src = e.target.result;
+              
+              // Save to localStorage
+              localStorage.setItem('galleryData', JSON.stringify(galleryData));
+              
+              // Re-render gallery
+              renderGallery();
+              
+              // Hide modal and reset
+              uploadModal.classList.add('hidden');
+              resetUploadForm();
+              delete uploadModal.dataset.editingId;
+            };
+            reader.readAsDataURL(file);
+          }
+        } else {
+          // Just update text fields
+          localStorage.setItem('galleryData', JSON.stringify(galleryData));
+          renderGallery();
+          uploadModal.classList.add('hidden');
+          resetUploadForm();
+          delete uploadModal.dataset.editingId;
+        }
+      }
     }
   });
 });
