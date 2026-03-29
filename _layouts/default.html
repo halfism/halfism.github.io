@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="author" content="{{ site.github_username }}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -24,6 +36,10 @@
                             light: '#165DFF',
                             DEFAULT: '#165DFF'
                         },
+                        secondary: {
+                            light: '#36CFC9',
+                            DEFAULT: '#36CFC9'
+                        },
                         dark: {
                             bg: '#0d1117',
                             card: '#161b22',
@@ -36,7 +52,7 @@
         }
     </script>
 
-    <!-- Theme initialization - MUST be before body renders to prevent flash -->
+    <!-- Theme Initialization - Critical for preventing flash -->
     <script>
         (function() {
             var theme = localStorage.getItem('theme');
@@ -51,11 +67,26 @@
         })();
     </script>
 
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body class="font-inter antialiased bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100">
+<body class="font-inter antialiased bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" aria-hidden="true"></div>
+    
+    <!-- Main Content -->
     {{ content }}
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top-btn opacity-0 pointer-events-none" aria-label="Back to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
 
+    <!-- JavaScript -->
+    <script src="/assets/js/main.js"></script>
+    
+    <!-- Inline Scripts -->
     <script>
         // ============================================
         // Theme Management
@@ -70,18 +101,13 @@
         }
 
         function updateThemeIcon(theme) {
-            var icons = ['theme-icon-mobile', 'theme-icon-footer'];
-            icons.forEach(function(id) {
-                var el = document.getElementById(id);
-                if (el) {
-                    el.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
-                }
-            });
-            
+            var mobileIcon = document.getElementById('theme-icon-mobile');
+            var footerIcon = document.getElementById('theme-icon-footer');
             var switchIcon = document.getElementById('theme-switch-icon');
-            if (switchIcon) {
-                switchIcon.className = theme === 'light' ? 'fa fa-sun-o text-yellow-500' : 'fa fa-moon-o text-gray-300';
-            }
+            
+            if (mobileIcon) mobileIcon.className = theme === 'dark' ? 'fa fa-sun-o' : 'fa fa-moon-o';
+            if (footerIcon) footerIcon.className = theme === 'dark' ? 'fa fa-sun-o' : 'fa fa-moon-o';
+            if (switchIcon) switchIcon.className = theme === 'dark' ? 'fa fa-moon-o text-gray-300' : 'fa fa-sun-o text-yellow-500';
         }
 
         function updateSwitchState(isDark) {
