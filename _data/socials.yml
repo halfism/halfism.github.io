@@ -1,0 +1,19 @@
+- name: GitHub
+  icon: fa-github
+  url: https://github.com/halfism
+  color: hover:bg-gray-700
+  
+- name: Twitter
+  icon: fa-twitter
+  url: https://twitter.com/halfism_dev
+  color: hover:bg-blue-400
+  
+- name: LinkedIn
+  icon: fa-linkedin
+  url: https://linkedin.com/in/halfism
+  color: hover:bg-blue-600
+  
+- name: Email
+  icon: fa-envelope
+  url: mailto:contact@halfism.dev
+  color: hover:bg-red-500
