@@ -13,6 +13,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -30,6 +31,21 @@
         }
     </script>
 
+    <!-- Critical: Initialize theme BEFORE page renders to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            const theme = savedTheme || systemTheme;
+            
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style type="text/tailwindcss">
@@ -40,53 +56,23 @@
         }
     </style>
 </head>
-<body class="font-inter antialiased" data-theme="light">
+<body class="font-inter antialiased bg-white dark:bg-[#0d1117] text-gray-900 dark:text-gray-100 transition-colors duration-300">
     {{ content }}
 
     <script>
-        // Theme Management
-        function initializeTheme() {
-            // Check for saved theme or system preference
-            const savedTheme = localStorage.getItem('theme');
-            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            const theme = savedTheme || systemTheme;
-            
-            document.body.setAttribute('data-theme', theme);
-            updateThemeIcon(theme);
-            
-            // Add dark class to html for Tailwind dark mode if needed
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        }
-
+        // Theme Toggle - initialization already done in head
         function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-            
-            if (newTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
+            const isDark = document.documentElement.classList.toggle('dark');
+            const theme = isDark ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            updateThemeIcon(theme);
         }
 
         function updateThemeIcon(theme) {
-            const themeIcon = document.getElementById('theme-icon');
             const themeIconMobile = document.getElementById('theme-icon-mobile');
             const themeIconFooter = document.getElementById('theme-icon-footer');
             const themeSwitchKnob = document.getElementById('theme-switch-knob');
             const themeSwitchIcon = document.getElementById('theme-switch-icon');
-            
-            if (themeIcon) {
-                themeIcon.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
-            }
             
             if (themeIconMobile) {
                 themeIconMobile.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
@@ -96,7 +82,7 @@
                 themeIconFooter.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
             }
 
-            // Update new Switch UI
+            // Update Switch UI
             if (themeSwitchKnob) {
                 if (theme === 'dark') {
                     themeSwitchKnob.classList.remove('translate-x-1');
@@ -108,12 +94,15 @@
             }
 
             if (themeSwitchIcon) {
-                themeSwitchIcon.className = theme === 'light' ? 'fa fa-sun-o text-yellow-500' : 'fa fa-moon-o text-gray-700';
+                themeSwitchIcon.className = theme === 'light' ? 'fa fa-sun-o text-yellow-500' : 'fa fa-moon-o text-gray-300';
             }
         }
 
-        // Initialize theme on page load
-        document.addEventListener('DOMContentLoaded', initializeTheme);
+        // Initialize icons on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const isDark = document.documentElement.classList.contains('dark');
+            updateThemeIcon(isDark ? 'dark' : 'light');
+        });
 
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menu-toggle');

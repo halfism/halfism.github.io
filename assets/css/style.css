@@ -13,7 +13,7 @@
   --header-bg: rgba(255, 255, 255, 0.8);
 }
 
-[data-theme="dark"] {
+.dark {
   /* Dark Mode - Inspired by GitHub Dark Dimmed */
   --bg-body: #0d1117;
   --bg-secondary: #161b22;
@@ -49,18 +49,19 @@ body {
   transition: all 0.2s ease;
 }
 
-[data-theme="light"] .card-base {
+/* Light mode shadow */
+.card-base {
   box-shadow: var(--card-shadow);
-  border-color: transparent; /* Cleaner look in light mode, or keep border for consistency */
+  border-color: transparent;
   border: 1px solid #f3f4f6;
 }
 
-[data-theme="light"] .card-base:hover {
+.card-base:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
 }
 
-[data-theme="dark"] .card-base:hover {
+.dark .card-base:hover {
   border-color: #8b949e;
 }
 
