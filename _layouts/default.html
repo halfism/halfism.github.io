@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,28 +16,33 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#165DFF',
-                        secondary: '#36CFC9',
-                        dark: '#1D2939',
-                        light: '#F9FAFB',
-                        accent: '#722ED1'
-                    },
                     fontFamily: {
                         inter: ['Inter', 'sans-serif'],
                     },
+                    colors: {
+                        primary: {
+                            light: '#165DFF',
+                            DEFAULT: '#165DFF'
+                        },
+                        dark: {
+                            bg: '#0d1117',
+                            card: '#161b22',
+                            secondary: '#21262d',
+                            border: '#30363d'
+                        }
+                    }
                 }
             }
         }
     </script>
 
-    <!-- Critical: Initialize theme BEFORE page renders to prevent flash -->
+    <!-- Theme initialization - MUST be before body renders to prevent flash -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            const theme = savedTheme || systemTheme;
-            
+            var theme = localStorage.getItem('theme');
+            if (!theme) {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
             if (theme === 'dark') {
                 document.documentElement.classList.add('dark');
             } else {
@@ -47,94 +52,131 @@
     </script>
 
     <link rel="stylesheet" href="/assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-        }
-    </style>
 </head>
-<body class="font-inter antialiased bg-white dark:bg-[#0d1117] text-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="font-inter antialiased bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100">
     {{ content }}
 
     <script>
-        // Theme Toggle - initialization already done in head
+        // ============================================
+        // Theme Management
+        // ============================================
         function toggleTheme() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            const theme = isDark ? 'dark' : 'light';
+            var html = document.documentElement;
+            var isDark = html.classList.toggle('dark');
+            var theme = isDark ? 'dark' : 'light';
             localStorage.setItem('theme', theme);
             updateThemeIcon(theme);
+            updateSwitchState(isDark);
         }
 
         function updateThemeIcon(theme) {
-            const themeIconMobile = document.getElementById('theme-icon-mobile');
-            const themeIconFooter = document.getElementById('theme-icon-footer');
-            const themeSwitchKnob = document.getElementById('theme-switch-knob');
-            const themeSwitchIcon = document.getElementById('theme-switch-icon');
+            var icons = ['theme-icon-mobile', 'theme-icon-footer'];
+            icons.forEach(function(id) {
+                var el = document.getElementById(id);
+                if (el) {
+                    el.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
+                }
+            });
             
-            if (themeIconMobile) {
-                themeIconMobile.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
+            var switchIcon = document.getElementById('theme-switch-icon');
+            if (switchIcon) {
+                switchIcon.className = theme === 'light' ? 'fa fa-sun-o text-yellow-500' : 'fa fa-moon-o text-gray-300';
             }
-            
-            if (themeIconFooter) {
-                themeIconFooter.className = theme === 'light' ? 'fa fa-moon-o' : 'fa fa-sun-o';
-            }
+        }
 
-            // Update Switch UI
-            if (themeSwitchKnob) {
-                if (theme === 'dark') {
-                    themeSwitchKnob.classList.remove('translate-x-1');
-                    themeSwitchKnob.classList.add('translate-x-6');
+        function updateSwitchState(isDark) {
+            var knob = document.getElementById('theme-switch-knob');
+            if (knob) {
+                if (isDark) {
+                    knob.classList.remove('translate-x-1');
+                    knob.classList.add('translate-x-6');
                 } else {
-                    themeSwitchKnob.classList.add('translate-x-1');
-                    themeSwitchKnob.classList.remove('translate-x-6');
+                    knob.classList.add('translate-x-1');
+                    knob.classList.remove('translate-x-6');
                 }
-            }
-
-            if (themeSwitchIcon) {
-                themeSwitchIcon.className = theme === 'light' ? 'fa fa-sun-o text-yellow-500' : 'fa fa-moon-o text-gray-300';
             }
         }
 
-        // Initialize icons on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const isDark = document.documentElement.classList.contains('dark');
-            updateThemeIcon(isDark ? 'dark' : 'light');
-        });
-
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+        // ============================================
+        // Back to Top Button
+        // ============================================
+        function initBackToTop() {
+            var btn = document.getElementById('back-to-top');
+            if (!btn) return;
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    btn.classList.remove('opacity-0', 'pointer-events-none');
+                    btn.classList.add('opacity-100', 'pointer-events-auto');
+                } else {
+                    btn.classList.add('opacity-0', 'pointer-events-none');
+                    btn.classList.remove('opacity-100', 'pointer-events-auto');
+                }
+            });
+            
+            btn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // ============================================
+        // Reading Progress Bar
+        // ============================================
+        function initProgressBar() {
+            var progressBar = document.getElementById('reading-progress');
+            if (!progressBar) return;
+            
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.scrollY;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = (scrollTop / docHeight) * 100;
+                progressBar.style.width = progress + '%';
+            });
+        }
 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-
-                    // Close mobile menu if open
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
+        // ============================================
+        // Scroll Animations
+        // ============================================
+        function initScrollAnimations() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
                     }
-                }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+                observer.observe(el);
             });
+        }
+
+        // ============================================
+        // Mobile Menu
+        // ============================================
+        function initMobileMenu() {
+            var menuToggle = document.getElementById('menu-toggle');
+            var mobileMenu = document.getElementById('mobile-menu');
+            
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        }
+
+        // ============================================
+        // Initialize All
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            var isDark = document.documentElement.classList.contains('dark');
+            updateThemeIcon(isDark ? 'dark' : 'light');
+            updateSwitchState(isDark);
+            initBackToTop();
+            initProgressBar();
+            initScrollAnimations();
+            initMobileMenu();
         });
     </script>
 </body>

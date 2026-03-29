@@ -1,151 +1,87 @@
 /**
  * Main JavaScript for halfism.github.io
- * Features: Back to Top, Typing Animation, Scroll Animations, etc.
+ * Features: Back to Top, Scroll Animations, Reading Progress
  */
 
-// ============================================
-// Back to Top Button
-// ============================================
-function initBackToTop() {
-    const btn = document.getElementById('back-to-top');
-    if (!btn) return;
+document.addEventListener('DOMContentLoaded', function() {
     
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            btn.classList.remove('opacity-0', 'pointer-events-none');
-            btn.classList.add('opacity-100', 'pointer-events-auto');
-        } else {
-            btn.classList.add('opacity-0', 'pointer-events-none');
-            btn.classList.remove('opacity-100', 'pointer-events-auto');
-        }
-    });
-    
-    btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-
-// ============================================
-// Typing Animation
-// ============================================
-class TypeWriter {
-    constructor(element, words, wait = 3000) {
-        this.element = element;
-        this.words = words;
-        this.wait = parseInt(wait, 10);
-        this.wordIndex = 0;
-        this.txt = '';
-        this.isDeleting = false;
-        this.type();
+    // ============================================
+    // Back to Top Button
+    // ============================================
+    var backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
-    
-    type() {
-        const current = this.wordIndex % this.words.length;
-        const fullTxt = this.words[current];
-        
-        if (this.isDeleting) {
-            this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-            this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
-        
-        this.element.innerHTML = `<span class="txt">${this.txt}</span>`;
-        
-        let typeSpeed = 100;
-        
-        if (this.isDeleting) {
-            typeSpeed /= 2;
-        }
-        
-        if (!this.isDeleting && this.txt === fullTxt) {
-            typeSpeed = this.wait;
-            this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-            this.isDeleting = false;
-            this.wordIndex++;
-            typeSpeed = 500;
-        }
-        
-        setTimeout(() => this.type(), typeSpeed);
-    }
-}
 
-function initTypingAnimation() {
-    const element = document.querySelector('.typing-text');
-    if (!element) return;
-    
-    const words = element.getAttribute('data-words');
-    const wait = element.getAttribute('data-wait') || 3000;
-    
-    if (words) {
-        new TypeWriter(element, JSON.parse(words), wait);
+    // ============================================
+    // Reading Progress Bar
+    // ============================================
+    var progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.scrollY;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var progress = (scrollTop / docHeight) * 100;
+            progressBar.style.width = progress + '%';
+        });
     }
-}
 
-// ============================================
-// Scroll Animations (Intersection Observer)
-// ============================================
-function initScrollAnimations() {
-    const observerOptions = {
+    // ============================================
+    // Scroll Animations (Intersection Observer)
+    // ============================================
+    var observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
     };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+
+    var scrollObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target);
+                scrollObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
-    
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
-}
 
-// ============================================
-// Smooth Scroll for Anchor Links
-// ============================================
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+        scrollObserver.observe(el);
+    });
+
+    // ============================================
+    // Smooth Scroll for Anchor Links
+    // ============================================
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            var targetId = this.getAttribute('href');
+            if (targetId === '#' || targetId === '') return;
+            
+            var target = document.querySelector(targetId);
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                e.preventDefault();
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
                 });
+                
+                // Close mobile menu
+                var mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
             }
         });
     });
-}
-
-// ============================================
-// Reading Progress Bar
-// ============================================
-function initReadingProgress() {
-    const progressBar = document.getElementById('reading-progress');
-    if (!progressBar) return;
-    
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (scrollTop / docHeight) * 100;
-        progressBar.style.width = progress + '%';
-    });
-}
-
-// ============================================
-// Initialize All
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    initBackToTop();
-    initTypingAnimation();
-    initScrollAnimations();
-    initSmoothScroll();
-    initReadingProgress();
 });
