@@ -62,6 +62,24 @@ google_analytics:
   enabled: true
   tracking_id: "G-XXXXXXXXXX"  # Replace with your Google Analytics 4 Measurement ID
 
+# Comments System (Giscus)
+comments:
+  enabled: true
+  provider: giscus  # Options: giscus, disqus, utterances
+  giscus:
+    repo: halfism/halfism.github.io
+    repo_id: ""  # Get from https://giscus.app
+    category: Announcements
+    category_id: ""  # Get from https://giscus.app
+    mapping: pathname
+    strict: 0
+    reactions_enabled: 1
+    emit_metadata: 0
+    input_position: top
+    theme: light
+    lang: zh-CN
+    loading: lazy
+
 # Build settings
 markdown: kramdown
 highlighter: rouge

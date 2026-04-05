@@ -259,4 +259,69 @@ layout: default
         font-size: 1.05rem;
         color: var(--color-text);
     }
+
+    /* Comments Section */
+    .comments-section {
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 2px solid var(--color-border);
+    }
+
+    .comments-section h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--color-text);
+    }
 </style>
+
+{% if site.comments.enabled %}
+<section class="comments-section">
+    <div class="container">
+        <h3>
+            <i class="fa fa-comments"></i>
+            评论与讨论
+        </h3>
+
+        {% if site.comments.provider == 'giscus' %}
+        <script src="https://giscus.app/client.js"
+                data-repo="{{ site.comments.giscus.repo }}"
+                data-repo-id="{{ site.comments.giscus.repo_id }}"
+                data-category="{{ site.comments.giscus.category }}"
+                data-category-id="{{ site.comments.giscus.category_id }}"
+                data-mapping="{{ site.comments.giscus.mapping }}"
+                data-strict="{{ site.comments.giscus.strict }}"
+                data-reactions-enabled="{{ site.comments.giscus.reactions_enabled }}"
+                data-emit-metadata="{{ site.comments.giscus.emit_metadata }}"
+                data-input-position="{{ site.comments.giscus.input_position }}"
+                data-theme="light"
+                data-lang="{{ site.comments.giscus.lang }}"
+                data-loading="{{ site.comments.giscus.loading }}"
+                crossorigin="anonymous"
+                async>
+        </script>
+
+        <script>
+            // Giscus 主题切换（跟随网站主题）
+            function updateGiscusTheme() {
+                const theme = document.documentElement.getAttribute('data-theme') || 'light';
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (iframe) {
+                    iframe.contentWindow.postMessage(
+                        { giscus: { setConfig: { theme: theme } } },
+                        'https://giscus.app'
+                    );
+                }
+            }
+
+            // 监听主题变化
+            const observer = new MutationObserver(updateGiscusTheme);
+            observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+        </script>
+        {% endif %}
+    </div>
+</section>
+{% endif %}

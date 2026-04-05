@@ -1,0 +1,511 @@
+<!-- Search Modal -->
+<div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
+    <div class="search-modal__overlay" onclick="closeSearchModal()"></div>
+
+    <div class="search-modal__container">
+        <div class="search-modal__header">
+            <h2 id="search-title">
+                <i class="fa fa-search"></i>
+                搜索文章
+            </h2>
+            <button onclick="closeSearchModal()" class="search-modal__close" aria-label="关闭搜索">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+
+        <div class="search-modal__input-wrapper">
+            <i class="fa fa-search search-modal__icon"></i>
+            <input
+                type="text"
+                id="search-input"
+                class="search-modal__input"
+                placeholder="输入关键词搜索..."
+                autocomplete="off"
+                autofocus
+            >
+            <kbd class="search-modal__shortcut">ESC</kbd>
+        </div>
+
+        <div id="search-results" class="search-results">
+            <div class="search-results__empty">
+                <i class="fa fa-file-text-o"></i>
+                <p>开始输入以搜索文章</p>
+            </div>
+        </div>
+
+        <div class="search-modal__footer">
+            <div class="search-tips">
+                <span><kbd>↑↓</kbd> 导航</span>
+                <span><kbd>↵</kbd> 打开</span>
+                <span><kbd>ESC</kbd> 关闭</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .search-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 15vh;
+    }
+
+    .search-modal.active {
+        display: flex;
+    }
+
+    .search-modal__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+    }
+
+    .search-modal__container {
+        position: relative;
+        width: 90%;
+        max-width: 640px;
+        max-height: 70vh;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    [data-theme="dark"] .search-modal__container,
+    .dark .search-modal__container {
+        background: #1e293b;
+        border: 1px solid #334155;
+    }
+
+    .search-modal__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 24px 12px;
+        border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .search-modal__header h2 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .search-modal__close {
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: var(--color-bg-tertiary);
+        border-radius: 8px;
+        cursor: pointer;
+        color: var(--color-text-muted);
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search-modal__close:hover {
+        background: var(--color-primary);
+        color: white;
+    }
+
+    .search-modal__input-wrapper {
+        position: relative;
+        padding: 12px 24px;
+    }
+
+    .search-modal__icon {
+        position: absolute;
+        left: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--color-text-muted);
+        font-size: 18px;
+    }
+
+    .search-modal__input {
+        width: 100%;
+        padding: 14px 50px 14px 48px;
+        border: 2px solid var(--color-border);
+        border-radius: 12px;
+        font-size: 16px;
+        outline: none;
+        transition: all 0.2s;
+        background: transparent;
+        color: var(--color-text);
+    }
+
+    .search-modal__input:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+
+    .search-modal__shortcut {
+        position: absolute;
+        right: 36px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 4px 10px;
+        background: var(--color-bg-tertiary);
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        font-size: 11px;
+        font-family: monospace;
+        color: var(--color-text-muted);
+    }
+
+    .search-results {
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 0 12px 12px;
+    }
+
+    .search-results::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .search-results::-webkit-scrollbar-track {
+        background: var(--color-bg-tertiary);
+        border-radius: 4px;
+    }
+
+    .search-results::-webkit-scrollbar-thumb {
+        background: var(--color-border);
+        border-radius: 4px;
+    }
+
+    .search-results__empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--color-text-muted);
+    }
+
+    .search-results__empty i {
+        font-size: 48px;
+        opacity: 0.3;
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    .search-result-item {
+        padding: 16px;
+        margin-bottom: 8px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1px solid transparent;
+    }
+
+    .search-result-item:hover,
+    .search-result-item.active {
+        background: var(--color-bg-secondary);
+        border-color: var(--color-border);
+    }
+
+    .search-result-item__title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-text);
+        margin-bottom: 6px;
+        line-height: 1.4;
+    }
+
+    .search-result-item__meta {
+        display: flex;
+        gap: 12px;
+        font-size: 13px;
+        color: var(--color-text-muted);
+        margin-bottom: 8px;
+    }
+
+    .search-result-item__category {
+        background: var(--color-primary);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .search-result-item__excerpt {
+        font-size: 14px;
+        color: var(--color-text-secondary);
+        line-height: 1.5;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .search-result-item mark {
+        background: #fef08a;
+        color: inherit;
+        padding: 0 2px;
+        border-radius: 2px;
+    }
+
+    .search-modal__footer {
+        padding: 12px 24px;
+        border-top: 1px solid var(--color-border-light);
+        background: var(--color-bg-secondary);
+    }
+
+    .search-tips {
+        display: flex;
+        gap: 20px;
+        font-size: 13px;
+        color: var(--color-text-muted);
+    }
+
+    .search-tips kbd {
+        padding: 2px 6px;
+        background: white;
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 11px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Loading State */
+    .search-loading {
+        text-align: center;
+        padding: 40px;
+        color: var(--color-text-muted);
+    }
+
+    .spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid var(--color-border);
+        border-top-color: var(--color-primary);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 0 auto 12px;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    /* No Results */
+    .search-no-results {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--color-text-muted);
+    }
+
+    .search-no-results i {
+        font-size: 40px;
+        margin-bottom: 12px;
+        display: block;
+        opacity: 0.5;
+    }
+</style>
+
+<script>
+let searchData = [];
+let selectedIndex = -1;
+
+// Initialize Search Modal
+function initSearch() {
+    // Load search data
+    fetch('/search.json')
+        .then(response => response.json())
+        .then(data => {
+            searchData = data;
+        })
+        .catch(error => console.error('Error loading search data:', error));
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // Ctrl/Cmd + K to open search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openSearchModal();
+        }
+
+        // Escape to close
+        if (e.key === 'Escape') {
+            closeSearchModal();
+        }
+
+        // Arrow navigation when modal is open
+        if (document.getElementById('search-modal').classList.contains('active')) {
+            const results = document.querySelectorAll('.search-result-item');
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectedIndex = Math.min(selectedIndex + 1, results.length - 1);
+                updateSelectedResult(results);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectedIndex = Math.max(selectedIndex - 1, -1);
+                updateSelectedResult(results);
+            } else if (e.key === 'Enter' && selectedIndex >= 0) {
+                e.preventDefault();
+                results[selectedIndex].click();
+            }
+        }
+    });
+
+    // Search input handler
+    const searchInput = document.getElementById('search-input');
+    let debounceTimer;
+
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            performSearch(e.target.value);
+        }, 200);
+    });
+}
+
+function openSearchModal() {
+    const modal = document.getElementById('search-modal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('search-input').focus();
+    selectedIndex = -1;
+}
+
+function closeSearchModal() {
+    const modal = document.getElementById('search-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    document.getElementById('search-input').value = '';
+    resetResults();
+}
+
+function performSearch(query) {
+    const resultsContainer = document.getElementById('search-results');
+
+    if (!query.trim()) {
+        resetResults();
+        return;
+    }
+
+    const normalizedQuery = query.toLowerCase().trim();
+
+    // Filter and rank results
+    const results = searchData
+        .map(item => {
+            const titleMatch = item.title.toLowerCase().includes(normalizedQuery);
+            const contentMatch = item.content.toLowerCase().includes(normalizedQuery);
+            const excerptMatch = item.excerpt.toLowerCase().includes(normalizedQuery);
+            const tagMatch = item.tags.some(tag =>
+                tag.toLowerCase().includes(normalizedQuery)
+            );
+
+            let score = 0;
+            if (titleMatch) score += 10; // Title matches are most important
+            if (tagMatch) score += 5;
+            if (excerptMatch) score += 3;
+            if (contentMatch) score += 1;
+
+            return { ...item, score };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 10); // Limit to 10 results
+
+    if (results.length === 0) {
+        resultsContainer.innerHTML = `
+            <div class="search-no-results">
+                <i class="fa fa-search-minus"></i>
+                <p>未找到 "${escapeHtml(query)}" 相关结果</p>
+                <p style="font-size: 13px; margin-top: 8px;">尝试使用不同的关键词</p>
+            </div>
+        `;
+        return;
+    }
+
+    resultsContainer.innerHTML = results.map((item, index) => `
+        <div class="search-result-item ${index === selectedIndex ? 'active' : ''}"
+             onclick="window.location.href='${item.url}'"
+             data-index="${index}">
+            <div class="search-result-item__title">${highlightText(item.title, query)}</div>
+            <div class="search-result-item__meta">
+                <span>${item.date}</span>
+                <span class="search-result-item__category">${item.category}</span>
+            </div>
+            <div class="search-result-item__excerpt">${highlightText(item.excerpt, query)}</div>
+        </div>
+    `).join('');
+
+    selectedIndex = -1;
+}
+
+function highlightText(text, query) {
+    if (!query) return escapeHtml(text);
+
+    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return escapeHtml(text).replace(regex, '<mark>$1</mark>');
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function updateSelectedResult(results) {
+    results.forEach((result, index) => {
+        result.classList.toggle('active', index === selectedIndex);
+    });
+
+    // Scroll selected result into view
+    if (selectedIndex >= 0 && results[selectedIndex]) {
+        results[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+        });
+    }
+}
+
+function resetResults() {
+    document.getElementById('search-results').innerHTML = `
+        <div class="search-results__empty">
+            <i class="fa fa-file-text-o"></i>
+            <p>开始输入以搜索文章</p>
+        </div>
+    `;
+    selectedIndex = -1;
+}
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', initSearch);
+</script>
