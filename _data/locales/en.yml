@@ -1,0 +1,93 @@
+en:
+  nav:
+    home: Home
+    about: About
+    projects: Projects
+    skills: Skills
+    logs: Logs
+    certificates: Certificates
+    gallery: Gallery
+    blog: Blog
+    contact: Contact
+    search: Search
+
+  hero:
+    welcome: Welcome to my homepage
+    hi: Hi, I'm
+    subtitle: A passionate developer creating meaningful solutions through code
+    view_work: View My Work
+    github: GitHub
+
+  about:
+    title: About Me
+    bio: Biography
+    skills: Skills & Expertise
+    core_skills: Core Skills
+    backend: Backend Technologies
+    dev_tools: Development Tools
+    languages: Language Distribution
+    experience: Experience Timeline
+    fun_facts: Fun Facts
+    collaborate: Want to collaborate?
+    contact_me: Contact Me
+    view_github: View GitHub
+
+  projects:
+    title: Featured Projects
+    view_all: View All Projects
+    demo: Live Demo
+    source_code: Source Code
+    stars: Stars
+    forks: Forks
+
+  skills:
+    title: My Skills
+    description: Years of accumulated tech stack and toolchain
+
+  blog:
+    title: Tech Blog
+    description: Sharing development experiences, insights, and project learnings
+    read_more: Read More
+    all: All
+    no_posts: No posts yet, stay tuned...
+
+  contact:
+    title: Contact Me
+    subtitle: Have a project idea, opportunity, or just want to say hi? Get in touch!
+    name: Name
+    email: Email
+    subject: Subject
+    message: Message
+    send: Send Message
+    sending: Sending...
+    success: Message sent successfully! I'll get back to you soon.
+    error: Failed to send. Please try again later.
+
+    subjects:
+      project: Project Collaboration
+      job: Job Opportunity
+      consulting: Technical Consulting
+      feedback: Feedback
+      other: Other
+
+    direct_contact: Direct Contact
+    social_media: Social Media
+    availability: Availability
+    reply_time: Usually reply within 24 hours
+    faq: FAQ
+
+  footer:
+    copyright: All rights reserved
+    made_with: Made with
+    and: and
+    built: built
+
+  common:
+    back_to_top: Back to top
+    loading: Loading...
+    error: Something went wrong
+    retry: Retry
+    language: Language
+    theme: Theme
+    dark_mode: Dark Mode
+    light_mode: Light Mode

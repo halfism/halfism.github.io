@@ -1,0 +1,93 @@
+zh:
+  nav:
+    home: 首页
+    about: 关于我
+    projects: 项目
+    skills: 技能
+    logs: 日志
+    certificates: 证书
+    gallery: 相册
+    blog: 博客
+    contact: 联系
+    search: 搜索
+
+  hero:
+    welcome: 欢迎来到我的个人主页
+    hi: 你好，我是
+    subtitle: 一位热爱通过代码创造有意义且高效解决方案的开发者
+    view_work: 查看我的作品
+    github: GitHub
+
+  about:
+    title: 关于我
+    bio: 个人简介
+    skills: 技能专长
+    core_skills: 核心技能
+    backend: 后端技术
+    dev_tools: 开发工具
+    languages: 编程语言分布
+    experience: 经历时间线
+    fun_facts: 有趣的事实
+    collaborate: 想一起合作？
+    contact_me: 联系我
+    view_github: 查看 GitHub
+
+  projects:
+    title: 精选项目
+    view_all: 查看全部项目
+    demo: 在线演示
+    source_code: 源代码
+    stars: Stars
+    forks: Forks
+
+  skills:
+    title: 我的技能
+    description: 多年积累的技术栈和工具链
+
+  blog:
+    title: 技术博客
+    description: 分享开发经验、技术见解和项目心得
+    read_more: 阅读更多
+    all: 全部
+    no_posts: 暂无文章，敬请期待...
+
+  contact:
+    title: 联系我
+    subtitle: 有项目想法、合作机会或只是想打个招呼？欢迎联系！
+    name: 姓名
+    email: 邮箱
+    subject: 主题
+    message: 留言内容
+    send: 发送消息
+    sending: 发送中...
+    success: 消息发送成功！我会尽快回复您。
+    error: 发送失败，请稍后重试。
+
+    subjects:
+      project: 项目合作
+      job: 工作机会
+      consulting: 技术咨询
+      feedback: 反馈建议
+      other: 其他
+
+    direct_contact: 直接联系
+    social_media: 社交媒体
+    availability: 可用时间
+    reply_time: 通常在 24 小时内回复
+    faq: 常见问题
+
+  footer:
+    copyright: 版权所有
+    made_with: 用
+    and: 和
+    built: 构建
+
+  common:
+    back_to_top: 返回顶部
+    loading: 加载中...
+    error: 出错了
+    retry: 重试
+    language: 语言
+    theme: 主题
+    dark_mode: 暗色模式
+    light_mode: 亮色模式

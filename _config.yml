@@ -80,6 +80,10 @@ comments:
     lang: zh-CN
     loading: lazy
 
+# Contact Form Settings (Formspree)
+contact:
+  form_id: "xxxxxxxxxxxx"  # Replace with your Formspree form ID
+
 # Build settings
 markdown: kramdown
 highlighter: rouge

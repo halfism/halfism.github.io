@@ -64,6 +64,13 @@
     <!-- Custom Styles (Loaded early to prevent layout shift) -->
     <link rel="stylesheet" href="/assets/css/style.css">
 
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="{{ site.theme_settings.primary_color }}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="{{ site.title | split: ' ' | first }}">
+
     {% if site.google_analytics.enabled and site.google_analytics.tracking_id %}
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics.tracking_id }}"></script>
@@ -102,9 +109,13 @@
     </button>
 
     <!-- JavaScript (Deferred for performance) -->
+    <script src="/assets/js/i18n.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
 
     <!-- Search Modal Component -->
     {% include components/search.html %}
+
+    <!-- PWA Install Component -->
+    {% include components/pwa.html %}
 </body>
 </html>
