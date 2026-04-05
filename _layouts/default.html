@@ -63,6 +63,20 @@
 
     <!-- Custom Styles (Loaded early to prevent layout shift) -->
     <link rel="stylesheet" href="/assets/css/style.css">
+
+    {% if site.google_analytics.enabled and site.google_analytics.tracking_id %}
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics.tracking_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ site.google_analytics.tracking_id }}', {
+            page_path: '{{ page.url }}',
+            anonymize_ip: true
+        });
+    </script>
+    {% endif %}
 </head>
 <body style="font-family: {{ site.theme_settings.font_family }};">
     

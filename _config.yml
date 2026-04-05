@@ -57,6 +57,11 @@ seo:
 languages: ["en", "zh"]
 default_lang: "zh"
 
+# Analytics Settings
+google_analytics:
+  enabled: true
+  tracking_id: "G-XXXXXXXXXX"  # Replace with your Google Analytics 4 Measurement ID
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
