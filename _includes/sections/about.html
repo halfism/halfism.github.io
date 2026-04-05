@@ -1,0 +1,58 @@
+<section id="about" class="section bg-gray-50 dark:bg-[#0d1117]/50 border-y border-gray-100 dark:border-gray-800 transition-colors duration-300" aria-labelledby="about-heading">
+    <div class="container">
+        <div class="text-center mb-16">
+            <h2 id="about-heading">{% if page.lang == 'en' %}About Me{% else %}关于我{% endif %}</h2>
+            <div class="w-16 h-1 bg-primary mx-auto rounded-full" style="background-color: var(--color-primary);"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="about__card">
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    {% if page.lang == 'en' %}
+                        Hi! I'm <strong style="color: var(--color-primary);">{{ site.author.name }}</strong>, a passionate developer dedicated to creating efficient, beautiful, and practical software. I love solving complex problems and turning ideas into reality through code.
+                    {% else %}
+                        你好！我是 <strong style="color: var(--color-primary);">{{ site.author.name }}</strong>，一位对创造高效、美观且实用软件充满热情的开发者。我喜欢解决复杂问题，并通过代码将想法变为现实。
+                    {% endif %}
+                </p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    {% if page.lang == 'en' %}
+                        My programming journey started a few years ago, and since then I've been constantly learning and expanding my skills. I believe in writing clean, maintainable code and following best practices to deliver high-quality solutions.
+                    {% else %}
+                        我的编程之旅始于几年前，从那时起我就一直在不断学习和扩展自己的技能。我相信应该编写干净、可维护的代码，并遵循最佳实践来交付高质量的解决方案。
+                    {% endif %}
+                </p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {% if page.lang == 'en' %}
+                        When I'm not coding, you might find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.
+                    {% else %}
+                        当我不在编码时，你可能会发现我在探索新技术、为开源项目做贡献，或者与开发者社区分享我的知识。
+                    {% endif %}
+                </p>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card card--interactive">
+                        <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center mb-4 text-xl">
+                            <i class="fa fa-code-fork"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">{% if page.lang == 'en' %}Open Source{% else %}开源贡献{% endif %}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{% if page.lang == 'en' %}Actively contribute to various open source projects{% else %}积极参与各种开源项目，并维护自己的代码仓库{% endif %}</p>
+                    </div>
+                    <div class="card card--interactive">
+                        <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center mb-4 text-xl">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">{% if page.lang == 'en' %}Lifelong Learning{% else %}终身学习{% endif %}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{% if page.lang == 'en' %}Continuously expand knowledge, keep up with trends{% else %}不断扩展知识面，紧跟最新技术趋势{% endif %}</p>
+                    </div>
+                    <div class="card card--interactive">
+                        <div class="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center mb-4 text-xl">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">{% if page.lang == 'en' %}Team Collaboration{% else %}团队协作{% endif %}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{% if page.lang == 'en' %}Enjoy working in teams on collaborative projects{% else %}喜欢在团队中工作，参与协作开发项目{% endif %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

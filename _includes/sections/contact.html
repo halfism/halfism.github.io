@@ -1,0 +1,45 @@
+<section id="contact" class="section cta-section" aria-labelledby="contact-heading">
+    <div class="container">
+        <h2 id="contact-heading" class="text-3xl font-bold mb-4">
+            {% if page.lang == 'en' %}Want to know more?{% else %}想要了解更多？%}
+        </h2>
+        <p class="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            {% if page.lang == 'en' %}
+                Download my resume for more detailed experience and skills
+            {% else %}
+                下载我的简历，获取更详细的经历与技能信息
+            %}
+        </p>
+        <div class="flex justify-center gap-4 flex-wrap mb-12">
+            <a href="/assets/resume.pdf" download class="btn btn--lg" style="background-color: white; color: var(--color-primary);">
+                <i class="fa fa-download mr-2"></i> 
+                {% if page.lang == 'en' %}Download CV (EN){% else %}下载简历 (中文)%}
+            </a>
+            <a href="/assets/resume_en.pdf" download class="btn btn--secondary btn--lg">
+                <i class="fa fa-download mr-2"></i> 
+                {% if page.lang == 'en' %}Download CV (CN){% else %}Download CV (English)%}
+            </a>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center pt-8 border-t border-white/20">
+            <h3 class="text-2xl font-bold mb-4">
+                {% if page.lang == 'en' %}Ready to collaborate?{% else %}准备好开始合作了吗？%}
+            </h3>
+            <p class="text-xl text-white/80 mb-8">
+                {% if page.lang == 'en' %}
+                    Whether you have a project idea or just want to say hi, I'm always welcome.
+                {% else %}
+                    无论您是有项目想法，还是只想打个招呼，我都随时欢迎。
+                %}
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="mailto:{{ site.email }}" class="btn btn--primary btn--lg">
+                    {% if page.lang == 'en' %}Send Email{% else %}发送邮件%}
+                </a>
+                <a href="{{ site.socials.twitter.url }}" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--lg">
+                    Twitter DM
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

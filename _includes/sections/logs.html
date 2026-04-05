@@ -1,0 +1,41 @@
+<section id="logs" class="section" aria-labelledby="logs-heading">
+    <div class="container">
+        <div class="text-center mb-16">
+            <h2 id="logs-heading">{% if page.lang == 'en' %}Development Log{% else %}项目迭代日志{% endif %}</h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-2">
+                {% if page.lang == 'en' %}Recording every step of progress{% else %}记录每一次进步与改变{% endif %}
+            </p>
+            <div class="w-16 h-1 mx-auto rounded-full mt-4" style="background-color: var(--color-primary);"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="timeline">
+                {% for log in site.data.logs %}
+                <div class="timeline__item">
+                    <div class="timeline__dot"></div>
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6">
+                        <span class="timeline__date">{{ log.date }}</span>
+                        <div class="timeline__content">
+                            <div class="flex items-center gap-3 mb-3">
+                                {% if log.type == 'feat' %}
+                                <span class="tag bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">Feature</span>
+                                {% elsif log.type == 'code' %}
+                                <span class="tag bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">Code</span>
+                                {% elsif log.type == 'api' %}
+                                <span class="tag bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">API</span>
+                                {% endif %}
+                                <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                                    {% if page.lang == 'en' %}{{ log.title_en }}{% else %}{{ log.title_zh }}{% endif %}
+                                </h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                {% if page.lang == 'en' %}{{ log.desc_en }}{% else %}{{ log.desc_zh }}{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

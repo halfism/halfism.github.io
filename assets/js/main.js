@@ -362,10 +362,6 @@
         MobileMenu.init();
         SmoothScroll.init();
         SkillProgress.init();
-        Gallery.init();
-
-        // Log initialization (remove in production)
-        console.log('halfism.github.io initialized');
     }
 
     // Run on DOM ready

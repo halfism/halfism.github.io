@@ -1,0 +1,44 @@
+- id: 1
+  title_zh: Web 应用程序
+  title_en: Web Application
+  description_zh: 具有响应式设计和现代 UI 组件的全功能 Web 应用程序。实现了用户认证、实时数据同步和个性化仪表板等功能。
+  description_en: Full-featured web application with responsive design and modern UI components. Features include user authentication, real-time data sync, and personalized dashboards.
+  image: https://picsum.photos/seed/project1/600/400
+  tags:
+    - React
+    - Node.js
+    - MongoDB
+  category: JavaScript
+  url: https://github.com/halfism
+  stars: 120
+  forks: 35
+
+- id: 2
+  title_zh: 数据分析工具
+  title_en: Data Analytics Tool
+  description_zh: 具有高级统计功能的数据可视化和分析的强大工具。帮助用户识别数据趋势，生成报告并做出数据驱动的决策。
+  description_en: Powerful tool for data visualization and analysis with advanced statistical features. Helps users identify trends, generate reports, and make data-driven decisions.
+  image: https://picsum.photos/seed/project2/600/400
+  tags:
+    - Python
+    - Pandas
+    - Matplotlib
+  category: Python
+  url: https://github.com/halfism
+  stars: 89
+  forks: 24
+
+- id: 3
+  title_zh: API 服务
+  title_en: API Service
+  description_zh: 具有身份验证和速率限制功能的高性能 RESTful API 服务。支持数千个并发请求，平均响应时间低于 50ms。
+  description_en: High-performance RESTful API service with authentication and rate limiting. Supports thousands of concurrent requests with average response time under 50ms.
+  image: https://picsum.photos/seed/project3/600/400
+  tags:
+    - Go
+    - PostgreSQL
+    - Docker
+  category: Go
+  url: https://github.com/halfism
+  stars: 210
+  forks: 67

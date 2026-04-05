@@ -1,0 +1,40 @@
+core_skills:
+  - name: JavaScript / TypeScript
+    level: 90
+  - name: React / Vue
+    level: 85
+  - name: Node.js / Go
+    level: 80
+  - name: HTML5 / CSS3 / Tailwind
+    level: 95
+
+backend_tools:
+  - Docker
+  - Kubernetes
+  - AWS
+  - MongoDB
+  - PostgreSQL
+  - Redis
+  - Nginx
+
+dev_tools:
+  - Git
+  - VS Code
+  - Figma
+  - Jira
+  - Postman
+  - Webpack
+
+languages:
+  - name: JavaScript / TypeScript
+    percentage: 45
+    color: bg-yellow-400
+  - name: Python
+    percentage: 25
+    color: bg-blue-500
+  - name: Go
+    percentage: 15
+    color: bg-cyan-500
+  - name: Others
+    percentage: 15
+    color: bg-gray-400
