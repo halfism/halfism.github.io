@@ -1,0 +1,415 @@
+<!-- Data Visualization Components -->
+<!-- Lightweight chart components using CSS and minimal JS -->
+
+<div class="charts-container" id="charts-container">
+    <!-- Skills Radar Chart -->
+    <div class="chart-card radar-chart">
+        <h3 class="chart-title"><i class="fa fa-pie-chart"></i> 技能雷达图</h3>
+        <div class="radar-container" id="radar-chart"></div>
+    </div>
+
+    <!-- Activity Timeline Chart -->
+    <div class="chart-card timeline-chart">
+        <h3 class="chart-title"><i class="fa fa-line-chart"></i> 开发活动</h3>
+        <div class="timeline-container" id="activity-timeline"></div>
+    </div>
+
+    <!-- Language Distribution -->
+    <div class="chart-card language-chart">
+        <h3 class="chart-title"><i class="fa fa-bar-chart"></i> 语言使用分布</h3>
+        <div class="language-bars" id="language-bars"></div>
+    </div>
+</div>
+
+<style>
+    .charts-container {
+        display: grid;
+        gap: 32px;
+        margin: 60px 0;
+    }
+
+    @media (min-width: 1024px) {
+        .charts-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .chart-card {
+        background: white;
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--color-border-light);
+    }
+
+    [data-theme="dark"] .chart-card,
+    .dark .chart-card {
+        background: var(--color-bg-secondary);
+        border-color: var(--color-border);
+    }
+
+    .chart-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 24px;
+        color: var(--color-text);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .chart-title i {
+        color: var(--color-primary);
+    }
+
+    /* Radar Chart - CSS Only */
+    .radar-container {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 1;
+        margin: 0 auto;
+    }
+
+    .radar-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px solid var(--color-border);
+        clip-path: polygon(
+            50% 5%, 95% 35%, 85% 90%, 15% 90%, 5% 35%
+        );
+        opacity: 0.3;
+    }
+
+    .radar-grid {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .radar-axis {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 1px;
+        height: 50%;
+        background: var(--color-border);
+        transform-origin: bottom center;
+    }
+
+    .radar-data {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s ease-out;
+    }
+
+    .radar-point {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: var(--color-primary);
+        border: 3px solid white;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        z-index: 2;
+        transition: transform 0.2s;
+    }
+
+    .radar-point:hover {
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+
+    .radar-label {
+        position: absolute;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        text-align: center;
+        width: 80px;
+        margin-left: -40px;
+    }
+
+    /* Activity Timeline */
+    .timeline-container {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        height: 200px;
+        padding: 20px 0;
+        gap: 4px;
+    }
+
+    .activity-bar {
+        flex: 1;
+        background: linear-gradient(to top, var(--color-primary), var(--color-accent));
+        border-radius: 6px 6px 0 0;
+        min-height: 20px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s;
+        opacity: 0.7;
+    }
+
+    .activity-bar:hover {
+        opacity: 1;
+        transform: scaleY(1.05);
+        transform-origin: bottom;
+    }
+
+    .activity-bar::after {
+        content: attr(data-commits);
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--color-text);
+        opacity: 0;
+        transition: opacity 0.2s;
+        white-space: nowrap;
+    }
+
+    .activity-bar:hover::after {
+        opacity: 1;
+    }
+
+    .timeline-labels {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+    }
+
+    /* Language Bars */
+    .language-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .language-item {
+        display: grid;
+        grid-template-columns: 120px 1fr 60px;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .language-name {
+        font-weight: 600;
+        color: var(--color-text);
+        font-size: 0.9rem;
+    }
+
+    .language-bar-wrapper {
+        height: 24px;
+        background: var(--color-bg-tertiary);
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .language-bar-fill {
+        height: 100%;
+        border-radius: 12px;
+        transition: width 1.5s ease-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .language-bar-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .language-percent {
+        text-align: right;
+        font-weight: 700;
+        color: var(--color-text-secondary);
+        font-size: 0.9rem;
+    }
+</style>
+
+<script>
+// Initialize Charts on DOM Ready
+document.addEventListener('DOMContentLoaded', function() {
+    initRadarChart();
+    initActivityTimeline();
+    initLanguageBars();
+});
+
+// Radar Chart Implementation
+function initRadarChart() {
+    const container = document.getElementById('radar-chart');
+    if (!container) return;
+
+    const skills = [
+        { name: 'JavaScript/TS', level: 92 },
+        { name: 'React/Vue', level: 88 },
+        { name: 'Node.js', level: 82 },
+        { name: 'CSS/Sass', level: 90 },
+        { name: 'DevOps', level: 75 },
+        { name: 'Database', level: 78 }
+    ];
+
+    const numSkills = skills.length;
+    const angleStep = (2 * Math.PI) / numSkills;
+
+    // Create background circles
+    for (let i = 1; i <= 5; i++) {
+        const circle = document.createElement('div');
+        circle.className = 'radar-bg';
+        const scale = i / 5;
+        circle.style.transform = `scale(${scale})`;
+        container.appendChild(circle);
+    }
+
+    // Create axes and labels
+    skills.forEach((skill, index) => {
+        const angle = angleStep * index - Math.PI / 2;
+
+        // Axis line
+        const axis = document.createElement('div');
+        axis.className = 'radar-axis';
+        axis.style.transform = `rotate(${angle * 180 / Math.PI}deg)`;
+        container.appendChild(axis);
+
+        // Label
+        const label = document.createElement('div');
+        label.className = 'radar-label';
+        const labelRadius = 130;
+        const x = 50 + labelRadius * Math.cos(angle);
+        const y = 50 + labelRadius * Math.sin(angle);
+        label.style.left = `${x}%`;
+        label.style.top = `${y}%`;
+        label.textContent = skill.name;
+        container.appendChild(label);
+
+        // Data point
+        setTimeout(() => {
+            const dataContainer = document.createElement('div');
+            dataContainer.className = 'radar-data';
+            dataContainer.id = 'radar-data';
+            if (!container.querySelector('.radar-data')) {
+                container.appendChild(dataContainer);
+            }
+
+            const point = document.createElement('div');
+            point.className = 'radar-point';
+            const radius = (skill.level / 100) * 45; // Max radius 45%
+            const px = 50 + radius * Math.cos(angle);
+            const py = 50 + radius * Math.sin(angle);
+            point.style.left = `${px}%`;
+            point.style.top = `${py}%`;
+            point.title = `${skill.name}: ${skill.level}%`;
+
+            document.getElementById('radar-data').appendChild(point);
+        }, index * 100);
+    });
+}
+
+// GitHub-style Activity Graph
+function initActivityTimeline() {
+    const container = document.getElementById('activity-timeline');
+    if (!container) return;
+
+    // Generate random commit data for demo (replace with real API data)
+    const weeks = 52; // One year of activity
+    const commitsPerWeek = [];
+
+    for (let i = 0; i < weeks; i++) {
+        // Simulate realistic commit patterns (more in some weeks)
+        const baseCommits = Math.random() * 10 + 2;
+        const seasonalFactor = Math.sin((i / weeks) * Math.PI * 2) * 3;
+        commitsPerWeek.push(Math.max(0, Math.round(baseCommits + seasonalFactor)));
+    }
+
+    // Find max for scaling
+    const maxCommits = Math.max(...commitsPerWeek);
+
+    // Create bars
+    commitsPerWeek.forEach((commits, index) => {
+        const bar = document.createElement('div');
+        bar.className = 'activity-bar';
+        bar.setAttribute('data-commits', `${commits} commits`);
+        const height = (commits / maxCommits) * 160; // Max height 160px
+        bar.style.height = `${Math.max(height, 10)}px`;
+
+        // Color intensity based on activity
+        const intensity = commits / maxCommits;
+        if (intensity > 0.7) {
+            bar.style.background = `linear-gradient(to top, #16a34a, #238636)`;
+        } else if (intensity > 0.4) {
+            bar.style.background = `linear-gradient(to top, #7ee787, #3fb950)`;
+        } else {
+            bar.style.background = `linear-gradient(to top, #c6e48b, #a6e22e)`;
+        }
+
+        container.appendChild(bar);
+    });
+
+    // Add month labels
+    const labelsDiv = document.createElement('div');
+    labelsDiv.className = 'timeline-labels';
+    ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov'].forEach(month => {
+        const span = document.createElement('span');
+        span.textContent = month;
+        labelsDiv.appendChild(span);
+    });
+    container.parentNode.insertBefore(labelsDiv, container.nextSibling);
+}
+
+// Language Statistics Bars with Animation
+function initLanguageBars() {
+    const container = document.getElementById('language-bars');
+    if (!container) return;
+
+    const languages = [
+        { name: 'JavaScript/TypeScript', percent: 45, color: '#f1e05a' },
+        { name: 'Python', percent: 22, color: '#3572A5' },
+        { name: 'Go', percent: 15, color: '#00ADD8' },
+        { name: 'Rust', percent: 8, color: '#dea584' },
+        { name: 'Others', percent: 10, color: '#8e8e8e' }
+    ];
+
+    languages.forEach(lang => {
+        const item = document.createElement('div');
+        item.className = 'language-item';
+
+        item.innerHTML = `
+            <span class="language-name">${lang.name}</span>
+            <div class="language-bar-wrapper">
+                <div class="language-bar-fill" style="background-color: ${lang.color}; width: 0%;"></div>
+            </div>
+            <span class="language-percent">${lang.percent}%</span>
+        `;
+
+        container.appendChild(item);
+
+        // Animate after a short delay
+        setTimeout(() => {
+            item.querySelector('.language-bar-fill').style.width = `${lang.percent}%`;
+        }, 300);
+    });
+}
+</script>

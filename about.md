@@ -607,3 +607,5 @@ permalink: /about/
         }
     }
 </style>
+
+{% include components/charts.html %}
