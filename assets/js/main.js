@@ -43,21 +43,24 @@
         STORAGE_KEY: 'theme',
 
         init: function() {
-            var theme = localStorage.getItem(this.STORAGE_KEY) || 
+            var theme = localStorage.getItem(this.STORAGE_KEY) ||
                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            
+
             if (theme === 'dark') {
                 document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('data-theme', 'dark');
             } else {
                 document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('data-theme', 'light');
             }
-            
+
             this.updateUI(theme === 'dark');
         },
 
         toggle: function() {
             var isDark = document.documentElement.classList.toggle('dark');
             var theme = isDark ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem(this.STORAGE_KEY, theme);
             this.updateUI(isDark);
             return theme;
