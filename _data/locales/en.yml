@@ -10,77 +10,148 @@ en:
     blog: Blog
     contact: Contact
     search: Search
+    toggle_theme: Toggle Theme
+    switch_lang: 切换到中文
 
   hero:
     welcome: Welcome to my homepage
-    hi: Hi, I'm
+    hi: "Hi, I'm"
     subtitle: A passionate developer creating meaningful solutions through code
     view_work: View My Work
     github: GitHub
+    full_stack: Full-Stack
+    innovation: Innovation
 
   about:
     title: About Me
-    bio: Biography
-    skills: Skills & Expertise
-    core_skills: Core Skills
-    backend: Backend Technologies
-    dev_tools: Development Tools
-    languages: Language Distribution
-    experience: Experience Timeline
-    fun_facts: Fun Facts
-    collaborate: Want to collaborate?
-    contact_me: Contact Me
-    view_github: View GitHub
+    subtitle: Learn my story
+    p1: "Hello! I'm"
+    p1_suffix: ", a passionate developer with a love for creating efficient, beautiful, and functional software. I enjoy tackling complex problems and turning ideas into reality through code."
+    p2: My journey in programming started several years ago, and since then, I've been constantly learning and expanding my skill set. I believe in writing clean, maintainable code and following best practices to deliver high-quality solutions.
+    p3: When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community.
+    open_source: Open Source
+    open_source_desc: Actively contribute to various open source projects and maintain my own repositories
+    lifelong_learning: Lifelong Learning
+    lifelong_learning_desc: Continuously expand knowledge, keep up with trends
+    team_collab: Team Collaboration
+    team_collab_desc: Enjoy working in teams on collaborative projects
 
   projects:
     title: Featured Projects
+    subtitle: Explore some of my recent work and contributions
     view_all: View All Projects
     demo: Live Demo
     source_code: Source Code
-    stars: Stars
-    forks: Forks
 
   skills:
     title: My Skills
-    description: Years of accumulated tech stack and toolchain
+    subtitle: Continuous learning, pursuing excellence
+    core_tech: Core Technologies
+    backend_devops: Backend & DevOps
+    tools_workflow: Tools & Workflow
+
+  logs:
+    title: Development Log
+    subtitle: Recording every step of progress
+    feature: Feature
+    code: Code
+    api: API
+
+  stats:
+    title: GitHub Stats
+    subtitle: My open source contributions and coding activity
+    contribution: Contribution Activity
+    past_year: Past Year
+    top_languages: Top Languages
+    less: Less
+    more: More
+
+  certificates:
+    title: Certificates
+    subtitle: Continuous learning, professional growth
+    view_cert: View Certificate
+
+  contact:
+    title: Want to know more?
+    subtitle: Download my resume for more detailed experience and skills information
+    download_cv_zh: Download CV (Chinese)
+    download_cv_en: Download CV (English)
+    collaborate_title: Ready to collaborate?
+    collaborate_desc: Whether you have a project idea or just want to say hi, I'm always welcome.
+    send_email: Send Email
+    twitter_dm: Twitter DM
 
   blog:
     title: Tech Blog
-    description: Sharing development experiences, insights, and project learnings
+    subtitle: Sharing development experiences, insights, and project learnings
     read_more: Read More
     all: All
     no_posts: No posts yet, stay tuned...
 
-  contact:
-    title: Contact Me
-    subtitle: Have a project idea, opportunity, or just want to say hi? Get in touch!
-    name: Name
-    email: Email
-    subject: Subject
-    message: Message
-    send: Send Message
-    sending: Sending...
-    success: Message sent successfully! I'll get back to you soon.
-    error: Failed to send. Please try again later.
+  gallery:
+    title: Gallery
+    subtitle: Showcasing my design and creative works
+    all: All
+    web: Web Design
+    app: App Interface
+    illustration: Illustration
+    photo: Photography
+    other: Other
 
-    subjects:
-      project: Project Collaboration
-      job: Job Opportunity
-      consulting: Technical Consulting
-      feedback: Feedback
-      other: Other
+  search:
+    title: Search Articles
+    placeholder: Type to search...
+    empty: Start typing to search articles
+    no_results: No results found
+    try_different: Try using different keywords
+    navigate: Navigate
+    open: Open
+    close: Close
 
-    direct_contact: Direct Contact
-    social_media: Social Media
-    availability: Availability
-    reply_time: Usually reply within 24 hours
-    faq: FAQ
+  pwa:
+    install_title: Install App to Home Screen
+    install_desc: Get faster access and offline support
+    install: Install
+    later: Later
+    update_available: A new version is available!
+    update: Update
 
   footer:
+    bio: A developer passionate about creating meaningful solutions, focused on Web technology and user experience.
     copyright: All rights reserved
-    made_with: Made with
-    and: and
-    built: built
+    privacy: Privacy Policy
+    terms: Terms of Service
+
+  post:
+    tags: Tags
+    prev: Previous
+    next: Next
+    back_to_list: Back to Blog
+    comments: Comments & Discussion
+
+  project:
+    demo: Live Demo
+    source: View Source
+    tech_stack: Tech Stack
+    features: Core Features
+    quick_links: Quick Links
+    overview: Overview
+    features_detail: Features Detail
+    screenshots: Screenshots
+    installation: Installation
+    share: Share Project
+    related: Related Projects
+    back: Back to Projects
+    link_copied: Link copied to clipboard!
+
+  offline:
+    title: You are currently offline
+    desc: It seems your network connection has been lost. Please check your connection and try again.
+    reload: Reload
+    tips: Tips
+    tip1: Check if Wi-Fi or mobile data is enabled
+    tip2: Try switching networks or refreshing the page
+    tip3: Some content may be cached for browsing
 
   common:
     back_to_top: Back to top
@@ -91,3 +162,4 @@ en:
     theme: Theme
     dark_mode: Dark Mode
     light_mode: Light Mode
+    uncategorized: Uncategorized

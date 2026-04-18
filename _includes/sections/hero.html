@@ -1,50 +1,51 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
 <section class="hero section" aria-labelledby="hero-heading">
     <div class="container">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
                 <div class="tag mb-2">
-                    👋 {% if page.lang == 'en' %}Welcome to my homepage{% else %}欢迎来到我的个人主页{% endif %}
+                    {{ t.hero.welcome }}
                 </div>
                 <h1 id="hero-heading" class="hero__title">
-                    {% if page.lang == 'en' %}Hi, I'm {% else %}你好，我是 {% endif %}<span class="gradient-text">{{ site.author.name }}</span>
+                    {{ t.hero.hi }} <span class="gradient-text">{{ site.author.name }}</span>
                 </h1>
                 <p class="hero__subtitle">
                     {% if page.lang == 'en' %}{{ site.author.bio_en }}{% else %}{{ site.author.bio_zh }}{% endif %}
                 </p>
-                <div class="flex flex-wrap gap-4 pt-4">
+                <div class="flex flex-wrap gap-4 mt-8">
                     <a href="#projects" class="btn btn--primary btn--lg">
-                        {% if page.lang == 'en' %}View My Work{% else %}查看我的作品{% endif %}
+                        {{ t.hero.view_work }}
                     </a>
                     <a href="{{ site.socials.github.url }}" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--lg">
-                        <i class="{{ site.socials.github.icon }}"></i> GitHub
+                        <i class="{{ site.socials.github.icon }}"></i> {{ t.hero.github }}
                     </a>
                 </div>
             </div>
 
             <div class="flex justify-center relative hide-mobile">
-                <div class="relative w-64 h-64 md:w-80 md:h-80">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-cyan-400 rounded-full opacity-10 blur-3xl animate-pulse-gentle"></div>
-                    <div class="w-full h-full rounded-2xl bg-white dark:bg-gray-800 shadow-2xl flex items-center justify-center relative z-10 border border-gray-100 dark:border-gray-700 rotate-3 hover:rotate-0 transition-all duration-500">
-                        <span class="text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-cyan-500">H</span>
+                <div class="relative" style="width: 20rem; height: 20rem;">
+                    <div class="absolute inset-0 rounded-full opacity-10 blur-3xl animate-pulse-gentle" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));"></div>
+                    <div class="hero__decor-card w-full h-full rounded-xl relative z-10 rotate-3 hover:rotate-0 transition-all duration-500" style="font-size: 5rem; font-weight: 800; justify-content: center;">
+                        <span class="gradient-text" style="font-size: 5rem; font-weight: 800;">H</span>
                     </div>
 
-                    <div class="absolute -top-6 -left-6 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-3 animate-float" style="animation-duration: 3s;">
-                        <div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
+                    <div class="absolute -top-6 -left-6 hero__decor-card animate-float" style="animation-duration: 3s;">
+                        <div class="hero__decor-icon hero__decor-icon--primary">
                             <i class="fa fa-code text-xl"></i>
                         </div>
                         <div>
-                            <div class="text-sm font-bold text-gray-900 dark:text-white">{% if page.lang == 'en' %}Full-Stack{% else %}全栈开发{% endif %}</div>
-                            <div class="text-xs text-gray-500">Web & Mobile</div>
+                            <div class="text-sm font-bold">{{ t.hero.full_stack }}</div>
+                            <div class="text-xs text-muted">Web & Mobile</div>
                         </div>
                     </div>
 
-                    <div class="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-3 animate-float" style="animation-duration: 4s; animation-delay: 1s;">
-                        <div class="w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+                    <div class="absolute -bottom-6 -right-6 hero__decor-card animate-float" style="animation-duration: 4s; animation-delay: 1s;">
+                        <div class="hero__decor-icon hero__decor-icon--success">
                             <i class="fa fa-lightbulb-o text-xl"></i>
                         </div>
                         <div>
-                            <div class="text-sm font-bold text-gray-900 dark:text-white">{% if page.lang == 'en' %}Innovation{% else %}创新思维{% endif %}</div>
-                            <div class="text-xs text-gray-500">Problem Solver</div>
+                            <div class="text-sm font-bold">{{ t.hero.innovation }}</div>
+                            <div class="text-xs text-muted">Problem Solver</div>
                         </div>
                     </div>
                 </div>

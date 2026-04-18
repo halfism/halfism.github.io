@@ -1,126 +1,113 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
 <!-- Navigation Bar -->
-<!-- Version: 2.0 - Based on PROTOTYPE.md -->
 <header id="navbar" class="fixed w-full top-0 z-50 glass-effect transition-colors duration-300">
-    <div class="container mx-auto px-4 md:px-6 py-4">
-        <nav class="flex items-center justify-between">
-            
+    <div class="container px-4 md\:px-6 py-4">
+        <nav class="flex items-center justify-between" aria-label="Main navigation">
+
             <!-- Logo -->
-            <a href="/" class="text-xl font-bold flex items-center gap-2 group">
-                <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white text-sm transition-colors group-hover:bg-primary/80">
+            <a href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}" class="text-xl font-bold flex items-center gap-2 group">
+                <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-inverse text-sm transition-colors group-hover:opacity-80">
                     H
                 </div>
                 <span class="text-primary font-bold">halfism</span>
             </a>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-1">
-                {% if page.lang == 'en' %}
-                <a href="/index_en.html#about" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">About</a>
-                <a href="/index_en.html#projects" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Projects</a>
-                <a href="/index_en.html#skills" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Skills</a>
-                <a href="/index_en.html#logs" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Logs</a>
-                <a href="/index_en.html#certificates" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Certs</a>
-                <a href="/gallery.html" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Gallery</a>
-                <a href="/blog/" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Blog</a>
-                <a href="/index_en.html#contact" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Contact</a>
-                {% else %}
-                <a href="/about/" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">关于</a>
-                <a href="/#projects" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">项目</a>
-                <a href="/#skills" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">技能</a>
-                <a href="/#logs" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">日志</a>
-                <a href="/#certificates" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">证书</a>
-                <a href="/gallery.html" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">相册</a>
-                <a href="/blog/" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">博客</a>
-                <a href="/contact/" class="btn-secondary border-none hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">联系</a>
-                {% endif %}
-                
-                <div class="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-2"></div>
-                
+            <div class="hidden md:flex items-center gap-1">
+                <a href="#about" class="btn btn--secondary border-none text-sm">{{ t.nav.about }}</a>
+                <a href="#projects" class="btn btn--secondary border-none text-sm">{{ t.nav.projects }}</a>
+                <a href="#skills" class="btn btn--secondary border-none text-sm">{{ t.nav.skills }}</a>
+                <a href="#logs" class="btn btn--secondary border-none text-sm">{{ t.nav.logs }}</a>
+                <a href="#certificates" class="btn btn--secondary border-none text-sm">{{ t.nav.certificates }}</a>
+                <a href="/gallery.html" class="btn btn--secondary border-none text-sm">{{ t.nav.gallery }}</a>
+                <a href="/blog/" class="btn btn--secondary border-none text-sm">{{ t.nav.blog }}</a>
+                <a href="#contact" class="btn btn--secondary border-none text-sm">{{ t.nav.contact }}</a>
+
+                <div class="h-6 w-px bg-secondary mx-2" style="background-color: var(--color-border);"></div>
+
                 <div class="flex items-center gap-4">
-                    
+
                     <!-- Language Switcher -->
                     <div class="relative group">
-                        <button class="flex items-center text-gray-500 hover:text-gray-900 dark:hover:text-gray-300 transition-colors focus:outline-none py-2">
+                        <button class="flex items-center text-muted hover:text-primary transition-colors focus:outline-none py-2" aria-label="{{ t.nav.language }}" aria-haspopup="true">
                             <i class="fa fa-language text-lg" aria-hidden="true"></i>
-                            <i class="fa fa-chevron-down ml-1 text-[10px] opacity-50"></i>
+                            <i class="fa fa-chevron-down ml-1 text-xs opacity-50"></i>
                         </button>
-                        
-                        <div class="absolute right-0 mt-0 w-32 bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-md shadow-lg py-1 hidden group-hover:block z-50">
-                            <a href="/" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 flex justify-between items-center">
+
+                        <div class="absolute right-0 mt-0 w-32 bg-card border shadow-lg py-1 hidden group-hover:block z-50 rounded-md" style="border-color: var(--color-border);">
+                            {% if page.lang == 'en' %}
+                            <a href="/" class="block px-4 py-2 text-sm text-secondary hover:bg-tertiary flex justify-between items-center">
                                 简体中文
-                                {% unless page.lang == 'en' %}<i class="fa fa-check text-primary text-xs"></i>{% endunless %}
+                                <i class="fa fa-check text-primary text-xs"></i>
                             </a>
-                            <a href="/index_en.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 flex justify-between items-center">
+                            <a href="/en/" class="block px-4 py-2 text-sm text-secondary hover:bg-tertiary flex justify-between items-center">
                                 English
-                                {% if page.lang == 'en' %}<i class="fa fa-check text-primary text-xs"></i>{% endif %}
                             </a>
+                            {% else %}
+                            <a href="/" class="block px-4 py-2 text-sm text-secondary hover:bg-tertiary flex justify-between items-center">
+                                简体中文
+                            </a>
+                            <a href="/en/" class="block px-4 py-2 text-sm text-secondary hover:bg-tertiary flex justify-between items-center">
+                                English
+                                <i class="fa fa-check text-primary text-xs"></i>
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
 
                     <!-- Theme Toggle Switch -->
-                    <button onclick="toggleTheme()" class="relative inline-flex items-center h-6 rounded-full w-11 bg-gray-200 dark:bg-gray-700 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
-                        <span class="sr-only">Toggle Dark Mode</span>
-                        <span id="theme-switch-knob" class="inline-block w-4 h-4 transform bg-white rounded-full transition-transform duration-200 ease-in-out translate-x-1 flex items-center justify-center">
-                            <i id="theme-switch-icon" class="fa fa-sun-o text-[10px] text-yellow-500"></i>
+                    <button onclick="toggleTheme()" class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none" style="background-color: var(--color-bg-tertiary);" aria-label="{{ t.nav.toggle_theme }}" aria-pressed="false" id="theme-toggle-btn">
+                        <span class="sr-only">{{ t.nav.toggle_theme }}</span>
+                        <span id="theme-switch-knob" class="inline-block w-4 h-4 transform bg-inverse rounded-full transition-transform duration-200 ease-in-out translate-x-1 flex items-center justify-center">
+                            <i id="theme-switch-icon" class="fa fa-sun-o text-xs" style="color: #f59e0b;"></i>
                         </span>
                     </button>
-                    
+
                     <!-- GitHub Link -->
-                    <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 dark:hover:text-gray-300 transition-colors" aria-label="GitHub">
+                    <a href="https://github.com/{{ site.socials.github.username }}" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary transition-colors" aria-label="GitHub">
                         <i class="fa fa-github text-lg"></i>
                     </a>
 
                     <!-- Search Button -->
-                    <button onclick="openSearchModal()" class="text-gray-500 hover:text-gray-900 dark:hover:text-gray-300 transition-colors focus:outline-none" aria-label="搜索 (Ctrl+K)">
+                    <button onclick="openSearchModal()" class="text-muted hover:text-primary transition-colors focus:outline-none" aria-label="{{ t.nav.search }} (Ctrl+K)">
                         <i class="fa fa-search text-lg"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="menu-toggle" class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle menu">
+            <button id="menu-toggle" class="md:hidden text-secondary focus:outline-none p-2 rounded hover:bg-tertiary" aria-label="{{ t.nav.toggle_theme }}" aria-expanded="false">
                 <i class="fa fa-bars text-xl"></i>
             </button>
         </nav>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 border-t border-gray-100 dark:border-gray-800">
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 border-t" style="border-color: var(--color-border-light);">
             <div class="flex flex-col space-y-1 mt-2">
-                {% if page.lang == 'en' %}
-                <a href="/index_en.html#about" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">About</a>
-                <a href="/index_en.html#projects" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">Projects</a>
-                <a href="/index_en.html#skills" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">Skills</a>
-                <a href="/index_en.html#logs" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">Logs</a>
-                <a href="/index_en.html#certificates" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">Certificates</a>
-                <a href="/gallery.html" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">Gallery</a>
-                <a href="/blog/" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">Blog</a>
-                <a href="/index_en.html#contact" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">Contact</a>
-                {% else %}
-                <a href="/#about" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">关于</a>
-                <a href="/#projects" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">项目</a>
-                <a href="/#skills" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">技能</a>
-                <a href="/#logs" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">日志</a>
-                <a href="/#certificates" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">证书</a>
-                <a href="/gallery.html" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">相册</a>
-                <a href="/blog/" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">博客</a>
-                <a href="/#contact" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">联系</a>
-                {% endif %}
-                
-                <div class="border-t border-gray-100 dark:border-gray-800 my-2"></div>
-                
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium flex items-center gap-2">
+                <a href="#about" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.about }}</a>
+                <a href="#projects" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.projects }}</a>
+                <a href="#skills" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.skills }}</a>
+                <a href="#logs" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.logs }}</a>
+                <a href="#certificates" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.certificates }}</a>
+                <a href="/gallery.html" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.gallery }}</a>
+                <a href="/blog/" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.blog }}</a>
+                <a href="#contact" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.contact }}</a>
+
+                <div class="border-t my-2" style="border-color: var(--color-border-light);"></div>
+
+                <a href="https://github.com/{{ site.socials.github.username }}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium flex items-center gap-2">
                     <i class="fa fa-github"></i> GitHub
                 </a>
-                
-                <button onclick="toggleTheme()" class="w-full text-left px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium flex items-center gap-2">
-                    <i id="theme-icon-mobile" class="fa fa-moon-o"></i> 
-                    {% if page.lang == 'en' %}Toggle Theme{% else %}切换主题{% endif %}
+
+                <button onclick="toggleTheme()" class="w-full text-left px-4 py-2 rounded hover:bg-tertiary text-sm font-medium flex items-center gap-2">
+                    <i id="theme-icon-mobile" class="fa fa-moon-o"></i>
+                    {{ t.nav.toggle_theme }}
                 </button>
-                
+
                 {% if page.lang == 'en' %}
-                <a href="/" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">切换到中文</a>
+                <a href="/" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.switch_lang }}</a>
                 {% else %}
-                <a href="/index_en.html" class="px-4 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">Switch to English</a>
+                <a href="/en/" class="px-4 py-2 rounded hover:bg-tertiary text-sm font-medium">{{ t.nav.switch_lang }}</a>
                 {% endif %}
             </div>
         </div>

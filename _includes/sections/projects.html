@@ -1,12 +1,13 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
 <section id="projects" class="section" aria-labelledby="projects-heading">
     <div class="container">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-                <h2 id="projects-heading">{% if page.lang == 'en' %}Featured Projects{% else %}精选项目{% endif %}</h2>
-                <p class="text-gray-500 dark:text-gray-400 mt-2">{% if page.lang == 'en' %}Explore some of my recent work{% else %}探索我的一些近期作品和贡献{% endif %}</p>
+                <h2 id="projects-heading">{{ t.projects.title }}</h2>
+                <p class="text-muted mt-2">{{ t.projects.subtitle }}</p>
             </div>
-            <a href="{{ site.socials.github.url }}?tab=repositories" target="_blank" rel="noopener noreferrer" class="font-medium hover:opacity-80 flex items-center gap-2 group" style="color: var(--color-primary);">
-                {% if page.lang == 'en' %}View All Projects{% else %}查看所有项目{% endif %} <i class="fa fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            <a href="{{ site.socials.github.url }}?tab=repositories" target="_blank" rel="noopener noreferrer" class="font-medium hover:opacity-80 flex items-center gap-2 group text-primary">
+                {{ t.projects.view_all }} <i class="fa fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </a>
         </div>
 
@@ -14,8 +15,8 @@
             {% for project in site.data.projects %}
             <article class="project-card">
                 <div class="project-card__image">
-                    <img src="{{ project.image }}" alt="{{ project.title_zh }}" loading="lazy">
-                    <div class="absolute top-3 right-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+                    <img src="{{ project.image }}" alt="{% if page.lang == 'en' %}{{ project.title_en }}{% else %}{{ project.title_zh }}{% endif %}" loading="lazy" width="600" height="400">
+                    <div class="absolute top-3 right-3 bg-card px-3 py-1 rounded-full text-xs font-medium border" style="border-color: var(--color-border); backdrop-filter: blur(4px);">
                         {{ project.category }}
                     </div>
                 </div>
@@ -31,12 +32,12 @@
                         <span class="tag">{{ tag }}</span>
                         {% endfor %}
                     </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
-                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <div class="flex items-center justify-between pt-4 border-t" style="border-color: var(--color-border-light);">
+                        <div class="flex items-center gap-4 text-sm text-muted">
                             <span><i class="fa fa-star mr-1"></i> {{ project.stars }}</span>
                             <span><i class="fa fa-code-fork mr-1"></i> {{ project.forks }}</span>
                         </div>
-                        <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors" style="--tw-text-opacity: 1;">
+                        <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary transition-colors">
                             <i class="fa fa-github text-xl"></i>
                         </a>
                     </div>

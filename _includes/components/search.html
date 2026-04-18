@@ -1,3 +1,4 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
 <!-- Search Modal -->
 <div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
     <div class="search-modal__overlay" onclick="closeSearchModal()"></div>
@@ -6,9 +7,9 @@
         <div class="search-modal__header">
             <h2 id="search-title">
                 <i class="fa fa-search"></i>
-                搜索文章
+                {{ t.search.title }}
             </h2>
-            <button onclick="closeSearchModal()" class="search-modal__close" aria-label="关闭搜索">
+            <button onclick="closeSearchModal()" class="search-modal__close" aria-label="{{ t.search.close }}">
                 <i class="fa fa-times"></i>
             </button>
         </div>
@@ -19,7 +20,7 @@
                 type="text"
                 id="search-input"
                 class="search-modal__input"
-                placeholder="输入关键词搜索..."
+                placeholder="{{ t.search.placeholder }}"
                 autocomplete="off"
                 autofocus
             >
@@ -29,15 +30,15 @@
         <div id="search-results" class="search-results">
             <div class="search-results__empty">
                 <i class="fa fa-file-text-o"></i>
-                <p>开始输入以搜索文章</p>
+                <p>{{ t.search.empty }}</p>
             </div>
         </div>
 
         <div class="search-modal__footer">
             <div class="search-tips">
-                <span><kbd>↑↓</kbd> 导航</span>
-                <span><kbd>↵</kbd> 打开</span>
-                <span><kbd>ESC</kbd> 关闭</span>
+                <span><kbd>↑↓</kbd> {{ t.search.navigate }}</span>
+                <span><kbd>↵</kbd> {{ t.search.open }}</span>
+                <span><kbd>ESC</kbd> {{ t.search.close }}</span>
             </div>
         </div>
     </div>
@@ -76,28 +77,17 @@
         width: 90%;
         max-width: 640px;
         max-height: 70vh;
-        background: white;
+        background: var(--color-bg-card);
         border-radius: 16px;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         overflow: hidden;
         animation: slideDown 0.3s ease-out;
+        border: 1px solid var(--color-border);
     }
 
     @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    [data-theme="dark"] .search-modal__container,
-    .dark .search-modal__container {
-        background: #1e293b;
-        border: 1px solid #334155;
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .search-modal__header {
@@ -188,19 +178,9 @@
         padding: 0 12px 12px;
     }
 
-    .search-results::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    .search-results::-webkit-scrollbar-track {
-        background: var(--color-bg-tertiary);
-        border-radius: 4px;
-    }
-
-    .search-results::-webkit-scrollbar-thumb {
-        background: var(--color-border);
-        border-radius: 4px;
-    }
+    .search-results::-webkit-scrollbar { width: 8px; }
+    .search-results::-webkit-scrollbar-track { background: var(--color-bg-tertiary); border-radius: 4px; }
+    .search-results::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
 
     .search-results__empty {
         text-align: center;
@@ -230,30 +210,9 @@
         border-color: var(--color-border);
     }
 
-    .search-result-item__title {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--color-text);
-        margin-bottom: 6px;
-        line-height: 1.4;
-    }
-
-    .search-result-item__meta {
-        display: flex;
-        gap: 12px;
-        font-size: 13px;
-        color: var(--color-text-muted);
-        margin-bottom: 8px;
-    }
-
-    .search-result-item__category {
-        background: var(--color-primary);
-        color: white;
-        padding: 2px 8px;
-        border-radius: 10px;
-        font-size: 11px;
-        font-weight: 500;
-    }
+    .search-result-item__title { font-size: 16px; font-weight: 600; color: var(--color-text); margin-bottom: 6px; line-height: 1.4; }
+    .search-result-item__meta { display: flex; gap: 12px; font-size: 13px; color: var(--color-text-muted); margin-bottom: 8px; }
+    .search-result-item__category { background: var(--color-primary); color: white; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; }
 
     .search-result-item__excerpt {
         font-size: 14px;
@@ -266,12 +225,7 @@
         -webkit-box-orient: vertical;
     }
 
-    .search-result-item mark {
-        background: #fef08a;
-        color: inherit;
-        padding: 0 2px;
-        border-radius: 2px;
-    }
+    .search-result-item mark { background: #fef08a; color: inherit; padding: 0 2px; border-radius: 2px; }
 
     .search-modal__footer {
         padding: 12px 24px;
@@ -279,233 +233,103 @@
         background: var(--color-bg-secondary);
     }
 
-    .search-tips {
-        display: flex;
-        gap: 20px;
-        font-size: 13px;
-        color: var(--color-text-muted);
-    }
+    .search-tips { display: flex; gap: 20px; font-size: 13px; color: var(--color-text-muted); }
+    .search-tips kbd { padding: 2px 6px; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 4px; font-family: monospace; font-size: 11px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); }
 
-    .search-tips kbd {
-        padding: 2px 6px;
-        background: white;
-        border: 1px solid var(--color-border);
-        border-radius: 4px;
-        font-family: monospace;
-        font-size: 11px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
+    .search-no-results { text-align: center; padding: 40px 20px; color: var(--color-text-muted); }
+    .search-no-results i { font-size: 40px; margin-bottom: 12px; display: block; opacity: 0.5; }
 
-    /* Loading State */
-    .search-loading {
-        text-align: center;
-        padding: 40px;
-        color: var(--color-text-muted);
-    }
-
-    .spinner {
-        width: 32px;
-        height: 32px;
-        border: 3px solid var(--color-border);
-        border-top-color: var(--color-primary);
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-        margin: 0 auto 12px;
-    }
-
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-
-    /* No Results */
-    .search-no-results {
-        text-align: center;
-        padding: 40px 20px;
-        color: var(--color-text-muted);
-    }
-
-    .search-no-results i {
-        font-size: 40px;
-        margin-bottom: 12px;
-        display: block;
-        opacity: 0.5;
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 
 <script>
 let searchData = [];
 let selectedIndex = -1;
+const SEARCH_I18N = {
+    noResults: "{{ t.search.no_results }}",
+    tryDifferent: "{{ t.search.try_different }}"
+};
 
-// Initialize Search Modal
 function initSearch() {
-    // Load search data
     fetch('/search.json')
         .then(response => response.json())
-        .then(data => {
-            searchData = data;
-        })
+        .then(data => { searchData = data; })
         .catch(error => console.error('Error loading search data:', error));
 
-    // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
-        // Ctrl/Cmd + K to open search
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
             openSearchModal();
         }
-
-        // Escape to close
-        if (e.key === 'Escape') {
-            closeSearchModal();
-        }
-
-        // Arrow navigation when modal is open
+        if (e.key === 'Escape') closeSearchModal();
         if (document.getElementById('search-modal').classList.contains('active')) {
             const results = document.querySelectorAll('.search-result-item');
-
-            if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                selectedIndex = Math.min(selectedIndex + 1, results.length - 1);
-                updateSelectedResult(results);
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                selectedIndex = Math.max(selectedIndex - 1, -1);
-                updateSelectedResult(results);
-            } else if (e.key === 'Enter' && selectedIndex >= 0) {
-                e.preventDefault();
-                results[selectedIndex].click();
-            }
+            if (e.key === 'ArrowDown') { e.preventDefault(); selectedIndex = Math.min(selectedIndex + 1, results.length - 1); updateSelectedResult(results); }
+            else if (e.key === 'ArrowUp') { e.preventDefault(); selectedIndex = Math.max(selectedIndex - 1, -1); updateSelectedResult(results); }
+            else if (e.key === 'Enter' && selectedIndex >= 0) { e.preventDefault(); results[selectedIndex].click(); }
         }
     });
 
-    // Search input handler
     const searchInput = document.getElementById('search-input');
     let debounceTimer;
-
     searchInput.addEventListener('input', (e) => {
         clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-            performSearch(e.target.value);
-        }, 200);
+        debounceTimer = setTimeout(() => performSearch(e.target.value), 200);
     });
 }
 
 function openSearchModal() {
-    const modal = document.getElementById('search-modal');
-    modal.classList.add('active');
+    document.getElementById('search-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
     document.getElementById('search-input').focus();
     selectedIndex = -1;
 }
 
 function closeSearchModal() {
-    const modal = document.getElementById('search-modal');
-    modal.classList.remove('active');
+    document.getElementById('search-modal').classList.remove('active');
     document.body.style.overflow = '';
     document.getElementById('search-input').value = '';
     resetResults();
 }
 
 function performSearch(query) {
-    const resultsContainer = document.getElementById('search-results');
-
-    if (!query.trim()) {
-        resetResults();
-        return;
-    }
-
-    const normalizedQuery = query.toLowerCase().trim();
-
-    // Filter and rank results
-    const results = searchData
-        .map(item => {
-            const titleMatch = item.title.toLowerCase().includes(normalizedQuery);
-            const contentMatch = item.content.toLowerCase().includes(normalizedQuery);
-            const excerptMatch = item.excerpt.toLowerCase().includes(normalizedQuery);
-            const tagMatch = item.tags.some(tag =>
-                tag.toLowerCase().includes(normalizedQuery)
-            );
-
-            let score = 0;
-            if (titleMatch) score += 10; // Title matches are most important
-            if (tagMatch) score += 5;
-            if (excerptMatch) score += 3;
-            if (contentMatch) score += 1;
-
-            return { ...item, score };
-        })
-        .filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 10); // Limit to 10 results
+    const container = document.getElementById('search-results');
+    if (!query.trim()) { resetResults(); return; }
+    const nq = query.toLowerCase().trim();
+    const results = searchData.map(item => {
+        let score = 0;
+        if (item.title.toLowerCase().includes(nq)) score += 10;
+        if (item.tags.some(t => t.toLowerCase().includes(nq))) score += 5;
+        if (item.excerpt.toLowerCase().includes(nq)) score += 3;
+        if (item.content.toLowerCase().includes(nq)) score += 1;
+        return { ...item, score };
+    }).filter(item => item.score > 0).sort((a, b) => b.score - a.score).slice(0, 10);
 
     if (results.length === 0) {
-        resultsContainer.innerHTML = `
-            <div class="search-no-results">
-                <i class="fa fa-search-minus"></i>
-                <p>未找到 "${escapeHtml(query)}" 相关结果</p>
-                <p style="font-size: 13px; margin-top: 8px;">尝试使用不同的关键词</p>
-            </div>
-        `;
+        container.innerHTML = '<div class="search-no-results"><i class="fa fa-search-minus"></i><p>' + SEARCH_I18N.noResults + ' "' + escapeHtml(query) + '"</p><p style="font-size:13px;margin-top:8px;">' + SEARCH_I18N.tryDifferent + '</p></div>';
         return;
     }
-
-    resultsContainer.innerHTML = results.map((item, index) => `
-        <div class="search-result-item ${index === selectedIndex ? 'active' : ''}"
-             onclick="window.location.href='${item.url}'"
-             data-index="${index}">
-            <div class="search-result-item__title">${highlightText(item.title, query)}</div>
-            <div class="search-result-item__meta">
-                <span>${item.date}</span>
-                <span class="search-result-item__category">${item.category}</span>
-            </div>
-            <div class="search-result-item__excerpt">${highlightText(item.excerpt, query)}</div>
-        </div>
-    `).join('');
-
+    container.innerHTML = results.map((item, i) => '<div class="search-result-item" onclick="window.location.href=\'' + item.url + '\'" data-index="' + i + '"><div class="search-result-item__title">' + highlightText(item.title, query) + '</div><div class="search-result-item__meta"><span>' + item.date + '</span><span class="search-result-item__category">' + item.category + '</span></div><div class="search-result-item__excerpt">' + highlightText(item.excerpt, query) + '</div></div>').join('');
     selectedIndex = -1;
 }
 
 function highlightText(text, query) {
     if (!query) return escapeHtml(text);
-
-    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
-    return escapeHtml(text).replace(regex, '<mark>$1</mark>');
+    return escapeHtml(text).replace(new RegExp('(' + escapeRegex(query) + ')', 'gi'), '<mark>$1</mark>');
 }
 
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-function escapeRegex(string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
+function escapeHtml(text) { const d = document.createElement('div'); d.textContent = text; return d.innerHTML; }
+function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
 function updateSelectedResult(results) {
-    results.forEach((result, index) => {
-        result.classList.toggle('active', index === selectedIndex);
-    });
-
-    // Scroll selected result into view
-    if (selectedIndex >= 0 && results[selectedIndex]) {
-        results[selectedIndex].scrollIntoView({
-            block: 'nearest',
-            behavior: 'smooth'
-        });
-    }
+    results.forEach((r, i) => r.classList.toggle('active', i === selectedIndex));
+    if (selectedIndex >= 0 && results[selectedIndex]) results[selectedIndex].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 function resetResults() {
-    document.getElementById('search-results').innerHTML = `
-        <div class="search-results__empty">
-            <i class="fa fa-file-text-o"></i>
-            <p>开始输入以搜索文章</p>
-        </div>
-    `;
+    document.getElementById('search-results').innerHTML = '<div class="search-results__empty"><i class="fa fa-file-text-o"></i><p>{{ t.search.empty }}</p></div>';
     selectedIndex = -1;
 }
 
-// Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', initSearch);
 </script>

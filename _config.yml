@@ -52,10 +52,27 @@ seo:
     - full-stack
     - open source
     - web development
+  social:
+    name: halfism
+    links:
+      - https://github.com/halfism
+      - https://twitter.com/halfism_dev
+      - https://linkedin.com/in/halfism
 
 # Localization settings
-languages: ["en", "zh"]
+languages: ["zh", "en"]
 default_lang: "zh"
+
+# Default page settings
+defaults:
+  - scope:
+      path: ""
+    values:
+      lang: "zh"
+  - scope:
+      path: "en"
+    values:
+      lang: "en"
 
 # Analytics Settings
 google_analytics:
@@ -93,10 +110,13 @@ permalink: pretty
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing
 exclude:
   - README.md
+  - RELEASE_NOTES.md
+  - SETUP.md
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -106,3 +126,7 @@ exclude:
   - vendor/ruby/
   - static/
   - .gitignore
+  - .idea/
+  - .lingma/
+  - .qoder/
+  - .trae/

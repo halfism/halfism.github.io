@@ -1,10 +1,9 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
 <section id="certificates" class="section" aria-labelledby="certificates-heading">
     <div class="container">
         <div class="text-center mb-16">
-            <h2 id="certificates-heading">{% if page.lang == 'en' %}Certificates{% else %}专业认证{% endif %}</h2>
-            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-2">
-                {% if page.lang == 'en' %}Continuous learning, professional growth{% else %}持续学习，专业成长{% endif %}
-            </p>
+            <h2 id="certificates-heading">{{ t.certificates.title }}</h2>
+            <p class="text-secondary max-w-2xl mx-auto mt-2">{{ t.certificates.subtitle }}</p>
             <div class="w-16 h-1 mx-auto rounded-full mt-4" style="background-color: var(--color-primary);"></div>
         </div>
 
@@ -12,19 +11,19 @@
             {% for cert in site.data.certificates %}
             <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" class="certificate-card">
                 <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-lg {{ cert.color }} flex items-center justify-center">
+                    <div class="hero__decor-icon" style="background-color: var(--color-bg-info); color: var(--color-text-info);">
                         <i class="fa {{ cert.icon }} text-xl"></i>
                     </div>
                     <div>
-                        <span class="text-xs text-gray-500 dark:text-gray-400">{{ cert.date }}</span>
-                        <div class="text-sm font-medium" style="color: var(--color-primary);">{{ cert.issuer }}</div>
+                        <span class="text-xs text-muted">{{ cert.date }}</span>
+                        <div class="text-sm font-medium text-primary">{{ cert.issuer }}</div>
                     </div>
                 </div>
-                <h3 class="font-bold text-gray-900 dark:text-white mb-2">
+                <h3 class="font-bold mb-2">
                     {% if page.lang == 'en' %}{{ cert.title_en }}{% else %}{{ cert.title_zh }}{% endif %}
                 </h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                    {% if page.lang == 'en' %}View Certificate{% else %}查看证书{% endif %} →
+                <p class="text-sm text-muted">
+                    {{ t.certificates.view_cert }} &rarr;
                 </p>
             </a>
             {% endfor %}

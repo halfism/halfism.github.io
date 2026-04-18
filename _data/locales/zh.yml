@@ -1,7 +1,7 @@
 zh:
   nav:
     home: 首页
-    about: 关于我
+    about: 关于
     projects: 项目
     skills: 技能
     logs: 日志
@@ -10,6 +10,8 @@ zh:
     blog: 博客
     contact: 联系
     search: 搜索
+    toggle_theme: 切换主题
+    switch_lang: Switch to English
 
   hero:
     welcome: 欢迎来到我的个人主页
@@ -17,70 +19,139 @@ zh:
     subtitle: 一位热爱通过代码创造有意义且高效解决方案的开发者
     view_work: 查看我的作品
     github: GitHub
+    full_stack: 全栈开发
+    innovation: 创新思维
 
   about:
     title: 关于我
-    bio: 个人简介
-    skills: 技能专长
-    core_skills: 核心技能
-    backend: 后端技术
-    dev_tools: 开发工具
-    languages: 编程语言分布
-    experience: 经历时间线
-    fun_facts: 有趣的事实
-    collaborate: 想一起合作？
-    contact_me: 联系我
-    view_github: 查看 GitHub
+    subtitle: 了解我的故事
+    p1: 你好！我是
+    p1_suffix: ，一位对创造高效、美观且实用软件充满热情的开发者。我喜欢解决复杂问题，并通过代码将想法变为现实。
+    p2: 我的编程之旅始于几年前，从那时起我就一直在不断学习和扩展自己的技能。我相信应该编写干净、可维护的代码，并遵循最佳实践来交付高质量的解决方案。
+    p3: 当我不在编码时，你可能会发现我在探索新技术、为开源项目做贡献，或者与开发者社区分享我的知识。
+    open_source: 开源贡献
+    open_source_desc: 积极参与各种开源项目，并维护自己的代码仓库
+    lifelong_learning: 终身学习
+    lifelong_learning_desc: 不断扩展知识面，紧跟最新技术趋势
+    team_collab: 团队协作
+    team_collab_desc: 喜欢在团队中工作，参与协作开发项目
 
   projects:
     title: 精选项目
-    view_all: 查看全部项目
+    subtitle: 探索我的一些近期作品和贡献
+    view_all: 查看所有项目
     demo: 在线演示
     source_code: 源代码
-    stars: Stars
-    forks: Forks
 
   skills:
     title: 我的技能
-    description: 多年积累的技术栈和工具链
+    subtitle: 不断学习，追求卓越
+    core_tech: 核心技术
+    backend_devops: 后端与运维
+    tools_workflow: 工具与流程
+
+  logs:
+    title: 项目迭代日志
+    subtitle: 记录每一次进步与改变
+    feature: 功能
+    code: 代码
+    api: API
+
+  stats:
+    title: GitHub 统计
+    subtitle: 我的开源贡献与编码活动
+    contribution: 贡献活动
+    past_year: 过去一年
+    top_languages: 常用技术栈
+    less: 少
+    more: 多
+
+  certificates:
+    title: 专业认证
+    subtitle: 持续学习，专业成长
+    view_cert: 查看证书
+
+  contact:
+    title: 想要了解更多？
+    subtitle: 下载我的简历，获取更详细的经历与技能信息
+    download_cv_zh: 下载简历 (中文)
+    download_cv_en: Download CV (English)
+    collaborate_title: 准备好开始合作了吗？
+    collaborate_desc: 无论您是有项目想法，还是只想打个招呼，我都随时欢迎。
+    send_email: 发送邮件
+    twitter_dm: Twitter 私信
 
   blog:
     title: 技术博客
-    description: 分享开发经验、技术见解和项目心得
+    subtitle: 分享开发经验、技术见解和项目心得
     read_more: 阅读更多
     all: 全部
     no_posts: 暂无文章，敬请期待...
 
-  contact:
-    title: 联系我
-    subtitle: 有项目想法、合作机会或只是想打个招呼？欢迎联系！
-    name: 姓名
-    email: 邮箱
-    subject: 主题
-    message: 留言内容
-    send: 发送消息
-    sending: 发送中...
-    success: 消息发送成功！我会尽快回复您。
-    error: 发送失败，请稍后重试。
+  gallery:
+    title: 作品画廊
+    subtitle: 展示我的设计与创意作品
+    all: 全部
+    web: Web设计
+    app: App界面
+    illustration: 插画
+    photo: 摄影
+    other: 其他
 
-    subjects:
-      project: 项目合作
-      job: 工作机会
-      consulting: 技术咨询
-      feedback: 反馈建议
-      other: 其他
+  search:
+    title: 搜索文章
+    placeholder: 输入关键词搜索...
+    empty: 开始输入以搜索文章
+    no_results: 未找到相关结果
+    try_different: 尝试使用不同的关键词
+    navigate: 导航
+    open: 打开
+    close: 关闭
 
-    direct_contact: 直接联系
-    social_media: 社交媒体
-    availability: 可用时间
-    reply_time: 通常在 24 小时内回复
-    faq: 常见问题
+  pwa:
+    install_title: 安装应用到主屏幕
+    install_desc: 获取更快的访问体验，支持离线使用
+    install: 安装
+    later: 稍后
+    update_available: 发现新版本可用！
+    update: 更新
 
   footer:
+    bio: 热衷于创造有意义解决方案的开发者，专注于 Web 技术与用户体验。
     copyright: 版权所有
-    made_with: 用
-    and: 和
-    built: 构建
+    privacy: 隐私政策
+    terms: 服务条款
+
+  post:
+    tags: 标签
+    prev: 上一篇
+    next: 下一篇
+    back_to_list: 返回博客列表
+    comments: 评论与讨论
+
+  project:
+    demo: 在线演示
+    source: 查看源码
+    tech_stack: 技术栈
+    features: 核心功能
+    quick_links: 快速链接
+    overview: 项目概述
+    features_detail: 功能详情
+    screenshots: 截图展示
+    installation: 安装指南
+    share: 分享项目
+    related: 相关项目
+    back: 返回项目列表
+    link_copied: 链接已复制到剪贴板！
+
+  offline:
+    title: 您当前处于离线状态
+    desc: 看起来您的网络连接已断开。请检查网络连接后重试。
+    reload: 重新加载
+    tips: 提示
+    tip1: 检查 Wi-Fi 或移动数据是否开启
+    tip2: 尝试切换网络或刷新页面
+    tip3: 部分内容可能已缓存可供浏览
 
   common:
     back_to_top: 返回顶部
@@ -91,3 +162,4 @@ zh:
     theme: 主题
     dark_mode: 暗色模式
     light_mode: 亮色模式
+    uncategorized: 未分类

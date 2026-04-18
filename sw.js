@@ -3,9 +3,9 @@
  * Implements caching strategies for offline access
  */
 
-const CACHE_NAME = 'halfism-v1';
-const STATIC_CACHE = 'static-v1';
-const DYNAMIC_CACHE = 'dynamic-v1';
+const CACHE_NAME = 'halfism-v2';
+const STATIC_CACHE = 'static-v2';
+const DYNAMIC_CACHE = 'dynamic-v2';
 
 // Assets to pre-cache during installation
 const PRECACHE_ASSETS = [
@@ -15,12 +15,11 @@ const PRECACHE_ASSETS = [
     '/contact/',
     '/manifest.json',
     '/assets/css/style.css',
-    '/assets/js/main.js',
-    '/assets/js/i18n.js'
+    '/assets/js/main.js'
 ];
 
 // External resources to cache (CDN)
-const EXTERNAL_CACHE = 'external-v1';
+const EXTERNAL_CACHE = 'external-v2';
 const EXTERNAL_URLS = [
     'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css',
     'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX' // Will be replaced with actual GA ID

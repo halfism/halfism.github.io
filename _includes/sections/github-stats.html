@@ -1,10 +1,9 @@
-<section class="section bg-gray-50 dark:bg-[#0d1117]/50 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300" aria-labelledby="stats-heading">
+{% assign t = site.data.locales[page.lang][page.lang] %}
+<section class="section section--alt" aria-labelledby="stats-heading">
     <div class="container">
         <div class="text-center mb-16">
-            <h2 id="stats-heading">{% if page.lang == 'en' %}GitHub Stats{% else %}GitHub 统计{% endif %}</h2>
-            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-2">
-                {% if page.lang == 'en' %}My open source contributions and coding activity{% else %}我的开源贡献与编码活动{% endif %}
-            </p>
+            <h2 id="stats-heading">{{ t.stats.title }}</h2>
+            <p class="text-secondary max-w-2xl mx-auto mt-2">{{ t.stats.subtitle }}</p>
             <div class="w-16 h-1 mx-auto rounded-full mt-4" style="background-color: var(--color-primary);"></div>
         </div>
 
@@ -13,58 +12,58 @@
                 <!-- Stats Card -->
                 <div class="gh-stats-card animate-on-scroll">
                     <div class="flex items-center gap-3 mb-6">
-                        <i class="fa fa-github text-2xl text-white"></i>
-                        <span class="text-white font-bold text-lg">{{ site.socials.github.username }}</span>
+                        <i class="fa fa-github text-2xl text-inverse"></i>
+                        <span class="text-inverse font-bold text-lg">{{ site.socials.github.username }}</span>
                     </div>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="stat-item">
-                            <i class="fa fa-star text-yellow-400"></i>
+                            <i class="fa fa-star" style="color: #facc15;"></i>
                             <div class="stat-item__value">1.2k+</div>
-                            <div class="stat-item__label">{% if page.lang == 'en' %}Stars{% else %}Stars{% endif %}</div>
+                            <div class="stat-item__label">Stars</div>
                         </div>
                         <div class="stat-item">
-                            <i class="fa fa-code-fork text-blue-400"></i>
+                            <i class="fa fa-code-fork" style="color: #60a5fa;"></i>
                             <div class="stat-item__value">300+</div>
-                            <div class="stat-item__label">{% if page.lang == 'en' %}Forks{% else %}Forks{% endif %}</div>
+                            <div class="stat-item__label">Forks</div>
                         </div>
                         <div class="stat-item">
-                            <i class="fa fa-code-commit text-green-400"></i>
+                            <i class="fa fa-code-commit" style="color: #4ade80;"></i>
                             <div class="stat-item__value">2k+</div>
-                            <div class="stat-item__label">{% if page.lang == 'en' %}Commits{% else %}Commits{% endif %}</div>
+                            <div class="stat-item__label">Commits</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Contribution Graph Placeholder -->
+                <!-- Contribution Graph -->
                 <div class="card animate-on-scroll animate-delay-100">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-bold">{% if page.lang == 'en' %}Contribution Activity{% else %}贡献活动{% endif %}</h3>
-                        <span class="text-sm text-gray-500">{% if page.lang == 'en' %}Past year{% else %}过去一年{% endif %}</span>
+                        <h3 class="font-bold">{{ t.stats.contribution }}</h3>
+                        <span class="text-sm text-muted">{{ t.stats.past_year }}</span>
                     </div>
                     <div class="grid grid-cols-12 gap-1">
                         {% for i in (1..48) %}
-                        <div class="h-3 rounded-sm bg-green-{% cycle '200', '300', '400', '500' %} dark:bg-green-{% cycle '900/20', '800/30', '700/40', '500/60' %}" style="min-height: 12px;"></div>
+                        <div class="h-3 rounded-sm" style="min-height: 12px; background-color: {% cycle 'rgba(34, 197, 94, 0.15)', 'rgba(34, 197, 94, 0.2)', 'rgba(34, 197, 94, 0.3)', 'rgba(34, 197, 94, 0.5)' %};"></div>
                         {% endfor %}
                     </div>
-                    <div class="mt-4 flex items-center gap-4 text-sm text-gray-500">
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-green-200 dark:bg-green-800/30"></span> Less</span>
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-green-500 dark:bg-green-500/60"></span> More</span>
+                    <div class="mt-4 flex items-center gap-4 text-sm text-muted">
+                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded" style="background-color: rgba(34, 197, 94, 0.15);"></span> {{ t.stats.less }}</span>
+                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded" style="background-color: rgba(34, 197, 94, 0.5);"></span> {{ t.stats.more }}</span>
                     </div>
                 </div>
             </div>
 
             <!-- Top Languages -->
             <div class="card mt-6 animate-on-scroll animate-delay-200">
-                <h3 class="font-bold mb-4">{% if page.lang == 'en' %}Top Languages{% else %}常用技术栈{% endif %}</h3>
+                <h3 class="font-bold mb-4">{{ t.stats.top_languages }}</h3>
                 <div class="space-y-3">
                     {% for lang in site.data.skills.languages %}
                     <div>
                         <div class="flex justify-between mb-1">
-                            <span class="text-sm text-gray-700 dark:text-gray-300">{{ lang.name }}</span>
-                            <span class="text-sm text-gray-500">{{ lang.percentage }}%</span>
+                            <span class="text-sm text-secondary">{{ lang.name }}</span>
+                            <span class="text-sm text-muted">{{ lang.percentage }}%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-bar__fill {{ lang.color }}" style="width: {{ lang.percentage }}%; background-color: inherit;"></div>
+                            <div class="progress-bar__fill" style="width: {{ lang.percentage }}%; background-color: var(--color-primary);"></div>
                         </div>
                     </div>
                     {% endfor %}

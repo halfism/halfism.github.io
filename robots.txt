@@ -1,0 +1,12 @@
+---
+layout: null
+permalink: /robots.txt
+---
+User-agent: *
+Allow: /
+
+Sitemap: {{ site.url }}/sitemap.xml
+
+# Disallow admin/utility paths
+Disallow: /static/
+Disallow: /assets/img/icons/

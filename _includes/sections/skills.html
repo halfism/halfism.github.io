@@ -1,10 +1,9 @@
-<section id="skills" class="section bg-gray-50 dark:bg-[#0d1117]/50 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300" aria-labelledby="skills-heading">
+{% assign t = site.data.locales[page.lang][page.lang] %}
+<section id="skills" class="section section--alt" aria-labelledby="skills-heading">
     <div class="container">
         <div class="text-center mb-16">
-            <h2 id="skills-heading">{% if page.lang == 'en' %}My Skills{% else %}我的技能{% endif %}</h2>
-            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-2">
-                {% if page.lang == 'en' %}Continuous learning, pursuing excellence{% else %}不断学习，追求卓越{% endif %}
-            </p>
+            <h2 id="skills-heading">{{ t.skills.title }}</h2>
+            <p class="text-secondary max-w-2xl mx-auto mt-2">{{ t.skills.subtitle }}</p>
             <div class="w-16 h-1 mx-auto rounded-full mt-4" style="background-color: var(--color-primary);"></div>
         </div>
 
@@ -13,8 +12,8 @@
             <div class="space-y-6">
                 <div class="card">
                     <h3 class="text-lg font-bold mb-6 flex items-center gap-3">
-                        <i class="fa fa-code" style="color: var(--color-primary);"></i>
-                        {% if page.lang == 'en' %}Core Technologies{% else %}核心技术{% endif %}
+                        <i class="fa fa-code text-primary"></i>
+                        {{ t.skills.core_tech }}
                     </h3>
                     <div class="space-y-4">
                         {% for skill in site.data.skills.core_skills %}
@@ -24,7 +23,7 @@
                                 <span class="skill-item__percentage">{{ skill.level }}%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-bar__fill" style="width: {{ skill.level }}%;"></div>
+                                <div class="progress-bar__fill skill-progress" style="width: {{ skill.level }}%;"></div>
                             </div>
                         </div>
                         {% endfor %}
@@ -36,7 +35,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="card">
                     <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                        <i class="fa fa-server text-green-500"></i> {% if page.lang == 'en' %}Backend & DevOps{% else %}后端与运维{% endif %}
+                        <i class="fa fa-server text-success"></i> {{ t.skills.backend_devops }}
                     </h3>
                     <div class="flex flex-wrap gap-2">
                         {% for tool in site.data.skills.backend_tools %}
@@ -47,7 +46,7 @@
 
                 <div class="card">
                     <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                        <i class="fa fa-wrench text-purple-500"></i> {% if page.lang == 'en' %}Tools & Workflow{% else %}工具与流程{% endif %}
+                        <i class="fa fa-wrench text-accent"></i> {{ t.skills.tools_workflow }}
                     </h3>
                     <div class="flex flex-wrap gap-2">
                         {% for tool in site.data.skills.dev_tools %}

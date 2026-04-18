@@ -1,21 +1,23 @@
 ---
 layout: default
 title: 博客
+lang: zh
 permalink: /blog/
 ---
 
+{% assign t = site.data.locales[page.lang][page.lang] %}
+
+<main class="pt-20">
 <section class="blog section">
     <div class="container">
         <header class="blog__header text-center mb-16">
-            <h1 class="mb-4">📝 技术博客</h1>
-            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-                分享开发经验、技术见解和项目心得
-            </p>
+            <h1 class="mb-4">{{ t.blog.title }}</h1>
+            <p class="text-secondary max-w-2xl mx-auto text-lg">{{ t.blog.subtitle }}</p>
         </header>
 
         <!-- Filter Tags -->
         <div class="blog__filters mb-12 flex justify-center gap-3 flex-wrap">
-            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn active" data-filter="all">{{ t.blog.all }}</button>
             {% assign categories = site.posts | map: 'category' | uniq %}
             {% for category in categories %}
                 <button class="filter-btn" data-filter="{{ category }}">{{ category }}</button>
@@ -25,10 +27,10 @@ permalink: /blog/
         <!-- Posts Grid -->
         <div class="blog__grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for post in site.posts %}
-            <article class="post-card" data-category="{{ post.category | default: '未分类' }}">
+            <article class="post-card animate-on-scroll" data-category="{{ post.category | default: t.common.uncategorized }}">
                 {% if post.image %}
                 <a href="{{ post.url }}" class="post-card__image">
-                    <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy">
+                    <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy" width="400" height="220">
                     <div class="post-card__overlay"></div>
                 </a>
                 {% endif %}
@@ -36,7 +38,7 @@ permalink: /blog/
                 <div class="post-card__content">
                     <div class="post-card__meta">
                         <time datetime="{{ post.date | date: '%Y-%m-%d' }}">
-                            {{ post.date | date: "%Y年%m月%d日" }}
+                            {{ post.date | date: "%Y-%m-%d" }}
                         </time>
                         {% if post.category %}
                         <span class="post-card__category">{{ post.category }}</span>
@@ -54,13 +56,13 @@ permalink: /blog/
                     {% if post.tags %}
                     <div class="post-card__tags">
                         {% for tag in post.tags limit: 3 %}
-                            <span class="tag--small">{{ tag }}</span>
+                            <span class="tag tag--small">{{ tag }}</span>
                         {% endfor %}
                     </div>
                     {% endif %}
 
                     <a href="{{ post.url }}" class="post-card__link">
-                        阅读更多 →
+                        {{ t.blog.read_more }} &rarr;
                     </a>
                 </div>
             </article>
@@ -69,11 +71,12 @@ permalink: /blog/
 
         {% if site.posts.size == 0 %}
         <div class="blog__empty text-center py-20">
-            <p class="text-gray-500 text-lg">暂无文章，敬请期待...</p>
+            <p class="text-secondary text-lg">{{ t.blog.no_posts }}</p>
         </div>
         {% endif %}
     </div>
 </section>
+</main>
 
 <style>
     .blog__header h1 {
@@ -88,11 +91,11 @@ permalink: /blog/
         padding: 8px 20px;
         border: 2px solid var(--color-border);
         border-radius: 25px;
-        background: white;
+        background: var(--color-bg-card);
         color: var(--color-text-secondary);
         cursor: pointer;
-        transition: all 0.3s;
-        font-size: 0.95rem;
+        transition: all var(--transition-base);
+        font-size: var(--font-size-sm);
         font-weight: 500;
     }
 
@@ -104,17 +107,17 @@ permalink: /blog/
     }
 
     .post-card {
-        background: white;
-        border-radius: 16px;
+        background-color: var(--color-bg-card);
+        border-radius: var(--radius-xl);
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition-base);
         border: 1px solid var(--color-border-light);
     }
 
     .post-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
     }
 
     .post-card__image {
@@ -128,11 +131,11 @@ permalink: /blog/
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
+        transition: transform var(--transition-slow);
     }
 
     .post-card:hover .post-card__image img {
-        transform: scale(1.08);
+        transform: scale(1.05);
     }
 
     .post-card__overlay {
@@ -145,36 +148,36 @@ permalink: /blog/
     }
 
     .post-card__content {
-        padding: 28px;
+        padding: var(--space-6);
     }
 
     .post-card__meta {
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 12px;
-        font-size: 0.9rem;
+        gap: var(--space-3);
+        margin-bottom: var(--space-3);
+        font-size: var(--font-size-sm);
         color: var(--color-text-muted);
     }
 
     .post-card__category {
-        background: var(--color-bg-tertiary);
+        background-color: var(--color-bg-tertiary);
         padding: 4px 10px;
-        border-radius: 12px;
+        border-radius: var(--radius-full);
         font-weight: 500;
         color: var(--color-primary);
     }
 
     .post-card__title {
-        font-size: 1.35rem;
+        font-size: var(--font-size-xl);
         font-weight: 700;
         line-height: 1.4;
-        margin-bottom: 12px;
+        margin-bottom: var(--space-3);
     }
 
     .post-card__title a {
         color: var(--color-text);
-        transition: color 0.2s;
+        transition: color var(--transition-fast);
     }
 
     .post-card__title a:hover {
@@ -183,23 +186,23 @@ permalink: /blog/
 
     .post-card__excerpt {
         color: var(--color-text-secondary);
-        line-height: 1.7;
-        margin-bottom: 18px;
-        font-size: 0.95rem;
+        line-height: var(--line-height-relaxed);
+        margin-bottom: var(--space-4);
+        font-size: var(--font-size-sm);
     }
 
     .post-card__tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 18px;
+        gap: var(--space-2);
+        margin-bottom: var(--space-4);
     }
 
     .tag--small {
-        background: var(--color-bg-secondary);
+        background-color: var(--color-bg-secondary);
         padding: 4px 12px;
         border-radius: 15px;
-        font-size: 0.85rem;
+        font-size: var(--font-size-xs);
         color: var(--color-text-muted);
     }
 
@@ -209,15 +212,15 @@ permalink: /blog/
         gap: 6px;
         color: var(--color-primary);
         font-weight: 600;
-        font-size: 0.95rem;
-        transition: gap 0.2s;
+        font-size: var(--font-size-sm);
+        transition: gap var(--transition-fast);
     }
 
     .post-card__link:hover {
         gap: 10px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         .blog__grid {
             grid-template-columns: 1fr !important;
         }
@@ -226,22 +229,19 @@ permalink: /blog/
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const postCards = document.querySelectorAll('.post-card');
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var postCards = document.querySelectorAll('.post-card');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active state
-            filterBtns.forEach(b => b.classList.remove('active'));
+    filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(function(b) { b.classList.remove('active'); });
             btn.classList.add('active');
 
-            const filter = btn.dataset.filter;
+            var filter = btn.dataset.filter;
 
-            // Filter posts
-            postCards.forEach(card => {
+            postCards.forEach(function(card) {
                 if (filter === 'all' || card.dataset.category === filter) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeInUp 0.5s ease forwards';
+                    card.style.display = '';
                 } else {
                     card.style.display = 'none';
                 }
