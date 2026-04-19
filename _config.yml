@@ -39,8 +39,8 @@ theme_settings:
   default_mode: auto  # light, dark, or auto (follows system)
   primary_color: "#3b82f6"  # Blue-500
   accent_color: "#06b6d4"   # Cyan-500
-  font_family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
-  code_font_family: 'Fira Code', 'Consolas', Monaco, monospace
+  font_family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+  code_font_family: "'Fira Code', 'Consolas', Monaco, monospace"
 
 # SEO Settings
 seo:
