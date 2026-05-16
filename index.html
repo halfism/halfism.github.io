@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>halfism | Personal Portfolio</title>
   <meta name="description" content="A passionate developer creating meaningful solutions through code" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="halfism | Personal Portfolio" />
+  <meta property="og:description" content="全栈开发者 · 开源贡献者 · 终身学习者" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://halfism.github.io" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@halfism_dev" />
+
+  <!-- Theme color -->
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "halfism",
+    "url": "https://halfism.github.io",
+    "jobTitle": "Full-Stack Developer",
+    "sameAs": [
+      "https://github.com/halfism",
+      "https://twitter.com/halfism_dev",
+      "https://linkedin.com/in/halfism"
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="styles/main.css" />
 </head>
@@ -13,8 +44,77 @@
   <!-- Progress Bar -->
   <div class="progress-bar" id="progressBar"></div>
 
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <i class="fa fa-check-circle"></i>
+    <span id="toastMsg">已复制到剪贴板</span>
+  </div>
+
+  <!-- Command Palette -->
+  <div class="cmd-overlay" id="cmdOverlay">
+    <div class="cmd-palette">
+      <div class="cmd-input-wrap">
+        <i class="fa fa-search"></i>
+        <input class="cmd-input" id="cmdInput" type="text" placeholder="搜索页面或操作..." autocomplete="off" />
+        <span class="cmd-kbd">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults">
+        <a href="#about" class="cmd-item" data-keywords="关于 about me">
+          <i class="fa fa-user"></i>
+          <span class="cmd-item-label">关于我</span>
+          <span class="cmd-item-hint">Section</span>
+        </a>
+        <a href="#projects" class="cmd-item" data-keywords="项目 projects work">
+          <i class="fa fa-folder-open"></i>
+          <span class="cmd-item-label">精选项目</span>
+          <span class="cmd-item-hint">Section</span>
+        </a>
+        <a href="#skills" class="cmd-item" data-keywords="技能 skills tech stack">
+          <i class="fa fa-bar-chart"></i>
+          <span class="cmd-item-label">技能栈</span>
+          <span class="cmd-item-hint">Section</span>
+        </a>
+        <a href="#github-stats" class="cmd-item" data-keywords="github 统计 stats">
+          <i class="fa fa-github"></i>
+          <span class="cmd-item-label">GitHub 统计</span>
+          <span class="cmd-item-hint">Section</span>
+        </a>
+        <a href="#certificates" class="cmd-item" data-keywords="认证 certificates aws">
+          <i class="fa fa-certificate"></i>
+          <span class="cmd-item-label">专业认证</span>
+          <span class="cmd-item-hint">Section</span>
+        </a>
+        <a href="#logs" class="cmd-item" data-keywords="日志 logs changelog">
+          <i class="fa fa-clock-o"></i>
+          <span class="cmd-item-label">迭代日志</span>
+          <span class="cmd-item-hint">Section</span>
+        </a>
+        <a href="#contact" class="cmd-item" data-keywords="联系 contact email">
+          <i class="fa fa-envelope"></i>
+          <span class="cmd-item-label">联系我</span>
+          <span class="cmd-item-hint">Section</span>
+        </a>
+        <button type="button" class="cmd-item" data-keywords="深色 暗色 dark mode 主题 theme" id="cmdDarkToggle">
+          <i class="fa fa-moon-o"></i>
+          <span class="cmd-item-label">切换深色模式</span>
+          <span class="cmd-item-hint">Action</span>
+        </button>
+        <button type="button" class="cmd-item" data-keywords="复制 copy email 邮箱" id="cmdCopyEmail">
+          <i class="fa fa-copy"></i>
+          <span class="cmd-item-label">复制邮箱地址</span>
+          <span class="cmd-item-hint">Action</span>
+        </button>
+        <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="cmd-item" data-keywords="github 仓库 repository">
+          <i class="fa fa-external-link"></i>
+          <span class="cmd-item-label">打开 GitHub</span>
+          <span class="cmd-item-hint">External</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Navigation (macOS pill bar) -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" role="navigation" aria-label="主导航">
     <div class="navbar-inner">
       <a href="#hero" class="nav-logo">halfism</a>
       <ul class="nav-links" id="navLinks">
@@ -25,8 +125,17 @@
         <li><a href="#certificates">认证</a></li>
         <li><a href="#logs">日志</a></li>
       </ul>
-      <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
+      <div class="nav-actions">
+        <button class="cmd-trigger" id="cmdTrigger" aria-label="Command Palette" title="⌘K">
+          ⌘K
+        </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="切换深色模式">
+          <i class="fa fa-sun-o icon-sun"></i>
+          <i class="fa fa-moon-o icon-moon"></i>
+        </button>
+        <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
       </div>
     </div>
   </nav>
@@ -275,10 +384,40 @@
           </div>
         </div>
 
-        <!-- Tags -->
-        <div class="apple-card animate-on-scroll tags-section">
-          <h3><i class="fa fa-tags"></i> 工具与框架</h3>
-          <div class="tag-cloud">
+        <!-- Radar Chart + Tags -->
+        <div class="apple-card radar-card animate-on-scroll">
+          <svg class="radar-svg" viewBox="0 0 200 200" aria-label="技能雷达图" role="img">
+            <!-- Grid (pentagon levels) -->
+            <polygon class="radar-grid-line" points="100,18 173.5,71.4 145.3,156.6 54.7,156.6 26.5,71.4" />
+            <polygon class="radar-grid-line" points="100,39 152.8,78.6 131.5,137.5 68.5,137.5 47.2,78.6" />
+            <polygon class="radar-grid-line" points="100,60 132,85.7 117.7,118.3 82.3,118.3 68,85.7" />
+            <polygon class="radar-grid-line" points="100,81 111.3,92.9 104.1,99.2 95.9,99.2 88.7,92.9" />
+            <!-- Axes -->
+            <line class="radar-grid-line" x1="100" y1="100" x2="100" y2="18" />
+            <line class="radar-grid-line" x1="100" y1="100" x2="173.5" y2="71.4" />
+            <line class="radar-grid-line" x1="100" y1="100" x2="145.3" y2="156.6" />
+            <line class="radar-grid-line" x1="100" y1="100" x2="54.7" y2="156.6" />
+            <line class="radar-grid-line" x1="100" y1="100" x2="26.5" y2="71.4" />
+            <!-- Data -->
+            <polygon class="radar-data-polygon" points="100,26.4 158.5,76.2 130.8,149.3 63.5,145.6 38.2,74.6" />
+            <!-- Dots -->
+            <circle class="radar-dot" cx="100" cy="26.4" r="3.5" />
+            <circle class="radar-dot" cx="158.5" cy="76.2" r="3.5" />
+            <circle class="radar-dot" cx="130.8" cy="149.3" r="3.5" />
+            <circle class="radar-dot" cx="63.5" cy="145.6" r="3.5" />
+            <circle class="radar-dot" cx="38.2" cy="74.6" r="3.5" />
+            <!-- Labels -->
+            <text class="radar-axis-label" x="100" y="12" text-anchor="middle">Frontend</text>
+            <text class="radar-axis-label" x="183" y="71" text-anchor="start">Backend</text>
+            <text class="radar-axis-label" x="153" y="168" text-anchor="middle">DevOps</text>
+            <text class="radar-axis-label" x="47" y="168" text-anchor="middle">Cloud</text>
+            <text class="radar-axis-label" x="17" y="71" text-anchor="end">Database</text>
+          </svg>
+
+          <h3 style="font-size: 0.9375rem; font-weight: 600; margin: 20px 0 14px; display: flex; align-items: center; gap: 6px; letter-spacing: -0.01em; width: 100%;">
+            <i class="fa fa-tags"></i> 工具与框架
+          </h3>
+          <div class="tag-cloud" style="width: 100%;">
             <span class="tag">Git</span>
             <span class="tag">Webpack</span>
             <span class="tag">Vite</span>
@@ -297,8 +436,10 @@
             <span class="tag">Figma</span>
           </div>
 
-          <h3 style="margin-top: 24px;"><i class="fa fa-heart"></i> 软技能</h3>
-          <div class="tag-cloud">
+          <h3 style="font-size: 0.9375rem; font-weight: 600; margin: 20px 0 14px; display: flex; align-items: center; gap: 6px; letter-spacing: -0.01em; width: 100%;">
+            <i class="fa fa-heart"></i> 软技能
+          </h3>
+          <div class="tag-cloud" style="width: 100%;">
             <span class="tag">敏捷开发</span>
             <span class="tag">代码审查</span>
             <span class="tag">技术文档</span>
@@ -330,17 +471,17 @@
           <div class="stats-values">
             <div class="stat-item">
               <i class="fa fa-book" style="color: var(--system-blue);"></i>
-              <span class="stat-value">12</span>
+              <span class="stat-value" data-count="12">0</span>
               <span class="stat-label">Repos</span>
             </div>
             <div class="stat-item">
               <i class="fa fa-star" style="color: var(--system-orange);"></i>
-              <span class="stat-value">265</span>
+              <span class="stat-value" data-count="265">0</span>
               <span class="stat-label">Stars</span>
             </div>
             <div class="stat-item">
               <i class="fa fa-code-fork" style="color: var(--system-green);"></i>
-              <span class="stat-value">71</span>
+              <span class="stat-value" data-count="71">0</span>
               <span class="stat-label">Forks</span>
             </div>
           </div>
@@ -518,9 +659,9 @@
         <h2 class="contact-title">一起创造未来</h2>
         <p class="contact-subtitle">无论你有项目想法、合作机会，还是只是想打个招呼，都欢迎联系我</p>
         <div class="contact-buttons">
-          <a href="mailto:contact@halfism.dev" class="btn-white">
-            <i class="fa fa-envelope"></i> 发送邮件
-          </a>
+          <button class="btn-white btn-copy" id="copyEmailBtn" type="button">
+            <i class="fa fa-envelope"></i> 复制邮箱
+          </button>
           <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="btn-glass">
             <i class="fa fa-github"></i> GitHub
           </a>
@@ -565,28 +706,46 @@
   </button>
 
   <script>
-    /* ── Progress Bar ── */
-    const progressBar = document.getElementById('progressBar');
+    /* ═══════════ THEME TOGGLE ═══════════ */
+    (function() {
+      var stored = localStorage.getItem('theme');
+      if (stored) {
+        document.documentElement.setAttribute('data-theme', stored);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+
+      var toggle = document.getElementById('themeToggle');
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        var next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+
+    /* ═══════════ PROGRESS BAR ═══════════ */
+    var progressBar = document.getElementById('progressBar');
     function updateProgress() {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       progressBar.style.width = progress + '%';
     }
 
-    /* ── Navbar scroll effect ── */
-    const navbar = document.getElementById('navbar');
+    /* ═══════════ NAVBAR ═══════════ */
+    var navbar = document.getElementById('navbar');
     function updateNavbar() {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
     }
 
-    /* ── Active nav link ── */
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    /* ═══════════ ACTIVE NAV LINK ═══════════ */
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-links a');
     function updateActiveLink() {
-      let current = '';
+      var current = '';
       sections.forEach(function(section) {
-        const top = section.offsetTop - 120;
+        var top = section.offsetTop - 120;
         if (window.scrollY >= top) current = section.getAttribute('id');
       });
       navLinks.forEach(function(link) {
@@ -594,16 +753,21 @@
       });
     }
 
-    /* ── Scroll animations ── */
-    const observer = new IntersectionObserver(function(entries) {
+    /* ═══════════ SCROLL ANIMATIONS ═══════════ */
+    var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          /* Animate skill bars when visible */
-          const bars = entry.target.querySelectorAll('.skill-bar-fill, .lang-bar-fill');
+          /* Animate skill bars */
+          var bars = entry.target.querySelectorAll('.skill-bar-fill, .lang-bar-fill');
           bars.forEach(function(bar) {
-            const w = bar.getAttribute('data-width');
+            var w = bar.getAttribute('data-width');
             if (w) bar.style.width = w;
+          });
+          /* Animate counters */
+          var counters = entry.target.querySelectorAll('[data-count]');
+          counters.forEach(function(el) {
+            animateCounter(el);
           });
         }
       });
@@ -613,27 +777,46 @@
       observer.observe(el);
     });
 
-    /* ── Init skill bars at 0 ── */
+    /* Init skill bars at 0 */
     document.querySelectorAll('.skill-bar-fill, .lang-bar-fill').forEach(function(bar) {
       bar.style.width = '0%';
     });
 
-    /* ── Mobile toggle ── */
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinksEl = document.getElementById('navLinks');
+    /* ═══════════ ANIMATED COUNTER ═══════════ */
+    function animateCounter(el) {
+      if (el.dataset.animated) return;
+      el.dataset.animated = '1';
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var duration = 1200;
+      var start = performance.now();
+      function step(now) {
+        var elapsed = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        /* ease-out curve */
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    /* ═══════════ MOBILE TOGGLE ═══════════ */
+    var mobileToggle = document.getElementById('mobileToggle');
+    var navLinksEl = document.getElementById('navLinks');
     mobileToggle.addEventListener('click', function() {
       navLinksEl.classList.toggle('open');
+      mobileToggle.classList.toggle('open');
     });
 
-    /* Close nav on link click (mobile) */
     navLinksEl.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', function() {
         navLinksEl.classList.remove('open');
+        mobileToggle.classList.remove('open');
       });
     });
 
-    /* ── Scroll to top ── */
-    const scrollTopBtn = document.getElementById('scrollTop');
+    /* ═══════════ SCROLL TO TOP ═══════════ */
+    var scrollTopBtn = document.getElementById('scrollTop');
     function updateScrollTop() {
       scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
     }
@@ -641,25 +824,166 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    /* ── Contribution grid ── */
-    const contribGrid = document.getElementById('contribGrid');
-    const contribLevels = [
+    /* ═══════════ CONTRIBUTION GRID ═══════════ */
+    var contribGrid = document.getElementById('contribGrid');
+    var contribLevels = [
       'rgba(0, 122, 255, 0.06)',
       'rgba(0, 122, 255, 0.18)',
       'rgba(0, 122, 255, 0.36)',
       'rgba(0, 122, 255, 0.58)',
       'rgba(0, 122, 255, 0.82)'
     ];
-    for (let i = 0; i < 72; i++) {
-      const cell = document.createElement('div');
+    for (var i = 0; i < 72; i++) {
+      var cell = document.createElement('div');
       cell.className = 'contrib-cell';
-      const level = Math.floor(Math.random() * 5);
+      /* Weighted random: more low-activity days */
+      var rand = Math.random();
+      var level = rand < 0.35 ? 0 : rand < 0.6 ? 1 : rand < 0.8 ? 2 : rand < 0.93 ? 3 : 4;
       cell.style.background = contribLevels[level];
       contribGrid.appendChild(cell);
     }
 
-    /* ── Unified scroll listener ── */
-    let ticking = false;
+    /* ═══════════ COPY EMAIL + TOAST ═══════════ */
+    var toastEl = document.getElementById('toast');
+    var toastMsg = document.getElementById('toastMsg');
+    var toastTimer = null;
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toastEl.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() {
+        toastEl.classList.remove('show');
+      }, 2200);
+    }
+
+    document.getElementById('copyEmailBtn').addEventListener('click', function() {
+      navigator.clipboard.writeText('contact@halfism.dev').then(function() {
+        showToast('邮箱已复制到剪贴板');
+      }).catch(function() {
+        showToast('复制失败，请手动复制');
+      });
+    });
+
+    /* ═══════════ COMMAND PALETTE ═══════════ */
+    var cmdOverlay = document.getElementById('cmdOverlay');
+    var cmdInput = document.getElementById('cmdInput');
+    var cmdTrigger = document.getElementById('cmdTrigger');
+    var cmdResults = document.getElementById('cmdResults');
+    var cmdItems = cmdResults.querySelectorAll('.cmd-item');
+    var selectedIdx = -1;
+
+    function openCmd() {
+      cmdOverlay.classList.add('open');
+      cmdInput.value = '';
+      filterCmd('');
+      selectedIdx = -1;
+      setTimeout(function() { cmdInput.focus(); }, 100);
+    }
+
+    function closeCmd() {
+      cmdOverlay.classList.remove('open');
+      cmdInput.blur();
+    }
+
+    cmdTrigger.addEventListener('click', openCmd);
+
+    cmdOverlay.addEventListener('click', function(e) {
+      if (e.target === cmdOverlay) closeCmd();
+    });
+
+    /* Keyboard shortcut: Cmd+K / Ctrl+K */
+    document.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        if (cmdOverlay.classList.contains('open')) {
+          closeCmd();
+        } else {
+          openCmd();
+        }
+      }
+      if (e.key === 'Escape' && cmdOverlay.classList.contains('open')) {
+        closeCmd();
+      }
+    });
+
+    /* Filter command items */
+    function filterCmd(query) {
+      var q = query.toLowerCase().trim();
+      var anyVisible = false;
+      cmdItems.forEach(function(item) {
+        var label = item.querySelector('.cmd-item-label').textContent.toLowerCase();
+        var kw = (item.getAttribute('data-keywords') || '').toLowerCase();
+        var match = !q || label.indexOf(q) !== -1 || kw.indexOf(q) !== -1;
+        item.style.display = match ? 'flex' : 'none';
+        if (match) anyVisible = true;
+      });
+      selectedIdx = -1;
+      clearSelected();
+    }
+
+    function clearSelected() {
+      cmdItems.forEach(function(item) { item.classList.remove('selected'); });
+    }
+
+    function setSelected(idx) {
+      clearSelected();
+      var visible = Array.prototype.filter.call(cmdItems, function(item) {
+        return item.style.display !== 'none';
+      });
+      if (visible[idx]) {
+        visible[idx].classList.add('selected');
+        visible[idx].scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    cmdInput.addEventListener('input', function() {
+      filterCmd(cmdInput.value);
+    });
+
+    cmdInput.addEventListener('keydown', function(e) {
+      var visible = Array.prototype.filter.call(cmdItems, function(item) {
+        return item.style.display !== 'none';
+      });
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIdx = Math.min(selectedIdx + 1, visible.length - 1);
+        setSelected(selectedIdx);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIdx = Math.max(selectedIdx - 1, 0);
+        setSelected(selectedIdx);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (selectedIdx >= 0 && visible[selectedIdx]) {
+          visible[selectedIdx].click();
+          closeCmd();
+        }
+      }
+    });
+
+    /* Cmd action: toggle dark mode */
+    document.getElementById('cmdDarkToggle').addEventListener('click', function() {
+      document.getElementById('themeToggle').click();
+      closeCmd();
+      showToast('已切换主题模式');
+    });
+
+    /* Cmd action: copy email */
+    document.getElementById('cmdCopyEmail').addEventListener('click', function() {
+      document.getElementById('copyEmailBtn').click();
+      closeCmd();
+    });
+
+    /* Close cmd on item click */
+    cmdResults.querySelectorAll('a.cmd-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        closeCmd();
+      });
+    });
+
+    /* ═══════════ UNIFIED SCROLL LISTENER ═══════════ */
+    var ticking = false;
     window.addEventListener('scroll', function() {
       if (!ticking) {
         requestAnimationFrame(function() {
@@ -673,7 +997,7 @@
       }
     });
 
-    /* Initial call */
+    /* Initial calls */
     updateProgress();
     updateNavbar();
     updateActiveLink();
