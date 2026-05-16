@@ -1,0 +1,471 @@
+---
+layout: default
+---
+
+<article class="project-detail" itemscope itemtype="http://schema.org/SoftwareApplication">
+    <header class="project-header">
+        <div class="container">
+            <div class="project-meta">
+                {% if page.category %}
+                <span class="project-category">{{ page.category }}</span>
+                {% endif %}
+                <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
+                    {{ page.date | date: "%Y年%m月" }}
+                </time>
+            </div>
+
+            <h1 class="project-title" itemprop="name">{{ page.title }}</h1>
+
+            <p class="project-description" itemprop="description">
+                {{ page.description }}
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="project-actions">
+                {% if page.demo_url %}
+                <a href="{{ page.demo_url }}" target="_blank" rel="noopener noreferrer"
+                   class="btn btn--primary btn--lg">
+                    <i class="fa fa-external-link"></i> 在线演示
+                </a>
+                {% endif %}
+
+                {% if page.repo_url %}
+                <a href="{{ page.repo_url }}" target="_blank" rel="noopener noreferrer"
+                   class="btn btn--secondary btn--lg">
+                    <i class="fa fa-github"></i> 查看源码
+                </a>
+                {% endif %}
+            </div>
+
+            <!-- Stats -->
+            {% if page.stars or page.forks %}
+            <div class="project-stats">
+                {% if page.stars %}
+                <div class="stat-item">
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <span>{{ page.stars }}</span>
+                    <span>Stars</span>
+                </div>
+                {% endif %}
+
+                {% if page.forks %}
+                <div class="stat-item">
+                    <i class="fa fa-code-fork"></i>
+                    <span>{{ page.forks }}</span>
+                    <span>Forks</span>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- Project Image/Video -->
+    {% if page.image or page.video %}
+    <div class="project-media">
+        <div class="container">
+            {% if page.video %}
+            <video controls poster="{{ page.image }}" preload="metadata">
+                <source src="{{ page.video }}" type="video/mp4">
+                您的浏览器不支持视频播放
+            </video>
+            {% elsif page.image %}
+            <img src="{{ page.image }}" alt="{{ page.title }} 预览图"
+                 itemprop="image" loading="lazy">
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Content Sections -->
+    <div class="project-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Main Content -->
+                <main class="main-content prose" itemprop="featureList">
+                    {{ content }}
+                </main>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Tech Stack -->
+                    {% if page.technologies %}
+                    <div class="sidebar-section">
+                        <h3>技术栈</h3>
+                        <div class="tech-stack">
+                            {% for tech in page.technologies %}
+                            <span class="tech-badge">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Features List -->
+                    {% if page.features %}
+                    <div class="sidebar-section">
+                        <h3>核心功能</h3>
+                        <ul class="features-list">
+                            {% for feature in page.features %}
+                            <li><i class="fa fa-check-circle"></i> {{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <!-- Quick Links -->
+                    <div class="sidebar-section">
+                        <h3>快速链接</h3>
+                        <nav class="quick-links">
+                            <a href="#overview"><i class="fa fa-info-circle"></i> 项目概述</a>
+                            <a href="#features-detail"><i class="fa fa-list"></i> 功能详情</a>
+                            <a href="#screenshots"><i class="fa fa-image"></i> 截图展示</a>
+                            <a href="#installation"><i class="fa fa-download"></i> 安装指南</a>
+                        </nav>
+                    </div>
+
+                    <!-- Share -->
+                    <div class="sidebar-section">
+                        <h3>分享项目</h3>
+                        <div class="share-buttons">
+                            <button onclick="shareOnTwitter()" class="share-btn twitter">
+                                <i class="fa fa-twitter"></i>
+                            </button>
+                            <button onclick="shareOnLinkedIn()" class="share-btn linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </button>
+                            <button onclick="copyLink()" class="share-btn copy">
+                                <i class="fa fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Projects -->
+    {% if page.related_projects %}
+    <section class="related-projects">
+        <div class="container">
+            <h2>相关项目</h2>
+            <div class="related-grid">
+                {% for related in page.related_projects %}
+                <a href="{{ related.url }}" class="related-card">
+                    <img src="{{ related.image }}" alt="{{ related.title }}">
+                    <div class="related-info">
+                        <h3>{{ related.title }}</h3>
+                        <p>{{ related.excerpt }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Navigation -->
+    <footer class="project-footer">
+        <div class="container">
+            <a href="/#projects" class="btn btn--secondary">
+                <i class="fa fa-arrow-left"></i> 返回项目列表
+            </a>
+        </div>
+    </footer>
+</article>
+
+<style>
+    .project-header {
+        background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+        color: white;
+        padding: 80px 0 60px;
+        margin-bottom: 0;
+    }
+
+    .project-meta {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+        opacity: 0.95;
+    }
+
+    .project-category {
+        background: rgba(255, 255, 255, 0.25);
+        padding: 5px 14px;
+        border-radius: 15px;
+        font-weight: 500;
+        backdrop-filter: blur(5px);
+    }
+
+    .project-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-description {
+        font-size: 1.25rem;
+        opacity: 0.95;
+        max-width: 900px;
+        line-height: 1.6;
+        margin-bottom: 32px;
+    }
+
+    .project-actions {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+    }
+
+    .project-stats {
+        display: flex;
+        gap: 32px;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+    }
+
+    .stat-item span:last-child {
+        opacity: 0.9;
+        font-size: 0.9rem;
+    }
+
+    /* Media Section */
+    .project-media {
+        background: var(--color-bg-secondary);
+        padding: 40px 0;
+    }
+
+    .project-media img,
+    .project-media video {
+        width: 100%;
+        max-height: 600px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Content */
+    .project-content {
+        padding: 80px 0;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 48px;
+    }
+
+    .main-content {
+        max-width: none;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+    }
+
+    .sidebar-section {
+        background: var(--color-bg-secondary);
+        padding: 24px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        border: 1px solid var(--color-border-light);
+    }
+
+    .sidebar-section h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: var(--color-text);
+    }
+
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tech-badge {
+        padding: 6px 14px;
+        background: var(--color-bg-tertiary);
+        border-radius: 8px;
+        font-size: 0.85rem;
+        color: var(--color-primary);
+        font-weight: 500;
+    }
+
+    .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .features-list li {
+        padding: 8px 0;
+        color: var(--color-text-secondary);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .features-list li i {
+        color: var(--color-success, #10b981);
+        margin-top: 3px;
+    }
+
+    .quick-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .quick-links a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+    }
+
+    .quick-links a:hover {
+        background: var(--color-bg-tertiary);
+        color: var(--color-primary);
+    }
+
+    .share-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .share-btn {
+        width: 42px;
+        height: 42px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+    }
+
+    .share-btn.twitter { background: #1DA1F2; color: white; }
+    .share-btn.linkedin { background: #0077B5; color: white; }
+    .share-btn.copy { background: var(--color-bg-tertiary); color: var(--color-text-secondary); }
+
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+    /* Related Projects */
+    .related-projects {
+        background: var(--color-bg-secondary);
+        padding: 60px 0;
+        margin-top: 60px;
+    }
+
+    .related-projects h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 32px;
+        color: var(--color-text);
+    }
+
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+    }
+
+    .related-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--color-border-light);
+        transition: all 0.3s;
+    }
+
+    .related-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .related-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .related-info {
+        padding: 20px;
+    }
+
+    .related-info h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--color-text);
+    }
+
+    .related-info p {
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+        line-height: 1.5;
+    }
+
+    /* Footer */
+    .project-footer {
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid var(--color-border);
+    }
+
+    @media (max-width: 1024px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+            position: static;
+        }
+    }
+</style>
+
+<script>
+function shareOnTwitter() {
+    const url = window.location.href;
+    const title = document.querySelector('.project-title').textContent;
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
+}
+
+function shareOnLinkedIn() {
+    const url = window.location.href;
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+}
+
+async function copyLink() {
+    try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('链接已复制到剪贴板！');
+    } catch (err) {
+        console.error('复制失败:', err);
+    }
+}
+</script>

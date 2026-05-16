@@ -1,0 +1,49 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
+<section id="projects" class="section" aria-labelledby="projects-heading">
+    <div class="container">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div>
+                <h2 id="projects-heading">{{ t.projects.title }}</h2>
+                <p class="text-muted mt-2">{{ t.projects.subtitle }}</p>
+            </div>
+            <a href="{{ site.socials.github.url }}?tab=repositories" target="_blank" rel="noopener noreferrer" class="font-medium hover:opacity-80 flex items-center gap-2 group text-primary">
+                {{ t.projects.view_all }} <i class="fa fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for project in site.data.projects %}
+            <article class="project-card">
+                <div class="project-card__image">
+                    <img src="{{ project.image }}" alt="{% if page.lang == 'en' %}{{ project.title_en }}{% else %}{{ project.title_zh }}{% endif %}" loading="lazy" width="600" height="400">
+                    <div class="absolute top-3 right-3 bg-card px-3 py-1 rounded-full text-xs font-medium border" style="border-color: var(--color-border); backdrop-filter: blur(4px);">
+                        {{ project.category }}
+                    </div>
+                </div>
+                <div class="project-card__content">
+                    <h3 class="project-card__title">
+                        {% if page.lang == 'en' %}{{ project.title_en }}{% else %}{{ project.title_zh }}{% endif %}
+                    </h3>
+                    <p class="project-card__description">
+                        {% if page.lang == 'en' %}{{ project.description_en }}{% else %}{{ project.description_zh }}{% endif %}
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tag in project.tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t" style="border-color: var(--color-border-light);">
+                        <div class="flex items-center gap-4 text-sm text-muted">
+                            <span><i class="fa fa-star mr-1"></i> {{ project.stars }}</span>
+                            <span><i class="fa fa-code-fork mr-1"></i> {{ project.forks }}</span>
+                        </div>
+                        <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+- name: GitHub
+  icon: fa-github
+  url: https://github.com/halfism
+  hover_class: hover-github
+  
+- name: Twitter
+  icon: fa-twitter
+  url: https://twitter.com/halfism_dev
+  hover_class: hover-twitter
+  
+- name: LinkedIn
+  icon: fa-linkedin
+  url: https://linkedin.com/in/halfism
+  hover_class: hover-linkedin
+  
+- name: Email
+  icon: fa-envelope
+  url: mailto:contact@halfism.dev
+  hover_class: hover-email

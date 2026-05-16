@@ -1,0 +1,60 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
+<section id="skills" class="section section--alt" aria-labelledby="skills-heading">
+    <div class="container">
+        <div class="text-center mb-16">
+            <h2 id="skills-heading">{{ t.skills.title }}</h2>
+            <p class="text-secondary max-w-2xl mx-auto mt-2">{{ t.skills.subtitle }}</p>
+            <div class="w-16 h-1 mx-auto rounded-full mt-4" style="background-color: var(--color-primary);"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Core Skills -->
+            <div class="space-y-6">
+                <div class="card">
+                    <h3 class="text-lg font-bold mb-6 flex items-center gap-3">
+                        <i class="fa fa-code text-primary"></i>
+                        {{ t.skills.core_tech }}
+                    </h3>
+                    <div class="space-y-4">
+                        {% for skill in site.data.skills.core_skills %}
+                        <div class="skill-item">
+                            <div class="skill-item__header">
+                                <span class="skill-item__name">{{ skill.name }}</span>
+                                <span class="skill-item__percentage">{{ skill.level }}%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill skill-progress" style="width: {{ skill.level }}%;"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Tags -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fa fa-server text-success"></i> {{ t.skills.backend_devops }}
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        {% for tool in site.data.skills.backend_tools %}
+                        <span class="tag">{{ tool }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fa fa-wrench text-accent"></i> {{ t.skills.tools_workflow }}
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        {% for tool in site.data.skills.dev_tools %}
+                        <span class="tag">{{ tool }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

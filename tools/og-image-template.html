@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image Generator - halfism</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .og-container {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .og-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+        }
+
+        .og-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .avatar-wrapper {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .og-title {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .og-subtitle {
+            font-size: 28px;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 35px;
+            line-height: 1.4;
+            max-width: 900px;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .og-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .og-footer {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+            right: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .og-url {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s;
+        }
+
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -80px;
+            left: -60px;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 10%;
+            opacity: 0.05;
+        }
+
+        /* Instructions */
+        .instructions {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 350px;
+            font-size: 14px;
+            color: #333;
+            z-index: 1000;
+        }
+
+        .instructions h3 {
+            margin-bottom: 12px;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .instructions code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Instructions Panel -->
+    <div class="instructions">
+        <h3>📸 使用说明</h3>
+        <ol>
+            <li>替换头像：将图片放到 <code>assets/img/avatar.png</code></li>
+            <li>在浏览器中打开此文件</li>
+            <li>使用截图工具截取 1200×630 区域</li>
+            <li>保存为 <code>og-image.png</code></li>
+            <li>放到 <code>assets/img/</code> 目录</li>
+        </ol>
+    </div>
+
+    <!-- OG Image Template -->
+    <div class="og-container">
+        <div class="og-background"></div>
+
+        <!-- Decorative Elements -->
+        <div class="decorative-circle circle-1"></div>
+        <div class="decorative-circle circle-2"></div>
+        <div class="decorative-circle circle-3"></div>
+
+        <div class="og-content">
+            <!-- Avatar -->
+            <div class="avatar-wrapper">
+                <img src="../assets/img/avatar.png" alt="Avatar" class="avatar-placeholder" onerror="this.style.display='none'; this.parentNode.innerHTML='👨‍💻';">
+            </div>
+
+            <!-- Title -->
+            <h1 class="og-title">halfism</h1>
+
+            <!-- Subtitle -->
+            <p class="og-subtitle">全栈开发者 · 开源贡献者 · 终身学习者</p>
+
+            <!-- Tags -->
+            <div class="og-tags">
+                <span class="tag">Full-Stack Developer</span>
+                <span class="tag">Open Source</span>
+                <span class="tag">React & Vue</span>
+                <span class="tag">Node.js & Go</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="og-footer">
+            <div class="og-url">
+                🔗 halfism.github.io
+            </div>
+            <div class="social-icons">
+                <div class="social-icon">🐙</div>
+                <div class="social-icon">🐦</div>
+                <div class="social-icon">💼</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

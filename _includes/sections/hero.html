@@ -1,0 +1,55 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
+<section class="hero section" aria-labelledby="hero-heading">
+    <div class="container">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="tag mb-2">
+                    {{ t.hero.welcome }}
+                </div>
+                <h1 id="hero-heading" class="hero__title">
+                    {{ t.hero.hi }} <span class="gradient-text">{{ site.author.name }}</span>
+                </h1>
+                <p class="hero__subtitle">
+                    {% if page.lang == 'en' %}{{ site.author.bio_en }}{% else %}{{ site.author.bio_zh }}{% endif %}
+                </p>
+                <div class="flex flex-wrap gap-4 mt-8">
+                    <a href="#projects" class="btn btn--primary btn--lg">
+                        {{ t.hero.view_work }}
+                    </a>
+                    <a href="{{ site.socials.github.url }}" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--lg">
+                        <i class="{{ site.socials.github.icon }}"></i> {{ t.hero.github }}
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex justify-center relative hide-mobile">
+                <div class="relative" style="width: 20rem; height: 20rem;">
+                    <div class="absolute inset-0 rounded-full opacity-10 blur-3xl animate-pulse-gentle" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));"></div>
+                    <div class="hero__decor-card w-full h-full rounded-xl relative z-10 rotate-3 hover:rotate-0 transition-all duration-500" style="font-size: 5rem; font-weight: 800; justify-content: center;">
+                        <span class="gradient-text" style="font-size: 5rem; font-weight: 800;">H</span>
+                    </div>
+
+                    <div class="absolute -top-6 -left-6 hero__decor-card animate-float" style="animation-duration: 3s;">
+                        <div class="hero__decor-icon hero__decor-icon--primary">
+                            <i class="fa fa-code text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">{{ t.hero.full_stack }}</div>
+                            <div class="text-xs text-muted">Web & Mobile</div>
+                        </div>
+                    </div>
+
+                    <div class="absolute -bottom-6 -right-6 hero__decor-card animate-float" style="animation-duration: 4s; animation-delay: 1s;">
+                        <div class="hero__decor-icon hero__decor-icon--success">
+                            <i class="fa fa-lightbulb-o text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">{{ t.hero.innovation }}</div>
+                            <div class="text-xs text-muted">Problem Solver</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

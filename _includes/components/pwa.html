@@ -1,0 +1,191 @@
+{% assign t = site.data.locales[page.lang][page.lang] %}
+<!-- PWA Install Prompt -->
+<div id="pwa-install-prompt" class="pwa-banner" style="display: none;">
+    <div class="pwa-banner__content">
+        <div class="pwa-banner__icon">📱</div>
+        <div class="pwa-banner__text">
+            <strong>{{ t.pwa.install_title }}</strong>
+            <p>{{ t.pwa.install_desc }}</p>
+        </div>
+        <div class="pwa-banner__actions">
+            <button onclick="installPWA()" class="btn btn--primary btn--sm" id="install-btn">
+                {{ t.pwa.install }}
+            </button>
+            <button onclick="dismissInstallPrompt()" class="btn btn--ghost btn--sm">
+                {{ t.pwa.later }}
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- PWA Update Notification -->
+<div id="pwa-update-notification" class="pwa-update" style="display: none;">
+    <div class="pwa-update__content">
+        <span class="pwa-update__icon">🔄</span>
+        <span class="pwa-update__text">{{ t.pwa.update_available }}</span>
+        <button onclick="updatePWA()" class="btn btn--primary btn--sm">{{ t.pwa.update }}</button>
+        <button onclick="dismissUpdateNotification()" class="pwa-update__close">×</button>
+    </div>
+</div>
+
+<style>
+    .pwa-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--color-bg-card);
+        box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.15);
+        padding: 16px 24px;
+        z-index: 9998;
+        animation: slideUpBanner 0.3s ease-out;
+        border-top: 1px solid var(--color-border);
+    }
+
+    @keyframes slideUpBanner {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+    }
+
+    .pwa-banner__content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .pwa-banner__icon { font-size: 2.5rem; flex-shrink: 0; }
+    .pwa-banner__text { flex: 1; }
+    .pwa-banner__text strong { display: block; font-size: 1rem; color: var(--color-text); margin-bottom: 2px; }
+    .pwa-banner__text p { font-size: 0.875rem; color: var(--color-text-muted); margin: 0; }
+    .pwa-banner__actions { display: flex; gap: 10px; flex-shrink: 0; }
+
+    .pwa-update {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: var(--color-primary);
+        color: white;
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+        z-index: 9997;
+        animation: slideInRight 0.3s ease-out;
+        max-width: 360px;
+    }
+
+    @keyframes slideInRight {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
+    .pwa-update__content { display: flex; align-items: center; gap: 12px; }
+    .pwa-update__icon { font-size: 1.5rem; }
+    .pwa-update__text { flex: 1; font-weight: 500; }
+    .pwa-update__close { background: none; border: none; color: rgba(255,255,255,0.8); font-size: 1.5rem; cursor: pointer; padding: 0 4px; line-height: 1; }
+    .pwa-update__close:hover { color: white; }
+
+    .btn--sm { padding: 8px 18px; font-size: 0.9rem; }
+    .btn--ghost { background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+    .btn--ghost:hover { background: var(--color-bg-tertiary); }
+</style>
+
+<script>
+class PWAManager {
+    constructor() {
+        this.deferredPrompt = null;
+        this.isInstalled = false;
+        this.init();
+    }
+
+    async init() {
+        if ('serviceWorker' in navigator) {
+            try {
+                const registration = await navigator.serviceWorker.register('/sw.js');
+                console.log('[PWA] SW registered:', registration.scope);
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'activated') this.showUpdateNotification();
+                    });
+                });
+            } catch (error) {
+                console.error('[PWA] SW registration failed:', error);
+            }
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            this.deferredPrompt = e;
+            setTimeout(() => {
+                if (!this.getDismissedStatus()) this.showInstallBanner();
+            }, 5000);
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('[PWA] App installed successfully');
+            this.isInstalled = true;
+            this.hideInstallBanner();
+        });
+    }
+
+    showInstallBanner() {
+        const banner = document.getElementById('pwa-install-prompt');
+        if (banner && this.deferredPrompt) banner.style.display = 'block';
+    }
+
+    hideInstallBanner() {
+        const banner = document.getElementById('pwa-install-prompt');
+        if (banner) banner.style.display = 'none';
+    }
+
+    dismissInstallPrompt() {
+        this.hideInstallBanner();
+        this.setDismissedStatus(24 * 60 * 60 * 1000);
+    }
+
+    async installPWA() {
+        if (!this.deferredPrompt) return;
+        try {
+            const result = await this.deferredPrompt.prompt();
+            this.deferredPrompt = null;
+            this.hideInstallBanner();
+        } catch (error) {
+            console.error('[PWA] Install failed:', error);
+        }
+    }
+
+    showUpdateNotification() {
+        const n = document.getElementById('pwa-update-notification');
+        if (n) { n.style.display = 'block'; setTimeout(() => this.dismissUpdateNotification(), 10000); }
+    }
+
+    dismissUpdateNotification() {
+        const n = document.getElementById('pwa-update-notification');
+        if (n) n.style.display = 'none';
+    }
+
+    async updatePWA() {
+        if ('serviceWorker' in navigator) {
+            const reg = await navigator.serviceWorker.ready;
+            if (reg.waiting || reg.active) window.location.reload(true);
+        }
+    }
+
+    getDismissedStatus() {
+        const d = localStorage.getItem('pwa_install_dismissed_until');
+        return d ? Date.now() < parseInt(d) : false;
+    }
+
+    setDismissedStatus(ms) {
+        localStorage.setItem('pwa_install_dismissed_until', (Date.now() + ms).toString());
+    }
+}
+
+const pwaManager = new PWAManager();
+window.installPWA = () => pwaManager.installPWA();
+window.dismissInstallPrompt = () => pwaManager.dismissInstallPrompt();
+window.updatePWA = () => pwaManager.updatePWA();
+window.dismissUpdateNotification = () => pwaManager.dismissUpdateNotification();
+</script>
