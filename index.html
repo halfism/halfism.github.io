@@ -1,690 +1,683 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="halfism - 全栈开发者 · 开源贡献者 · 终身学习者" />
-    <title>halfism | Personal Portfolio</title>
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  </head>
-  <body>
-    <!-- Reading Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>halfism | Personal Portfolio</title>
+  <meta name="description" content="A passionate developer creating meaningful solutions through code" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-      <div class="navbar-inner">
-        <a href="#" class="nav-logo">halfism</a>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#about" class="active">关于</a></li>
-          <li><a href="#projects">项目</a></li>
-          <li><a href="#skills">技能</a></li>
-          <li><a href="#stats">统计</a></li>
-          <li><a href="#certificates">证书</a></li>
-          <li><a href="#logs">日志</a></li>
-          <li><a href="#contact">联系</a></li>
-        </ul>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="菜单">
-          <span></span><span></span><span></span>
-        </button>
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Navigation (macOS pill bar) -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#hero" class="nav-logo">halfism</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">关于</a></li>
+        <li><a href="#projects">项目</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#github-stats">GitHub</a></li>
+        <li><a href="#certificates">认证</a></li>
+        <li><a href="#logs">日志</a></li>
+      </ul>
+      <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div>
-            <span class="hero-welcome">欢迎来到我的个人主页</span>
-            <h1 class="hero-title">
-              你好，我是<br /><span class="gradient-name">halfism</span>
-            </h1>
-            <p class="hero-subtitle">
-              一位热爱通过代码创造有意义且高效解决方案的开发者。全栈开发 · 开源贡献 · 终身学习
-            </p>
-            <div class="hero-buttons">
-              <a href="#projects" class="btn btn-primary">
-                <i class="fa fa-rocket"></i> 查看我的作品
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="section hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-eyebrow animate-on-scroll">Available for work</div>
+          <h1 class="hero-title animate-on-scroll">
+            全栈开发者<br /><span class="accent">halfism</span>
+          </h1>
+          <p class="hero-subtitle animate-on-scroll">
+            热爱通过代码创造有意义且高效解决方案的开发者。<br />
+            全栈开发 · 开源贡献 · 终身学习
+          </p>
+          <div class="hero-buttons animate-on-scroll">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa fa-folder-open"></i> 查看项目
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fa fa-envelope"></i> 联系我
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual animate-on-scroll">
+          <div class="hero-glow"></div>
+          <!-- Floating badge 1 -->
+          <div class="hero-badge">
+            <div class="badge-icon blue"><i class="fa fa-code"></i></div>
+            <div>
+              <div class="badge-text">Open Source</div>
+              <div class="badge-sub">10+ Repos</div>
+            </div>
+          </div>
+          <!-- Avatar ring -->
+          <div class="hero-avatar-ring">
+            <span class="hero-letter">H</span>
+          </div>
+          <!-- Floating badge 2 -->
+          <div class="hero-badge">
+            <div class="badge-icon green"><i class="fa fa-star"></i></div>
+            <div>
+              <div class="badge-text">Contributor</div>
+              <div class="badge-sub">GitHub Active</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">关于我</h2>
+        <p class="section-subtitle">了解我的故事和专注方向</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="about-card animate-on-scroll">
+        <p class="about-text">
+          你好！我是 <strong>halfism</strong>，一位热爱通过代码创造有意义且高效解决方案的开发者。
+          我专注于全栈 Web 开发，善于将复杂的技术问题转化为优雅的用户体验。
+        </p>
+        <p class="about-text">
+          当我不在编码时，你可能会发现我在探索新技术、为开源项目做贡献，或者与开发者社区分享我的知识。
+        </p>
+
+        <div class="about-features stagger-children">
+          <div class="about-feature animate-on-scroll">
+            <div class="about-feature-icon blue">
+              <i class="fa fa-code-fork"></i>
+            </div>
+            <h3>开源贡献</h3>
+            <p>积极参与各种开源项目，并维护自己的代码仓库</p>
+          </div>
+          <div class="about-feature animate-on-scroll">
+            <div class="about-feature-icon green">
+              <i class="fa fa-graduation-cap"></i>
+            </div>
+            <h3>终身学习</h3>
+            <p>不断扩展知识面，紧跟最新技术趋势</p>
+          </div>
+          <div class="about-feature animate-on-scroll">
+            <div class="about-feature-icon purple">
+              <i class="fa fa-users"></i>
+            </div>
+            <h3>团队协作</h3>
+            <p>喜欢在团队中工作，参与协作开发项目</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROJECTS ═══════════ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">精选项目</h2>
+        <p class="section-subtitle">探索我的一些近期作品和贡献</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="projects-grid stagger-children">
+        <!-- Project 1 -->
+        <div class="project-card animate-on-scroll">
+          <div style="position: relative;">
+            <img class="project-image" src="https://picsum.photos/seed/project1/600/400" alt="Web 应用程序" loading="lazy" width="600" height="400" />
+            <span class="project-category">JavaScript</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Web 应用程序</h3>
+            <p class="project-desc">具有响应式设计和现代 UI 组件的全功能 Web 应用程序。实现了用户认证、实时数据同步和个性化仪表板等功能。</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-stats">
+                <span><i class="fa fa-star"></i> 120</span>
+                <span><i class="fa fa-code-fork"></i> 35</span>
+              </div>
+              <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="project-link">
+                <i class="fa fa-github"></i>
               </a>
-              <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                <i class="fa fa-github"></i> GitHub
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card animate-on-scroll">
+          <div style="position: relative;">
+            <img class="project-image" src="https://picsum.photos/seed/project2/600/400" alt="数据分析工具" loading="lazy" width="600" height="400" />
+            <span class="project-category">Python</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">数据分析工具</h3>
+            <p class="project-desc">具有高级统计功能的数据可视化和分析的强大工具。帮助用户识别数据趋势，生成报告并做出数据驱动的决策。</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Matplotlib</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-stats">
+                <span><i class="fa fa-star"></i> 89</span>
+                <span><i class="fa fa-code-fork"></i> 24</span>
+              </div>
+              <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="project-link">
+                <i class="fa fa-github"></i>
               </a>
             </div>
           </div>
+        </div>
 
-          <div class="hero-visual">
-            <div class="hero-glow"></div>
-            <div class="hero-card-main">
-              <span class="hero-letter">H</span>
-              <!-- Float cards -->
-              <div class="hero-float-card">
-                <div class="float-icon float-icon--blue">
-                  <i class="fa fa-code"></i>
-                </div>
-                <div>
-                  <div class="float-label">全栈开发</div>
-                  <div class="float-sublabel">Web & Mobile</div>
-                </div>
+        <!-- Project 3 -->
+        <div class="project-card animate-on-scroll">
+          <div style="position: relative;">
+            <img class="project-image" src="https://picsum.photos/seed/project3/600/400" alt="API 服务" loading="lazy" width="600" height="400" />
+            <span class="project-category">Go</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">API 服务</h3>
+            <p class="project-desc">高性能 RESTful API 后端服务，具备完善的中件间链、优雅的错误处理和详尽的 API 文档。</p>
+            <div class="project-tags">
+              <span class="tag">Go</span>
+              <span class="tag">Gin</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-stats">
+                <span><i class="fa fa-star"></i> 56</span>
+                <span><i class="fa fa-code-fork"></i> 12</span>
               </div>
-              <div class="hero-float-card">
-                <div class="float-icon float-icon--green">
-                  <i class="fa fa-lightbulb-o"></i>
-                </div>
-                <div>
-                  <div class="float-label">创新思维</div>
-                  <div class="float-sublabel">Problem Solver</div>
-                </div>
-              </div>
+              <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="project-link">
+                <i class="fa fa-github"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <h2 class="section-title">关于我</h2>
-          <p class="section-subtitle">了解我的故事</p>
-          <div class="section-divider"></div>
+  <!-- ═══════════ SKILLS ═══════════ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">技能栈</h2>
+        <p class="section-subtitle">我掌握的技术和工具</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="skills-grid stagger-children">
+        <!-- Skill Bars -->
+        <div class="apple-card animate-on-scroll">
+          <div class="skill-bar-group">
+            <div class="skill-bar-header">
+              <span class="skill-bar-name">JavaScript / TypeScript</span>
+              <span class="skill-bar-pct">92%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="92%"></div>
+            </div>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-header">
+              <span class="skill-bar-name">Python</span>
+              <span class="skill-bar-pct">85%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="85%"></div>
+            </div>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-header">
+              <span class="skill-bar-name">React / Vue</span>
+              <span class="skill-bar-pct">88%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="88%"></div>
+            </div>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-header">
+              <span class="skill-bar-name">Node.js / Go</span>
+              <span class="skill-bar-pct">80%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="80%"></div>
+            </div>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-header">
+              <span class="skill-bar-name">Docker / Kubernetes</span>
+              <span class="skill-bar-pct">75%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="75%"></div>
+            </div>
+          </div>
         </div>
 
-        <div class="about-card animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
-          <p class="about-text">
-            你好！我是 <strong>halfism</strong>，一位对创造高效、美观且实用软件充满热情的开发者。我喜欢解决复杂问题，并通过代码将想法变为现实。
-          </p>
-          <p class="about-text">
-            我的编程之旅始于几年前，从那时起我就一直在不断学习和扩展自己的技能。我相信应该编写干净、可维护的代码，并遵循最佳实践来交付高质量的解决方案。
-          </p>
-          <p class="about-text">
-            当我不在编码时，你可能会发现我在探索新技术、为开源项目做贡献，或者与开发者社区分享我的知识。
-          </p>
+        <!-- Tags -->
+        <div class="apple-card animate-on-scroll tags-section">
+          <h3><i class="fa fa-tags"></i> 工具与框架</h3>
+          <div class="tag-cloud">
+            <span class="tag">Git</span>
+            <span class="tag">Webpack</span>
+            <span class="tag">Vite</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">Nuxt</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">GraphQL</span>
+            <span class="tag">REST API</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span>
+            <span class="tag">AWS</span>
+            <span class="tag">GCP</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Figma</span>
+          </div>
 
-          <div class="about-features">
-            <div class="about-feature">
-              <div class="about-feature-icon blue">
-                <i class="fa fa-code-fork"></i>
-              </div>
-              <h3>开源贡献</h3>
-              <p>积极参与各种开源项目，并维护自己的代码仓库</p>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon green">
-                <i class="fa fa-graduation-cap"></i>
-              </div>
-              <h3>终身学习</h3>
-              <p>不断扩展知识面，紧跟最新技术趋势</p>
-            </div>
-            <div class="about-feature">
-              <div class="about-feature-icon purple">
-                <i class="fa fa-users"></i>
-              </div>
-              <h3>团队协作</h3>
-              <p>喜欢在团队中工作，参与协作开发项目</p>
-            </div>
+          <h3 style="margin-top: 24px;"><i class="fa fa-heart"></i> 软技能</h3>
+          <div class="tag-cloud">
+            <span class="tag">敏捷开发</span>
+            <span class="tag">代码审查</span>
+            <span class="tag">技术文档</span>
+            <span class="tag">问题排查</span>
+            <span class="tag">跨团队沟通</span>
+            <span class="tag">项目管理</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <h2 class="section-title">精选项目</h2>
-          <p class="section-subtitle">探索我的一些近期作品和贡献</p>
-          <div class="section-divider"></div>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-card animate-on-scroll">
-            <div style="position: relative;">
-              <img class="project-image" src="https://picsum.photos/seed/project1/600/400" alt="Web 应用程序" loading="lazy" width="600" height="400" />
-              <span class="project-category">JavaScript</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Web 应用程序</h3>
-              <p class="project-desc">具有响应式设计和现代 UI 组件的全功能 Web 应用程序。实现了用户认证、实时数据同步和个性化仪表板等功能。</p>
-              <div class="project-tags">
-                <span class="tag">React</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">MongoDB</span>
-              </div>
-              <div class="project-footer">
-                <div class="project-stats">
-                  <span><i class="fa fa-star"></i> 120</span>
-                  <span><i class="fa fa-code-fork"></i> 35</span>
-                </div>
-                <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <i class="fa fa-github"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-card animate-on-scroll">
-            <div style="position: relative;">
-              <img class="project-image" src="https://picsum.photos/seed/project2/600/400" alt="数据分析工具" loading="lazy" width="600" height="400" />
-              <span class="project-category">Python</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">数据分析工具</h3>
-              <p class="project-desc">具有高级统计功能的数据可视化和分析的强大工具。帮助用户识别数据趋势，生成报告并做出数据驱动的决策。</p>
-              <div class="project-tags">
-                <span class="tag">Python</span>
-                <span class="tag">Pandas</span>
-                <span class="tag">Matplotlib</span>
-              </div>
-              <div class="project-footer">
-                <div class="project-stats">
-                  <span><i class="fa fa-star"></i> 89</span>
-                  <span><i class="fa fa-code-fork"></i> 24</span>
-                </div>
-                <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <i class="fa fa-github"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card animate-on-scroll">
-            <div style="position: relative;">
-              <img class="project-image" src="https://picsum.photos/seed/project3/600/400" alt="API 服务" loading="lazy" width="600" height="400" />
-              <span class="project-category">Go</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">API 服务</h3>
-              <p class="project-desc">具有身份验证和速率限制功能的高性能 RESTful API 服务。支持数千个并发请求，平均响应时间低于 50ms。</p>
-              <div class="project-tags">
-                <span class="tag">Go</span>
-                <span class="tag">PostgreSQL</span>
-                <span class="tag">Docker</span>
-              </div>
-              <div class="project-footer">
-                <div class="project-stats">
-                  <span><i class="fa fa-star"></i> 210</span>
-                  <span><i class="fa fa-code-fork"></i> 67</span>
-                </div>
-                <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <i class="fa fa-github"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- ═══════════ GITHUB STATS ═══════════ -->
+  <section class="section" id="github-stats">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">GitHub 统计</h2>
+        <p class="section-subtitle">我的开源活动数据</p>
+        <div class="section-divider"></div>
       </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section class="section" id="skills">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <h2 class="section-title">我的技能</h2>
-          <p class="section-subtitle">不断学习，追求卓越</p>
-          <div class="section-divider"></div>
-        </div>
-
-        <div class="skills-grid">
-          <!-- Core Skills -->
-          <div class="neu-card animate-on-scroll">
-            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; color: var(--text-primary);">
-              <i class="fa fa-code" style="color: var(--accent-blue);"></i> 核心技术
-            </h3>
-            <div class="skill-bar-group">
-              <div class="skill-bar-header">
-                <span class="skill-bar-name">JavaScript / TypeScript</span>
-                <span class="skill-bar-pct">90%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="90" style="width: 0%;"></div>
-              </div>
-            </div>
-            <div class="skill-bar-group">
-              <div class="skill-bar-header">
-                <span class="skill-bar-name">React / Vue</span>
-                <span class="skill-bar-pct">85%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="85" style="width: 0%;"></div>
-              </div>
-            </div>
-            <div class="skill-bar-group">
-              <div class="skill-bar-header">
-                <span class="skill-bar-name">Node.js / Go</span>
-                <span class="skill-bar-pct">80%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="80" style="width: 0%;"></div>
-              </div>
-            </div>
-            <div class="skill-bar-group">
-              <div class="skill-bar-header">
-                <span class="skill-bar-name">HTML5 / CSS3 / Tailwind</span>
-                <span class="skill-bar-pct">95%</span>
-              </div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="95" style="width: 0%;"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tags Column -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div class="neu-card-flat animate-on-scroll tags-section">
-              <h3>
-                <i class="fa fa-server" style="color: var(--accent-green);"></i> 后端与运维
-              </h3>
-              <div class="tag-cloud">
-                <span class="tag">Docker</span>
-                <span class="tag">Kubernetes</span>
-                <span class="tag">AWS</span>
-                <span class="tag">MongoDB</span>
-                <span class="tag">PostgreSQL</span>
-                <span class="tag">Redis</span>
-                <span class="tag">Nginx</span>
-              </div>
-            </div>
-            <div class="neu-card-flat animate-on-scroll tags-section">
-              <h3>
-                <i class="fa fa-wrench" style="color: var(--accent-purple);"></i> 工具与流程
-              </h3>
-              <div class="tag-cloud">
-                <span class="tag">Git</span>
-                <span class="tag">VS Code</span>
-                <span class="tag">Figma</span>
-                <span class="tag">Jira</span>
-                <span class="tag">Postman</span>
-                <span class="tag">Webpack</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GitHub Stats Section -->
-    <section class="section" id="stats">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <h2 class="section-title">GitHub 统计</h2>
-          <p class="section-subtitle">我的开源贡献与编码活动</p>
-          <div class="section-divider"></div>
-        </div>
-
-        <div class="stats-grid">
-          <!-- Stats Card -->
-          <div class="stats-main-card animate-on-scroll">
-            <div class="stats-header">
-              <i class="fa fa-github"></i>
-              <span>halfism</span>
-            </div>
-            <div class="stats-values">
-              <div class="stat-item">
-                <i class="fa fa-star" style="color: #fbbf6a;"></i>
-                <span class="stat-value">1.2k+</span>
-                <span class="stat-label">Stars</span>
-              </div>
-              <div class="stat-item">
-                <i class="fa fa-code-fork" style="color: var(--accent-blue);"></i>
-                <span class="stat-value">300+</span>
-                <span class="stat-label">Forks</span>
-              </div>
-              <div class="stat-item">
-                <i class="fa fa-code-commit" style="color: var(--accent-green);"></i>
-                <span class="stat-value">2k+</span>
-                <span class="stat-label">Commits</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contribution Graph -->
-          <div class="neu-card animate-on-scroll">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-              <h3 style="font-weight: 700; color: var(--text-primary);">贡献活动</h3>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">过去一年</span>
-            </div>
-            <div class="contribution-grid" id="contribGrid"></div>
-            <div class="contrib-legend">
-              <span><span class="contrib-legend-dot" style="background: rgba(108, 140, 255, 0.1);"></span> 少</span>
-              <span><span class="contrib-legend-dot" style="background: rgba(108, 140, 255, 0.25);"></span></span>
-              <span><span class="contrib-legend-dot" style="background: rgba(108, 140, 255, 0.45);"></span></span>
-              <span><span class="contrib-legend-dot" style="background: rgba(108, 140, 255, 0.7);"></span> 多</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Top Languages -->
-        <div class="neu-card languages-card animate-on-scroll">
-          <h3 style="font-weight: 700; margin-bottom: 18px; color: var(--text-primary);">常用技术栈</h3>
-          <div class="lang-bar-group">
-            <div class="lang-bar-header">
-              <span class="lang-bar-name">JavaScript / TypeScript</span>
-              <span class="lang-bar-pct">45%</span>
-            </div>
-            <div class="lang-bar-track">
-              <div class="lang-bar-fill blue" data-width="45" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="lang-bar-group">
-            <div class="lang-bar-header">
-              <span class="lang-bar-name">Python</span>
-              <span class="lang-bar-pct">25%</span>
-            </div>
-            <div class="lang-bar-track">
-              <div class="lang-bar-fill yellow" data-width="25" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="lang-bar-group">
-            <div class="lang-bar-header">
-              <span class="lang-bar-name">Go</span>
-              <span class="lang-bar-pct">15%</span>
-            </div>
-            <div class="lang-bar-track">
-              <div class="lang-bar-fill cyan" data-width="15" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="lang-bar-group">
-            <div class="lang-bar-header">
-              <span class="lang-bar-name">Others</span>
-              <span class="lang-bar-pct">15%</span>
-            </div>
-            <div class="lang-bar-track">
-              <div class="lang-bar-fill gray" data-width="15" style="width: 0%;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certificates Section -->
-    <section class="section" id="certificates">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <h2 class="section-title">专业认证</h2>
-          <p class="section-subtitle">持续学习，专业成长</p>
-          <div class="section-divider"></div>
-        </div>
-
-        <div class="cert-grid">
-          <a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
-            <div class="cert-top">
-              <div class="cert-icon orange">
-                <i class="fa fa-cloud"></i>
-              </div>
-              <div class="cert-meta">
-                <div class="cert-date">2025-06</div>
-                <div class="cert-issuer">Amazon Web Services</div>
-              </div>
-            </div>
-            <h3 class="cert-title">AWS 认证解决方案架构师</h3>
-            <span class="cert-link">查看证书 &rarr;</span>
-          </a>
-
-          <a href="https://cloud.google.com/certification/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
-            <div class="cert-top">
-              <div class="cert-icon blue">
-                <i class="fa fa-cloud"></i>
-              </div>
-              <div class="cert-meta">
-                <div class="cert-date">2025-03</div>
-                <div class="cert-issuer">Google Cloud</div>
-              </div>
-            </div>
-            <h3 class="cert-title">Google Cloud 专业云架构师</h3>
-            <span class="cert-link">查看证书 &rarr;</span>
-          </a>
-
-          <a href="https://www.cncf.io/certification/cka/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
-            <div class="cert-top">
-              <div class="cert-icon purple">
-                <i class="fa fa-circle-o-notch"></i>
-              </div>
-              <div class="cert-meta">
-                <div class="cert-date">2024-11</div>
-                <div class="cert-issuer">CNCF</div>
-              </div>
-            </div>
-            <h3 class="cert-title">Kubernetes 管理员认证</h3>
-            <span class="cert-link">查看证书 &rarr;</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Logs Section -->
-    <section class="section" id="logs">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <h2 class="section-title">项目迭代日志</h2>
-          <p class="section-subtitle">记录每一次进步与改变</p>
-          <div class="section-divider"></div>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">2026-03-29</div>
-            <div>
-              <span class="timeline-tag feat">功能</span>
-              <h3 class="timeline-title">新增多项交互功能</h3>
-            </div>
-            <p class="timeline-desc">新增返回顶部按钮、阅读进度条、滚动动画、GitHub 统计卡片、专业认证展示、简历下载模块，优化社交链接展示。</p>
-          </div>
-
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">2026-03-14</div>
-            <div>
-              <span class="timeline-tag feat">功能</span>
-              <h3 class="timeline-title">新增多语言支持</h3>
-            </div>
-            <p class="timeline-desc">完成了首页的中英文内容翻译，并集成了基于 Jekyll 的多语言切换逻辑。</p>
-          </div>
-
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">2026-03-14</div>
-            <div>
-              <span class="timeline-tag code">代码</span>
-              <h3 class="timeline-title">重构头部导航栏</h3>
-            </div>
-            <p class="timeline-desc">参考 Vue/Vite 文档风格，将语言切换改为下拉菜单，并引入了暗色模式滑动开关。</p>
-          </div>
-
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">2026-03-14</div>
-            <div>
-              <span class="timeline-tag api">API</span>
-              <h3 class="timeline-title">集成 Gemini-3-Flash 模型</h3>
-            </div>
-            <p class="timeline-desc">配置了辅助编程助手的 API 调用接口，优化了代码生成的准确性与响应速度。</p>
-          </div>
-
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">2026-03-13</div>
-            <div>
-              <span class="timeline-tag code">代码</span>
-              <h3 class="timeline-title">移除拟态风格样式</h3>
-            </div>
-            <p class="timeline-desc">清理了项目中冗余的 neumorphic 样式，统一采用扁平化与毛玻璃效果设计系统。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-section animate-on-scroll">
-          <h2 class="contact-title">想要了解更多？</h2>
-          <p class="contact-subtitle">下载我的简历，获取更详细的经历与技能信息</p>
-          <div class="contact-buttons">
-            <a href="#" class="btn-white">
-              <i class="fa fa-download"></i> 下载简历 (中文)
-            </a>
-            <a href="#" class="btn-glass">
-              <i class="fa fa-download"></i> Download CV
-            </a>
-          </div>
-          <div class="contact-divider"></div>
-          <h3 class="contact-collab-title">准备好开始合作了吗？</h3>
-          <p class="contact-collab-desc">无论您是有项目想法，还是只想打个招呼，我都随时欢迎。</p>
-          <div class="contact-buttons">
-            <a href="mailto:contact@halfism.dev" class="btn-white">
-              <i class="fa fa-envelope"></i> 发送邮件
-            </a>
-            <a href="https://twitter.com/halfism_dev" target="_blank" rel="noopener noreferrer" class="btn-glass">
-              <i class="fa fa-twitter"></i> Twitter 私信
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-socials">
-          <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub">
+      <div class="stats-grid stagger-children">
+        <!-- Stats Card -->
+        <div class="stats-main-card animate-on-scroll">
+          <div class="stats-header">
             <i class="fa fa-github"></i>
+            <span>halfism</span>
+          </div>
+          <div class="stats-values">
+            <div class="stat-item">
+              <i class="fa fa-book" style="color: var(--system-blue);"></i>
+              <span class="stat-value">12</span>
+              <span class="stat-label">Repos</span>
+            </div>
+            <div class="stat-item">
+              <i class="fa fa-star" style="color: var(--system-orange);"></i>
+              <span class="stat-value">265</span>
+              <span class="stat-label">Stars</span>
+            </div>
+            <div class="stat-item">
+              <i class="fa fa-code-fork" style="color: var(--system-green);"></i>
+              <span class="stat-value">71</span>
+              <span class="stat-label">Forks</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contribution Card -->
+        <div class="stats-main-card animate-on-scroll">
+          <div class="stats-header">
+            <i class="fa fa-calendar-check-o"></i>
+            <span>贡献活动</span>
+          </div>
+          <div class="contribution-grid" id="contribGrid"></div>
+          <div class="contrib-legend">
+            <span>少</span>
+            <span><span class="contrib-legend-dot" style="background: rgba(0,122,255,0.08);"></span></span>
+            <span><span class="contrib-legend-dot" style="background: rgba(0,122,255,0.22);"></span></span>
+            <span><span class="contrib-legend-dot" style="background: rgba(0,122,255,0.45);"></span></span>
+            <span><span class="contrib-legend-dot" style="background: rgba(0,122,255,0.75);"></span></span>
+            <span>多</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="languages-card apple-card-flat animate-on-scroll" style="margin-top: 20px;">
+        <h3 style="font-size: 0.9375rem; font-weight: 600; margin-bottom: 18px; letter-spacing: -0.01em;">
+          <i class="fa fa-pie-chart" style="color: var(--system-blue); margin-right: 6px;"></i>技术栈分布
+        </h3>
+        <div class="lang-bar-group">
+          <div class="lang-bar-header">
+            <span class="lang-bar-name">JavaScript / TypeScript</span>
+            <span class="lang-bar-pct">42%</span>
+          </div>
+          <div class="lang-bar-track">
+            <div class="lang-bar-fill blue" data-width="42%"></div>
+          </div>
+        </div>
+        <div class="lang-bar-group">
+          <div class="lang-bar-header">
+            <span class="lang-bar-name">Python</span>
+            <span class="lang-bar-pct">28%</span>
+          </div>
+          <div class="lang-bar-track">
+            <div class="lang-bar-fill yellow" data-width="28%"></div>
+          </div>
+        </div>
+        <div class="lang-bar-group">
+          <div class="lang-bar-header">
+            <span class="lang-bar-name">Go</span>
+            <span class="lang-bar-pct">18%</span>
+          </div>
+          <div class="lang-bar-track">
+            <div class="lang-bar-fill cyan" data-width="18%"></div>
+          </div>
+        </div>
+        <div class="lang-bar-group">
+          <div class="lang-bar-header">
+            <span class="lang-bar-name">Other</span>
+            <span class="lang-bar-pct">12%</span>
+          </div>
+          <div class="lang-bar-track">
+            <div class="lang-bar-fill gray" data-width="12%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CERTIFICATES ═══════════ -->
+  <section class="section" id="certificates">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">专业认证</h2>
+        <p class="section-subtitle">我获得的技术认证</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="cert-grid stagger-children">
+        <a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
+          <div class="cert-top">
+            <div class="cert-icon orange"><i class="fa fa-aws"></i></div>
+            <div>
+              <div class="cert-issuer">Amazon Web Services</div>
+              <div class="cert-date">2025-06</div>
+            </div>
+          </div>
+          <div class="cert-title">AWS 认证解决方案架构师</div>
+          <div class="cert-link">查看认证 <i class="fa fa-arrow-right" style="font-size: 0.625rem;"></i></div>
+        </a>
+
+        <a href="https://cloud.google.com/certification/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
+          <div class="cert-top">
+            <div class="cert-icon blue"><i class="fa fa-cloud"></i></div>
+            <div>
+              <div class="cert-issuer">Google Cloud</div>
+              <div class="cert-date">2025-03</div>
+            </div>
+          </div>
+          <div class="cert-title">Google Cloud 专业云架构师</div>
+          <div class="cert-link">查看认证 <i class="fa fa-arrow-right" style="font-size: 0.625rem;"></i></div>
+        </a>
+
+        <a href="https://www.cncf.io/certification/cka/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
+          <div class="cert-top">
+            <div class="cert-icon purple"><i class="fa fa-dharmachakra"></i></div>
+            <div>
+              <div class="cert-issuer">CNCF</div>
+              <div class="cert-date">2024-11</div>
+            </div>
+          </div>
+          <div class="cert-title">Kubernetes 管理员认证</div>
+          <div class="cert-link">查看认证 <i class="fa fa-arrow-right" style="font-size: 0.625rem;"></i></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LOGS ═══════════ -->
+  <section class="section" id="logs">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">迭代日志</h2>
+        <p class="section-subtitle">项目开发历程</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026-03-29</div>
+          <span class="timeline-tag feat">feat</span>
+          <span class="timeline-title">新增多项交互功能</span>
+          <p class="timeline-desc">新增返回顶部按钮、阅读进度条、滚动动画、GitHub 统计卡片、专业认证展示、简历下载模块，优化社交链接展示。</p>
+        </div>
+
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-dot" style="border-color: var(--system-purple); box-shadow: 0 0 0 3px rgba(175,82,222,0.08);"></div>
+          <div class="timeline-date">2026-03-14</div>
+          <span class="timeline-tag feat">feat</span>
+          <span class="timeline-title">新增多语言支持</span>
+          <p class="timeline-desc">完成了首页的中英文内容翻译，并集成了基于 Jekyll 的多语言切换逻辑。</p>
+        </div>
+
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-dot" style="border-color: var(--system-green); box-shadow: 0 0 0 3px rgba(52,199,89,0.08);"></div>
+          <div class="timeline-date">2026-03-14</div>
+          <span class="timeline-tag code">code</span>
+          <span class="timeline-title">重构头部导航栏</span>
+          <p class="timeline-desc">参考 Vue/Vite 文档风格，将语言切换改为下拉菜单，并引入了暗色模式滑动开关。</p>
+        </div>
+
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-dot" style="border-color: var(--system-purple); box-shadow: 0 0 0 3px rgba(175,82,222,0.08);"></div>
+          <div class="timeline-date">2026-03-14</div>
+          <span class="timeline-tag api">api</span>
+          <span class="timeline-title">集成 Gemini-3-Flash 模型</span>
+          <p class="timeline-desc">配置了辅助编程助手的 API 调用接口，优化了代码生成的准确性与响应速度。</p>
+        </div>
+
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-dot" style="border-color: var(--system-green); box-shadow: 0 0 0 3px rgba(52,199,89,0.08);"></div>
+          <div class="timeline-date">2026-03-13</div>
+          <span class="timeline-tag code">code</span>
+          <span class="timeline-title">移除拟态风格样式</span>
+          <p class="timeline-desc">清理了项目中冗余的 neumorphic 样式，统一采用扁平化与毛玻璃效果设计系统。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-section animate-on-scroll">
+        <h2 class="contact-title">一起创造未来</h2>
+        <p class="contact-subtitle">无论你有项目想法、合作机会，还是只是想打个招呼，都欢迎联系我</p>
+        <div class="contact-buttons">
+          <a href="mailto:contact@halfism.dev" class="btn-white">
+            <i class="fa fa-envelope"></i> 发送邮件
           </a>
-          <a href="https://twitter.com/halfism_dev" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter">
-            <i class="fa fa-twitter"></i>
+          <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="btn-glass">
+            <i class="fa fa-github"></i> GitHub
           </a>
-          <a href="https://linkedin.com/in/halfism" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
-            <i class="fa fa-linkedin"></i>
-          </a>
-          <a href="mailto:contact@halfism.dev" class="footer-social-link" aria-label="Email">
-            <i class="fa fa-envelope"></i>
+          <a href="https://twitter.com/halfism_dev" target="_blank" rel="noopener noreferrer" class="btn-glass">
+            <i class="fa fa-twitter"></i> Twitter
           </a>
         </div>
-        <p>&copy; 2026 halfism. All rights reserved.</p>
+        <div class="contact-divider"></div>
+        <h3 class="contact-collab-title">开源合作</h3>
+        <p class="contact-collab-desc">对开源项目感兴趣？欢迎一起贡献代码和想法</p>
+        <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="btn-glass">
+          <i class="fa fa-code-fork"></i> 查看我的仓库
+        </a>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop" aria-label="返回顶部">
-      <i class="fa fa-chevron-up"></i>
-    </button>
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-socials">
+        <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub">
+          <i class="fa fa-github"></i>
+        </a>
+        <a href="https://twitter.com/halfism_dev" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a href="https://linkedin.com/in/halfism" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
+          <i class="fa fa-linkedin"></i>
+        </a>
+        <a href="mailto:contact@halfism.dev" class="footer-social-link" aria-label="Email">
+          <i class="fa fa-envelope"></i>
+        </a>
+      </div>
+      <p>&copy; 2026 halfism. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <script>
-      // ===================== Contribution Grid =====================
-      (function generateContribGrid() {
-        var grid = document.getElementById('contribGrid');
-        var opacities = [0.1, 0.25, 0.45, 0.7];
-        for (var i = 0; i < 48; i++) {
-          var cell = document.createElement('div');
-          cell.className = 'contrib-cell';
-          var op = opacities[Math.floor(Math.random() * opacities.length)];
-          cell.style.backgroundColor = 'rgba(108, 140, 255, ' + op + ')';
-          grid.appendChild(cell);
-        }
-      })();
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Back to top">
+    <i class="fa fa-chevron-up"></i>
+  </button>
 
-      // ===================== Scroll Progress Bar =====================
-      window.addEventListener('scroll', function() {
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        var progress = (scrollTop / scrollHeight) * 100;
-        document.getElementById('progressBar').style.width = progress + '%';
+  <script>
+    /* ── Progress Bar ── */
+    const progressBar = document.getElementById('progressBar');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    }
+
+    /* ── Navbar scroll effect ── */
+    const navbar = document.getElementById('navbar');
+    function updateNavbar() {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }
+
+    /* ── Active nav link ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    function updateActiveLink() {
+      let current = '';
+      sections.forEach(function(section) {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
       });
-
-      // ===================== Navbar Scroll Effect =====================
-      window.addEventListener('scroll', function() {
-        var navbar = document.getElementById('navbar');
-        if (window.scrollY > 60) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
+      navLinks.forEach(function(link) {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
       });
+    }
 
-      // ===================== Active Nav Link =====================
-      var sections = document.querySelectorAll('section[id]');
-      var navLinks = document.querySelectorAll('.nav-links a');
-
-      window.addEventListener('scroll', function() {
-        var scrollPos = window.scrollY + 120;
-        sections.forEach(function(section) {
-          var top = section.offsetTop;
-          var height = section.offsetHeight;
-          var id = section.getAttribute('id');
-          if (scrollPos >= top && scrollPos < top + height) {
-            navLinks.forEach(function(link) {
-              link.classList.remove('active');
-              if (link.getAttribute('href') === '#' + id) {
-                link.classList.add('active');
-              }
-            });
-          }
-        });
-      });
-
-      // ===================== Mobile Menu Toggle =====================
-      document.getElementById('mobileToggle').addEventListener('click', function() {
-        document.getElementById('navLinks').classList.toggle('open');
-      });
-
-      // Close mobile menu on link click
-      document.querySelectorAll('.nav-links a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          document.getElementById('navLinks').classList.remove('open');
-        });
-      });
-
-      // ===================== Scroll to Top =====================
-      var scrollTopBtn = document.getElementById('scrollTop');
-
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 400) {
-          scrollTopBtn.classList.add('visible');
-        } else {
-          scrollTopBtn.classList.remove('visible');
+    /* ── Scroll animations ── */
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          /* Animate skill bars when visible */
+          const bars = entry.target.querySelectorAll('.skill-bar-fill, .lang-bar-fill');
+          bars.forEach(function(bar) {
+            const w = bar.getAttribute('data-width');
+            if (w) bar.style.width = w;
+          });
         }
       });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-      scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    /* ── Init skill bars at 0 ── */
+    document.querySelectorAll('.skill-bar-fill, .lang-bar-fill').forEach(function(bar) {
+      bar.style.width = '0%';
+    });
+
+    /* ── Mobile toggle ── */
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinksEl = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', function() {
+      navLinksEl.classList.toggle('open');
+    });
+
+    /* Close nav on link click (mobile) */
+    navLinksEl.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinksEl.classList.remove('open');
       });
+    });
 
-      // ===================== Animate on Scroll =====================
-      var observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -60px 0px',
-        threshold: 0.1
-      };
+    /* ── Scroll to top ── */
+    const scrollTopBtn = document.getElementById('scrollTop');
+    function updateScrollTop() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+    /* ── Contribution grid ── */
+    const contribGrid = document.getElementById('contribGrid');
+    const contribLevels = [
+      'rgba(0, 122, 255, 0.06)',
+      'rgba(0, 122, 255, 0.18)',
+      'rgba(0, 122, 255, 0.36)',
+      'rgba(0, 122, 255, 0.58)',
+      'rgba(0, 122, 255, 0.82)'
+    ];
+    for (let i = 0; i < 72; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'contrib-cell';
+      const level = Math.floor(Math.random() * 5);
+      cell.style.background = contribLevels[level];
+      contribGrid.appendChild(cell);
+    }
 
-            // Animate skill bars inside
-            var bars = entry.target.querySelectorAll('.skill-bar-fill, .lang-bar-fill');
-            bars.forEach(function(bar) {
-              var width = bar.getAttribute('data-width');
-              if (width) {
-                setTimeout(function() {
-                  bar.style.width = width + '%';
-                }, 200);
-              }
-            });
-
-            observer.unobserve(entry.target);
-          }
+    /* ── Unified scroll listener ── */
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateProgress();
+          updateNavbar();
+          updateActiveLink();
+          updateScrollTop();
+          ticking = false;
         });
-      }, observerOptions);
+        ticking = true;
+      }
+    });
 
-      document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
-        observer.observe(el);
-      });
-    </script>
-  </body>
+    /* Initial call */
+    updateProgress();
+    updateNavbar();
+    updateActiveLink();
+    updateScrollTop();
+  </script>
+</body>
 </html>
