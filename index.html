@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>halfism | Personal Portfolio</title>
-  <meta name="description" content="A passionate developer creating meaningful solutions through code" />
+  <meta name="description" content="全栈开发者 · 开源贡献者 · 终身学习者" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="halfism | Personal Portfolio" />
@@ -12,7 +12,6 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://halfism.github.io" />
   <meta property="og:locale" content="zh_CN" />
-  <meta property="og:locale:alternate" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@halfism_dev" />
 
@@ -59,39 +58,44 @@
         <span class="cmd-kbd">ESC</span>
       </div>
       <div class="cmd-results" id="cmdResults">
-        <a href="#about" class="cmd-item" data-keywords="关于 about me">
-          <i class="fa fa-user"></i>
-          <span class="cmd-item-label">关于我</span>
+        <a href="#hero" class="cmd-item" data-keywords="首页 home 主页">
+          <i class="fa fa-home"></i>
+          <span class="cmd-item-label">首页</span>
           <span class="cmd-item-hint">Section</span>
         </a>
-        <a href="#projects" class="cmd-item" data-keywords="项目 projects work">
+        <a href="https://halfism.com/lantab" target="_blank" rel="noopener noreferrer" class="cmd-item" data-keywords="博客 blog 文章 lantab">
+          <i class="fa fa-pencil-square-o"></i>
+          <span class="cmd-item-label">博客</span>
+          <span class="cmd-item-hint">External</span>
+        </a>
+        <a href="#projects" class="cmd-item" data-keywords="项目 projects work 作品">
           <i class="fa fa-folder-open"></i>
-          <span class="cmd-item-label">精选项目</span>
+          <span class="cmd-item-label">项目</span>
           <span class="cmd-item-hint">Section</span>
         </a>
-        <a href="#skills" class="cmd-item" data-keywords="技能 skills tech stack">
-          <i class="fa fa-bar-chart"></i>
-          <span class="cmd-item-label">技能栈</span>
+        <a href="#resources" class="cmd-item" data-keywords="资源 resources 工具 学习 书签">
+          <i class="fa fa-bookmark"></i>
+          <span class="cmd-item-label">资源</span>
           <span class="cmd-item-hint">Section</span>
         </a>
-        <a href="#github-stats" class="cmd-item" data-keywords="github 统计 stats">
-          <i class="fa fa-github"></i>
-          <span class="cmd-item-label">GitHub 统计</span>
+        <a href="#daily" class="cmd-item" data-keywords="日常 daily 生活 动态 随笔">
+          <i class="fa fa-coffee"></i>
+          <span class="cmd-item-label">日常</span>
           <span class="cmd-item-hint">Section</span>
         </a>
-        <a href="#certificates" class="cmd-item" data-keywords="认证 certificates aws">
-          <i class="fa fa-certificate"></i>
-          <span class="cmd-item-label">专业认证</span>
+        <a href="#gallery" class="cmd-item" data-keywords="相册 gallery 照片 摄影 图片">
+          <i class="fa fa-image"></i>
+          <span class="cmd-item-label">相册</span>
           <span class="cmd-item-hint">Section</span>
         </a>
-        <a href="#logs" class="cmd-item" data-keywords="日志 logs changelog">
-          <i class="fa fa-clock-o"></i>
-          <span class="cmd-item-label">迭代日志</span>
+        <a href="#resume" class="cmd-item" data-keywords="简历 resume cv 履历 经历">
+          <i class="fa fa-file-text-o"></i>
+          <span class="cmd-item-label">简历</span>
           <span class="cmd-item-hint">Section</span>
         </a>
-        <a href="#contact" class="cmd-item" data-keywords="联系 contact email">
-          <i class="fa fa-envelope"></i>
-          <span class="cmd-item-label">联系我</span>
+        <a href="#about" class="cmd-item" data-keywords="关于 about me 关于我">
+          <i class="fa fa-user"></i>
+          <span class="cmd-item-label">关于</span>
           <span class="cmd-item-hint">Section</span>
         </a>
         <button type="button" class="cmd-item" data-keywords="深色 暗色 dark mode 主题 theme" id="cmdDarkToggle">
@@ -118,12 +122,14 @@
     <div class="navbar-inner">
       <a href="#hero" class="nav-logo">halfism</a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">关于</a></li>
+        <li><a href="#hero">首页</a></li>
+        <li><a href="https://halfism.com/lantab" target="_blank" rel="noopener noreferrer">博客</a></li>
         <li><a href="#projects">项目</a></li>
-        <li><a href="#skills">技能</a></li>
-        <li><a href="#github-stats">GitHub</a></li>
-        <li><a href="#certificates">认证</a></li>
-        <li><a href="#logs">日志</a></li>
+        <li><a href="#resources">资源</a></li>
+        <li><a href="#daily">日常</a></li>
+        <li><a href="#gallery">相册</a></li>
+        <li><a href="#resume">简历</a></li>
+        <li><a href="#about">关于</a></li>
       </ul>
       <div class="nav-actions">
         <button class="cmd-trigger" id="cmdTrigger" aria-label="Command Palette" title="⌘K">
@@ -140,7 +146,7 @@
     </div>
   </nav>
 
-  <!-- ═══════════ HERO ═══════════ -->
+  <!-- ═══════════ HERO (首页) ═══════════ -->
   <section class="section hero" id="hero">
     <div class="container">
       <div class="hero-grid">
@@ -157,8 +163,8 @@
             <a href="#projects" class="btn btn-primary">
               <i class="fa fa-folder-open"></i> 查看项目
             </a>
-            <a href="#contact" class="btn btn-secondary">
-              <i class="fa fa-envelope"></i> 联系我
+            <a href="#about" class="btn btn-secondary">
+              <i class="fa fa-user"></i> 了解我
             </a>
           </div>
         </div>
@@ -189,56 +195,11 @@
     </div>
   </section>
 
-  <!-- ═══════════ ABOUT ═══════════ -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-header animate-on-scroll">
-        <h2 class="section-title">关于我</h2>
-        <p class="section-subtitle">了解我的故事和专注方向</p>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="about-card animate-on-scroll">
-        <p class="about-text">
-          你好！我是 <strong>halfism</strong>，一位热爱通过代码创造有意义且高效解决方案的开发者。
-          我专注于全栈 Web 开发，善于将复杂的技术问题转化为优雅的用户体验。
-        </p>
-        <p class="about-text">
-          当我不在编码时，你可能会发现我在探索新技术、为开源项目做贡献，或者与开发者社区分享我的知识。
-        </p>
-
-        <div class="about-features stagger-children">
-          <div class="about-feature animate-on-scroll">
-            <div class="about-feature-icon blue">
-              <i class="fa fa-code-fork"></i>
-            </div>
-            <h3>开源贡献</h3>
-            <p>积极参与各种开源项目，并维护自己的代码仓库</p>
-          </div>
-          <div class="about-feature animate-on-scroll">
-            <div class="about-feature-icon green">
-              <i class="fa fa-graduation-cap"></i>
-            </div>
-            <h3>终身学习</h3>
-            <p>不断扩展知识面，紧跟最新技术趋势</p>
-          </div>
-          <div class="about-feature animate-on-scroll">
-            <div class="about-feature-icon purple">
-              <i class="fa fa-users"></i>
-            </div>
-            <h3>团队协作</h3>
-            <p>喜欢在团队中工作，参与协作开发项目</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ PROJECTS ═══════════ -->
+  <!-- ═══════════ PROJECTS (项目) ═══════════ -->
   <section class="section" id="projects">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <h2 class="section-title">精选项目</h2>
+        <h2 class="section-title">项目</h2>
         <p class="section-subtitle">探索我的一些近期作品和贡献</p>
         <div class="section-divider"></div>
       </div>
@@ -304,7 +265,7 @@
           </div>
           <div class="project-body">
             <h3 class="project-title">API 服务</h3>
-            <p class="project-desc">高性能 RESTful API 后端服务，具备完善的中件间链、优雅的错误处理和详尽的 API 文档。</p>
+            <p class="project-desc">高性能 RESTful API 后端服务，具备完善的中间件链、优雅的错误处理和详尽的 API 文档。</p>
             <div class="project-tags">
               <span class="tag">Go</span>
               <span class="tag">Gin</span>
@@ -325,356 +286,526 @@
     </div>
   </section>
 
-  <!-- ═══════════ SKILLS ═══════════ -->
-  <section class="section" id="skills">
+  <!-- ═══════════ RESOURCES (资源) ═══════════ -->
+  <section class="section" id="resources">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <h2 class="section-title">技能栈</h2>
-        <p class="section-subtitle">我掌握的技术和工具</p>
+        <h2 class="section-title">资源</h2>
+        <p class="section-subtitle">我收集和推荐的工具、文章与学习资料</p>
         <div class="section-divider"></div>
       </div>
 
-      <div class="skills-grid stagger-children">
-        <!-- Skill Bars -->
-        <div class="apple-card animate-on-scroll">
-          <div class="skill-bar-group">
-            <div class="skill-bar-header">
-              <span class="skill-bar-name">JavaScript / TypeScript</span>
-              <span class="skill-bar-pct">92%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="92%"></div>
-            </div>
+      <div class="resources-grid stagger-children">
+        <!-- Category: 开发工具 -->
+        <div class="resource-category animate-on-scroll">
+          <div class="resource-cat-header">
+            <div class="resource-cat-icon blue"><i class="fa fa-wrench"></i></div>
+            <h3 class="resource-cat-title">开发工具</h3>
           </div>
-          <div class="skill-bar-group">
-            <div class="skill-bar-header">
-              <span class="skill-bar-name">Python</span>
-              <span class="skill-bar-pct">85%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="85%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-group">
-            <div class="skill-bar-header">
-              <span class="skill-bar-name">React / Vue</span>
-              <span class="skill-bar-pct">88%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="88%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-group">
-            <div class="skill-bar-header">
-              <span class="skill-bar-name">Node.js / Go</span>
-              <span class="skill-bar-pct">80%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="80%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-group">
-            <div class="skill-bar-header">
-              <span class="skill-bar-name">Docker / Kubernetes</span>
-              <span class="skill-bar-pct">75%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="75%"></div>
-            </div>
+          <div class="resource-list">
+            <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">VS Code</span>
+                <span class="resource-item-desc">主力代码编辑器，丰富的插件生态</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://iterm2.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">iTerm2</span>
+                <span class="resource-item-desc">macOS 终端替代品，支持分屏与主题</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Docker</span>
+                <span class="resource-item-desc">容器化开发环境，一键部署</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://git-fork.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Fork</span>
+                <span class="resource-item-desc">快速友好的 Git 客户端</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Radar Chart + Tags -->
-        <div class="apple-card radar-card animate-on-scroll">
-          <svg class="radar-svg" viewBox="0 0 200 200" aria-label="技能雷达图" role="img">
-            <!-- Grid (pentagon levels) -->
-            <polygon class="radar-grid-line" points="100,18 173.5,71.4 145.3,156.6 54.7,156.6 26.5,71.4" />
-            <polygon class="radar-grid-line" points="100,39 152.8,78.6 131.5,137.5 68.5,137.5 47.2,78.6" />
-            <polygon class="radar-grid-line" points="100,60 132,85.7 117.7,118.3 82.3,118.3 68,85.7" />
-            <polygon class="radar-grid-line" points="100,81 111.3,92.9 104.1,99.2 95.9,99.2 88.7,92.9" />
-            <!-- Axes -->
-            <line class="radar-grid-line" x1="100" y1="100" x2="100" y2="18" />
-            <line class="radar-grid-line" x1="100" y1="100" x2="173.5" y2="71.4" />
-            <line class="radar-grid-line" x1="100" y1="100" x2="145.3" y2="156.6" />
-            <line class="radar-grid-line" x1="100" y1="100" x2="54.7" y2="156.6" />
-            <line class="radar-grid-line" x1="100" y1="100" x2="26.5" y2="71.4" />
-            <!-- Data -->
-            <polygon class="radar-data-polygon" points="100,26.4 158.5,76.2 130.8,149.3 63.5,145.6 38.2,74.6" />
-            <!-- Dots -->
-            <circle class="radar-dot" cx="100" cy="26.4" r="3.5" />
-            <circle class="radar-dot" cx="158.5" cy="76.2" r="3.5" />
-            <circle class="radar-dot" cx="130.8" cy="149.3" r="3.5" />
-            <circle class="radar-dot" cx="63.5" cy="145.6" r="3.5" />
-            <circle class="radar-dot" cx="38.2" cy="74.6" r="3.5" />
-            <!-- Labels -->
-            <text class="radar-axis-label" x="100" y="12" text-anchor="middle">Frontend</text>
-            <text class="radar-axis-label" x="183" y="71" text-anchor="start">Backend</text>
-            <text class="radar-axis-label" x="153" y="168" text-anchor="middle">DevOps</text>
-            <text class="radar-axis-label" x="47" y="168" text-anchor="middle">Cloud</text>
-            <text class="radar-axis-label" x="17" y="71" text-anchor="end">Database</text>
-          </svg>
-
-          <h3 style="font-size: 0.9375rem; font-weight: 600; margin: 20px 0 14px; display: flex; align-items: center; gap: 6px; letter-spacing: -0.01em; width: 100%;">
-            <i class="fa fa-tags"></i> 工具与框架
-          </h3>
-          <div class="tag-cloud" style="width: 100%;">
-            <span class="tag">Git</span>
-            <span class="tag">Webpack</span>
-            <span class="tag">Vite</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">Nuxt</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">GraphQL</span>
-            <span class="tag">REST API</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">Redis</span>
-            <span class="tag">AWS</span>
-            <span class="tag">GCP</span>
-            <span class="tag">CI/CD</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Figma</span>
+        <!-- Category: 学习平台 -->
+        <div class="resource-category animate-on-scroll">
+          <div class="resource-cat-header">
+            <div class="resource-cat-icon purple"><i class="fa fa-graduation-cap"></i></div>
+            <h3 class="resource-cat-title">学习平台</h3>
           </div>
+          <div class="resource-list">
+            <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">MDN Web Docs</span>
+                <span class="resource-item-desc">Web 技术权威文档参考</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://frontendmasters.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Frontend Masters</span>
+                <span class="resource-item-desc">前端进阶视频课程平台</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://exercism.org/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Exercism</span>
+                <span class="resource-item-desc">交互式编程练习，多语言支持</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://roadmap.sh/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">roadmap.sh</span>
+                <span class="resource-item-desc">开发者成长路线图</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+          </div>
+        </div>
 
-          <h3 style="font-size: 0.9375rem; font-weight: 600; margin: 20px 0 14px; display: flex; align-items: center; gap: 6px; letter-spacing: -0.01em; width: 100%;">
-            <i class="fa fa-heart"></i> 软技能
-          </h3>
-          <div class="tag-cloud" style="width: 100%;">
-            <span class="tag">敏捷开发</span>
-            <span class="tag">代码审查</span>
-            <span class="tag">技术文档</span>
-            <span class="tag">问题排查</span>
-            <span class="tag">跨团队沟通</span>
-            <span class="tag">项目管理</span>
+        <!-- Category: 设计灵感 -->
+        <div class="resource-category animate-on-scroll">
+          <div class="resource-cat-header">
+            <div class="resource-cat-icon pink"><i class="fa fa-paint-brush"></i></div>
+            <h3 class="resource-cat-title">设计灵感</h3>
+          </div>
+          <div class="resource-list">
+            <a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Dribbble</span>
+                <span class="resource-item-desc">设计师作品展示社区</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Figma</span>
+                <span class="resource-item-desc">协作设计工具，UI/UX 必备</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://mobbin.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Mobbin</span>
+                <span class="resource-item-desc">真实 App 设计参考库</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://huemint.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Huemint</span>
+                <span class="resource-item-desc">AI 配色方案生成器</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category: 效率工具 -->
+        <div class="resource-category animate-on-scroll">
+          <div class="resource-cat-header">
+            <div class="resource-cat-icon green"><i class="fa fa-bolt"></i></div>
+            <h3 class="resource-cat-title">效率工具</h3>
+          </div>
+          <div class="resource-list">
+            <a href="https://www.raycast.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Raycast</span>
+                <span class="resource-item-desc">macOS 启动器，替代 Spotlight</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Obsidian</span>
+                <span class="resource-item-desc">本地优先的知识管理工具</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://arc.net/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Arc Browser</span>
+                <span class="resource-item-desc">重新定义浏览器的使用方式</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
+            <a href="https://rectangleapp.com/" target="_blank" rel="noopener noreferrer" class="resource-item">
+              <div class="resource-item-left">
+                <span class="resource-item-name">Rectangle</span>
+                <span class="resource-item-desc">macOS 窗口管理，快捷键分屏</span>
+              </div>
+              <i class="fa fa-external-link resource-item-arrow"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ GITHUB STATS ═══════════ -->
-  <section class="section" id="github-stats">
+  <!-- ═══════════ DAILY (日常) ═══════════ -->
+  <section class="section" id="daily">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <h2 class="section-title">GitHub 统计</h2>
-        <p class="section-subtitle">我的开源活动数据</p>
+        <h2 class="section-title">日常</h2>
+        <p class="section-subtitle">记录生活中的思考与片段</p>
         <div class="section-divider"></div>
       </div>
 
-      <div class="stats-grid stagger-children">
-        <!-- Stats Card -->
-        <div class="stats-main-card animate-on-scroll">
-          <div class="stats-header">
-            <i class="fa fa-github"></i>
-            <span>halfism</span>
+      <div class="daily-grid stagger-children">
+        <!-- Daily Entry 1 -->
+        <div class="daily-card animate-on-scroll">
+          <div class="daily-card-header">
+            <span class="daily-date">2026-05-16</span>
+            <span class="daily-tag life">生活</span>
           </div>
-          <div class="stats-values">
-            <div class="stat-item">
-              <i class="fa fa-book" style="color: var(--system-blue);"></i>
-              <span class="stat-value" data-count="12">0</span>
-              <span class="stat-label">Repos</span>
-            </div>
-            <div class="stat-item">
-              <i class="fa fa-star" style="color: var(--system-orange);"></i>
-              <span class="stat-value" data-count="265">0</span>
-              <span class="stat-label">Stars</span>
-            </div>
-            <div class="stat-item">
-              <i class="fa fa-code-fork" style="color: var(--system-green);"></i>
-              <span class="stat-value" data-count="71">0</span>
-              <span class="stat-label">Forks</span>
-            </div>
+          <h3 class="daily-title">重构个人主页的设计语言</h3>
+          <p class="daily-excerpt">参考了 iOS 和 macOS 最新的设计规范，把整个站点重新做了一遍拟态 + 毛玻璃风格。调试 CSS 变量到凌晨三点，但看着最终效果觉得值了。</p>
+          <div class="daily-footer">
+            <span class="daily-reading"><i class="fa fa-clock-o"></i> 3 分钟</span>
+            <a href="https://halfism.com/lantab" target="_blank" rel="noopener noreferrer" class="daily-read-more">阅读全文 <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
 
-        <!-- Contribution Card -->
-        <div class="stats-main-card animate-on-scroll">
-          <div class="stats-header">
-            <i class="fa fa-calendar-check-o"></i>
-            <span>贡献活动</span>
+        <!-- Daily Entry 2 -->
+        <div class="daily-card animate-on-scroll">
+          <div class="daily-card-header">
+            <span class="daily-date">2026-05-10</span>
+            <span class="daily-tag tech">技术</span>
           </div>
-          <div class="contribution-grid" id="contribGrid"></div>
-          <div class="contrib-legend">
-            <span>少</span>
-            <span><span class="contrib-legend-dot" style="background: rgba(0,122,255,0.08);"></span></span>
-            <span><span class="contrib-legend-dot" style="background: rgba(0,122,255,0.22);"></span></span>
-            <span><span class="contrib-legend-dot" style="background: rgba(0,122,255,0.45);"></span></span>
-            <span><span class="contrib-legend-dot" style="background: rgba(0,122,255,0.75);"></span></span>
-            <span>多</span>
+          <h3 class="daily-title">初试 Claude Code + Vibe Coding</h3>
+          <p class="daily-excerpt">用 Claude Code 搭建了一个小工具，体验了一把 Vibe Coding 的流程。AI 辅助编程确实能大幅提升原型开发速度，但架构决策还是要自己把控。</p>
+          <div class="daily-footer">
+            <span class="daily-reading"><i class="fa fa-clock-o"></i> 5 分钟</span>
+            <a href="https://halfism.com/lantab" target="_blank" rel="noopener noreferrer" class="daily-read-more">阅读全文 <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
-      </div>
 
-      <!-- Languages -->
-      <div class="languages-card apple-card-flat animate-on-scroll" style="margin-top: 20px;">
-        <h3 style="font-size: 0.9375rem; font-weight: 600; margin-bottom: 18px; letter-spacing: -0.01em;">
-          <i class="fa fa-pie-chart" style="color: var(--system-blue); margin-right: 6px;"></i>技术栈分布
-        </h3>
-        <div class="lang-bar-group">
-          <div class="lang-bar-header">
-            <span class="lang-bar-name">JavaScript / TypeScript</span>
-            <span class="lang-bar-pct">42%</span>
+        <!-- Daily Entry 3 -->
+        <div class="daily-card animate-on-scroll">
+          <div class="daily-card-header">
+            <span class="daily-date">2026-05-02</span>
+            <span class="daily-tag idea">想法</span>
           </div>
-          <div class="lang-bar-track">
-            <div class="lang-bar-fill blue" data-width="42%"></div>
-          </div>
-        </div>
-        <div class="lang-bar-group">
-          <div class="lang-bar-header">
-            <span class="lang-bar-name">Python</span>
-            <span class="lang-bar-pct">28%</span>
-          </div>
-          <div class="lang-bar-track">
-            <div class="lang-bar-fill yellow" data-width="28%"></div>
+          <h3 class="daily-title">关于「工具人」和「造工具的人」</h3>
+          <p class="daily-excerpt">很多开发者沉浸在工具的选用和配置中，却忘了工具最终是服务于创造的。我想做造工具的人，而不仅仅是用工具的人。</p>
+          <div class="daily-footer">
+            <span class="daily-reading"><i class="fa fa-clock-o"></i> 4 分钟</span>
+            <a href="https://halfism.com/lantab" target="_blank" rel="noopener noreferrer" class="daily-read-more">阅读全文 <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
-        <div class="lang-bar-group">
-          <div class="lang-bar-header">
-            <span class="lang-bar-name">Go</span>
-            <span class="lang-bar-pct">18%</span>
+
+        <!-- Daily Entry 4 -->
+        <div class="daily-card animate-on-scroll">
+          <div class="daily-card-header">
+            <span class="daily-date">2026-04-25</span>
+            <span class="daily-tag life">生活</span>
           </div>
-          <div class="lang-bar-track">
-            <div class="lang-bar-fill cyan" data-width="18%"></div>
+          <h3 class="daily-title">周末骑行记录：西湖环线</h3>
+          <p class="daily-excerpt">天气不错，绕着西湖骑了一圈。沿途拍了些照片，发现断桥边上的柳树比想象中还要绿。运动后的那杯冰美式格外好喝。</p>
+          <div class="daily-footer">
+            <span class="daily-reading"><i class="fa fa-clock-o"></i> 2 分钟</span>
+            <a href="https://halfism.com/lantab" target="_blank" rel="noopener noreferrer" class="daily-read-more">阅读全文 <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
-        <div class="lang-bar-group">
-          <div class="lang-bar-header">
-            <span class="lang-bar-name">Other</span>
-            <span class="lang-bar-pct">12%</span>
+
+        <!-- Daily Entry 5 -->
+        <div class="daily-card animate-on-scroll">
+          <div class="daily-card-header">
+            <span class="daily-date">2026-04-18</span>
+            <span class="daily-tag tech">技术</span>
           </div>
-          <div class="lang-bar-track">
-            <div class="lang-bar-fill gray" data-width="12%"></div>
+          <h3 class="daily-title">K8s 集群迁移踩坑记录</h3>
+          <p class="daily-excerpt">把生产环境的 K8s 集群从 1.28 升级到 1.30，遇到了 PVC 绑定和 Ingress 兼容性问题。整理了一份详细的迁移 Checklist。</p>
+          <div class="daily-footer">
+            <span class="daily-reading"><i class="fa fa-clock-o"></i> 8 分钟</span>
+            <a href="https://halfism.com/lantab" target="_blank" rel="noopener noreferrer" class="daily-read-more">阅读全文 <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Daily Entry 6 -->
+        <div class="daily-card animate-on-scroll">
+          <div class="daily-card-header">
+            <span class="daily-date">2026-04-10</span>
+            <span class="daily-tag idea">想法</span>
+          </div>
+          <h3 class="daily-title">开源项目的可持续性思考</h3>
+          <p class="daily-excerpt">看到又一个知名开源项目宣布停止维护。如何在热情消退后保持项目的生命力？也许答案不在于代码，而在于社区和治理结构。</p>
+          <div class="daily-footer">
+            <span class="daily-reading"><i class="fa fa-clock-o"></i> 6 分钟</span>
+            <a href="https://halfism.com/lantab" target="_blank" rel="noopener noreferrer" class="daily-read-more">阅读全文 <i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ CERTIFICATES ═══════════ -->
-  <section class="section" id="certificates">
+  <!-- ═══════════ GALLERY (相册) ═══════════ -->
+  <section class="section" id="gallery">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <h2 class="section-title">专业认证</h2>
-        <p class="section-subtitle">我获得的技术认证</p>
+        <h2 class="section-title">相册</h2>
+        <p class="section-subtitle">镜头下的瞬间与风景</p>
         <div class="section-divider"></div>
       </div>
 
-      <div class="cert-grid stagger-children">
-        <a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
-          <div class="cert-top">
-            <div class="cert-icon orange"><i class="fa fa-aws"></i></div>
-            <div>
-              <div class="cert-issuer">Amazon Web Services</div>
-              <div class="cert-date">2025-06</div>
-            </div>
+      <div class="gallery-grid stagger-children">
+        <div class="gallery-item animate-on-scroll" style="--aspect: 4/3;">
+          <img src="https://picsum.photos/seed/gallery1/800/600" alt="城市天际线" loading="lazy" width="800" height="600" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">城市天际线</span>
           </div>
-          <div class="cert-title">AWS 认证解决方案架构师</div>
-          <div class="cert-link">查看认证 <i class="fa fa-arrow-right" style="font-size: 0.625rem;"></i></div>
-        </a>
-
-        <a href="https://cloud.google.com/certification/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
-          <div class="cert-top">
-            <div class="cert-icon blue"><i class="fa fa-cloud"></i></div>
-            <div>
-              <div class="cert-issuer">Google Cloud</div>
-              <div class="cert-date">2025-03</div>
-            </div>
+        </div>
+        <div class="gallery-item animate-on-scroll" style="--aspect: 3/4;">
+          <img src="https://picsum.photos/seed/gallery2/600/800" alt="街角咖啡" loading="lazy" width="600" height="800" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">街角咖啡</span>
           </div>
-          <div class="cert-title">Google Cloud 专业云架构师</div>
-          <div class="cert-link">查看认证 <i class="fa fa-arrow-right" style="font-size: 0.625rem;"></i></div>
-        </a>
-
-        <a href="https://www.cncf.io/certification/cka/" target="_blank" rel="noopener noreferrer" class="cert-card animate-on-scroll">
-          <div class="cert-top">
-            <div class="cert-icon purple"><i class="fa fa-dharmachakra"></i></div>
-            <div>
-              <div class="cert-issuer">CNCF</div>
-              <div class="cert-date">2024-11</div>
-            </div>
+        </div>
+        <div class="gallery-item animate-on-scroll" style="--aspect: 1/1;">
+          <img src="https://picsum.photos/seed/gallery3/600/600" alt="晨光" loading="lazy" width="600" height="600" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">晨光</span>
           </div>
-          <div class="cert-title">Kubernetes 管理员认证</div>
-          <div class="cert-link">查看认证 <i class="fa fa-arrow-right" style="font-size: 0.625rem;"></i></div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ LOGS ═══════════ -->
-  <section class="section" id="logs">
-    <div class="container">
-      <div class="section-header animate-on-scroll">
-        <h2 class="section-title">迭代日志</h2>
-        <p class="section-subtitle">项目开发历程</p>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item animate-on-scroll">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2026-03-29</div>
-          <span class="timeline-tag feat">feat</span>
-          <span class="timeline-title">新增多项交互功能</span>
-          <p class="timeline-desc">新增返回顶部按钮、阅读进度条、滚动动画、GitHub 统计卡片、专业认证展示、简历下载模块，优化社交链接展示。</p>
         </div>
-
-        <div class="timeline-item animate-on-scroll">
-          <div class="timeline-dot" style="border-color: var(--system-purple); box-shadow: 0 0 0 3px rgba(175,82,222,0.08);"></div>
-          <div class="timeline-date">2026-03-14</div>
-          <span class="timeline-tag feat">feat</span>
-          <span class="timeline-title">新增多语言支持</span>
-          <p class="timeline-desc">完成了首页的中英文内容翻译，并集成了基于 Jekyll 的多语言切换逻辑。</p>
+        <div class="gallery-item animate-on-scroll" style="--aspect: 16/9;">
+          <img src="https://picsum.photos/seed/gallery4/960/540" alt="远山" loading="lazy" width="960" height="540" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">远山</span>
+          </div>
         </div>
-
-        <div class="timeline-item animate-on-scroll">
-          <div class="timeline-dot" style="border-color: var(--system-green); box-shadow: 0 0 0 3px rgba(52,199,89,0.08);"></div>
-          <div class="timeline-date">2026-03-14</div>
-          <span class="timeline-tag code">code</span>
-          <span class="timeline-title">重构头部导航栏</span>
-          <p class="timeline-desc">参考 Vue/Vite 文档风格，将语言切换改为下拉菜单，并引入了暗色模式滑动开关。</p>
+        <div class="gallery-item animate-on-scroll" style="--aspect: 3/4;">
+          <img src="https://picsum.photos/seed/gallery5/600/800" alt="老巷" loading="lazy" width="600" height="800" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">老巷</span>
+          </div>
         </div>
-
-        <div class="timeline-item animate-on-scroll">
-          <div class="timeline-dot" style="border-color: var(--system-purple); box-shadow: 0 0 0 3px rgba(175,82,222,0.08);"></div>
-          <div class="timeline-date">2026-03-14</div>
-          <span class="timeline-tag api">api</span>
-          <span class="timeline-title">集成 Gemini-3-Flash 模型</span>
-          <p class="timeline-desc">配置了辅助编程助手的 API 调用接口，优化了代码生成的准确性与响应速度。</p>
+        <div class="gallery-item animate-on-scroll" style="--aspect: 4/3;">
+          <img src="https://picsum.photos/seed/gallery6/800/600" alt="湖畔黄昏" loading="lazy" width="800" height="600" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">湖畔黄昏</span>
+          </div>
         </div>
-
-        <div class="timeline-item animate-on-scroll">
-          <div class="timeline-dot" style="border-color: var(--system-green); box-shadow: 0 0 0 3px rgba(52,199,89,0.08);"></div>
-          <div class="timeline-date">2026-03-13</div>
-          <span class="timeline-tag code">code</span>
-          <span class="timeline-title">移除拟态风格样式</span>
-          <p class="timeline-desc">清理了项目中冗余的 neumorphic 样式，统一采用扁平化与毛玻璃效果设计系统。</p>
+        <div class="gallery-item animate-on-scroll" style="--aspect: 1/1;">
+          <img src="https://picsum.photos/seed/gallery7/600/600" alt="猫咪午睡" loading="lazy" width="600" height="600" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">猫咪午睡</span>
+          </div>
+        </div>
+        <div class="gallery-item animate-on-scroll" style="--aspect: 16/9;">
+          <img src="https://picsum.photos/seed/gallery8/960/540" alt="星空" loading="lazy" width="960" height="540" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">星空</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ CONTACT ═══════════ -->
-  <section class="section" id="contact">
+  <!-- ═══════════ RESUME (简历) ═══════════ -->
+  <section class="section" id="resume">
     <div class="container">
-      <div class="contact-section animate-on-scroll">
-        <h2 class="contact-title">一起创造未来</h2>
-        <p class="contact-subtitle">无论你有项目想法、合作机会，还是只是想打个招呼，都欢迎联系我</p>
-        <div class="contact-buttons">
-          <button class="btn-white btn-copy" id="copyEmailBtn" type="button">
-            <i class="fa fa-envelope"></i> 复制邮箱
-          </button>
-          <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="btn-glass">
-            <i class="fa fa-github"></i> GitHub
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">简历</h2>
+        <p class="section-subtitle">我的职业经历与技能概览</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="resume-layout stagger-children">
+        <!-- Left: Experience Timeline -->
+        <div class="resume-timeline animate-on-scroll">
+          <h3 class="resume-section-label"><i class="fa fa-briefcase"></i> 工作经历</h3>
+
+          <div class="resume-item">
+            <div class="resume-item-dot"></div>
+            <div class="resume-item-content">
+              <div class="resume-item-header">
+                <h4 class="resume-item-title">全栈开发工程师</h4>
+                <span class="resume-item-date">2025 - 至今</span>
+              </div>
+              <p class="resume-item-company">Freelancer / 独立开发者</p>
+              <p class="resume-item-desc">承接全栈项目开发，涵盖 Web 应用、API 服务和云原生架构设计。为多个创业团队提供技术方案咨询。</p>
+            </div>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-dot"></div>
+            <div class="resume-item-content">
+              <div class="resume-item-header">
+                <h4 class="resume-item-title">高级前端工程师</h4>
+                <span class="resume-item-date">2023 - 2025</span>
+              </div>
+              <p class="resume-item-company">某互联网科技公司</p>
+              <p class="resume-item-desc">负责核心产品的前端架构设计与性能优化，推动组件库建设和微前端改造，团队代码审查负责人。</p>
+            </div>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-dot"></div>
+            <div class="resume-item-content">
+              <div class="resume-item-header">
+                <h4 class="resume-item-title">后端开发工程师</h4>
+                <span class="resume-item-date">2021 - 2023</span>
+              </div>
+              <p class="resume-item-company">某云计算服务商</p>
+              <p class="resume-item-desc">参与云平台控制台后端开发，使用 Go 构建高并发 API 服务，负责 CI/CD 流水线搭建与容器化部署。</p>
+            </div>
+          </div>
+
+          <h3 class="resume-section-label" style="margin-top: 36px;"><i class="fa fa-graduation-cap"></i> 教育背景</h3>
+
+          <div class="resume-item">
+            <div class="resume-item-dot"></div>
+            <div class="resume-item-content">
+              <div class="resume-item-header">
+                <h4 class="resume-item-title">计算机科学与技术 · 本科</h4>
+                <span class="resume-item-date">2017 - 2021</span>
+              </div>
+              <p class="resume-item-company">某重点大学</p>
+              <p class="resume-item-desc">主修数据结构、操作系统、计算机网络。获校级优秀毕业论文，活跃于 ACM 竞赛与开源社区。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Skills & Certs -->
+        <div class="resume-sidebar animate-on-scroll">
+          <!-- Skills -->
+          <div class="resume-sidebar-card">
+            <h3 class="resume-section-label"><i class="fa fa-bar-chart"></i> 技能</h3>
+            <div class="resume-skill-group">
+              <span class="resume-skill-label">前端</span>
+              <div class="resume-skill-tags">
+                <span class="tag">React</span>
+                <span class="tag">Vue</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">Tailwind</span>
+              </div>
+            </div>
+            <div class="resume-skill-group">
+              <span class="resume-skill-label">后端</span>
+              <div class="resume-skill-tags">
+                <span class="tag">Node.js</span>
+                <span class="tag">Go</span>
+                <span class="tag">Python</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Redis</span>
+              </div>
+            </div>
+            <div class="resume-skill-group">
+              <span class="resume-skill-label">DevOps</span>
+              <div class="resume-skill-tags">
+                <span class="tag">Docker</span>
+                <span class="tag">K8s</span>
+                <span class="tag">AWS</span>
+                <span class="tag">CI/CD</span>
+                <span class="tag">Linux</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certifications -->
+          <div class="resume-sidebar-card">
+            <h3 class="resume-section-label"><i class="fa fa-certificate"></i> 认证</h3>
+            <div class="resume-cert-item">
+              <div class="resume-cert-dot orange"></div>
+              <div>
+                <span class="resume-cert-title">AWS 认证解决方案架构师</span>
+                <span class="resume-cert-date">2025-06</span>
+              </div>
+            </div>
+            <div class="resume-cert-item">
+              <div class="resume-cert-dot blue"></div>
+              <div>
+                <span class="resume-cert-title">Google Cloud 专业云架构师</span>
+                <span class="resume-cert-date">2025-03</span>
+              </div>
+            </div>
+            <div class="resume-cert-item">
+              <div class="resume-cert-dot purple"></div>
+              <div>
+                <span class="resume-cert-title">Kubernetes 管理员认证 (CKA)</span>
+                <span class="resume-cert-date">2024-11</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Download -->
+          <a href="#" class="resume-download-btn animate-on-scroll" id="downloadResume">
+            <i class="fa fa-download"></i> 下载 PDF 简历
           </a>
-          <a href="https://twitter.com/halfism_dev" target="_blank" rel="noopener noreferrer" class="btn-glass">
-            <i class="fa fa-twitter"></i> Twitter
-          </a>
         </div>
-        <div class="contact-divider"></div>
-        <h3 class="contact-collab-title">开源合作</h3>
-        <p class="contact-collab-desc">对开源项目感兴趣？欢迎一起贡献代码和想法</p>
-        <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="btn-glass">
-          <i class="fa fa-code-fork"></i> 查看我的仓库
-        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ABOUT (关于) ═══════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">关于</h2>
+        <p class="section-subtitle">了解我的故事和专注方向</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="about-card animate-on-scroll">
+        <p class="about-text">
+          你好！我是 <strong>halfism</strong>，一位热爱通过代码创造有意义且高效解决方案的开发者。
+          我专注于全栈 Web 开发，善于将复杂的技术问题转化为优雅的用户体验。
+        </p>
+        <p class="about-text">
+          当我不在编码时，你可能会发现我在探索新技术、为开源项目做贡献，或者与开发者社区分享我的知识。
+        </p>
+
+        <div class="about-features stagger-children">
+          <div class="about-feature animate-on-scroll">
+            <div class="about-feature-icon blue">
+              <i class="fa fa-code-fork"></i>
+            </div>
+            <h3>开源贡献</h3>
+            <p>积极参与各种开源项目，并维护自己的代码仓库</p>
+          </div>
+          <div class="about-feature animate-on-scroll">
+            <div class="about-feature-icon green">
+              <i class="fa fa-graduation-cap"></i>
+            </div>
+            <h3>终身学习</h3>
+            <p>不断扩展知识面，紧跟最新技术趋势</p>
+          </div>
+          <div class="about-feature animate-on-scroll">
+            <div class="about-feature-icon purple">
+              <i class="fa fa-users"></i>
+            </div>
+            <h3>团队协作</h3>
+            <p>喜欢在团队中工作，参与协作开发项目</p>
+          </div>
+        </div>
+
+        <!-- Contact in About -->
+        <div class="about-contact">
+          <div class="about-contact-divider"></div>
+          <h3 class="about-contact-title">联系我</h3>
+          <p class="about-contact-desc">无论你有项目想法、合作机会，还是只是想打个招呼</p>
+          <div class="about-contact-buttons">
+            <button class="btn-white btn-copy" id="copyEmailBtn" type="button">
+              <i class="fa fa-envelope"></i> 复制邮箱
+            </button>
+            <a href="https://github.com/halfism" target="_blank" rel="noopener noreferrer" class="btn-glass">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            <a href="https://twitter.com/halfism_dev" target="_blank" rel="noopener noreferrer" class="btn-glass">
+              <i class="fa fa-twitter"></i> Twitter
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -741,7 +872,7 @@
 
     /* ═══════════ ACTIVE NAV LINK ═══════════ */
     var sections = document.querySelectorAll('section[id]');
-    var navLinks = document.querySelectorAll('.nav-links a');
+    var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
     function updateActiveLink() {
       var current = '';
       sections.forEach(function(section) {
@@ -792,7 +923,6 @@
       function step(now) {
         var elapsed = now - start;
         var progress = Math.min(elapsed / duration, 1);
-        /* ease-out curve */
         var eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.round(target * eased);
         if (progress < 1) requestAnimationFrame(step);
@@ -824,25 +954,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    /* ═══════════ CONTRIBUTION GRID ═══════════ */
-    var contribGrid = document.getElementById('contribGrid');
-    var contribLevels = [
-      'rgba(0, 122, 255, 0.06)',
-      'rgba(0, 122, 255, 0.18)',
-      'rgba(0, 122, 255, 0.36)',
-      'rgba(0, 122, 255, 0.58)',
-      'rgba(0, 122, 255, 0.82)'
-    ];
-    for (var i = 0; i < 72; i++) {
-      var cell = document.createElement('div');
-      cell.className = 'contrib-cell';
-      /* Weighted random: more low-activity days */
-      var rand = Math.random();
-      var level = rand < 0.35 ? 0 : rand < 0.6 ? 1 : rand < 0.8 ? 2 : rand < 0.93 ? 3 : 4;
-      cell.style.background = contribLevels[level];
-      contribGrid.appendChild(cell);
-    }
-
     /* ═══════════ COPY EMAIL + TOAST ═══════════ */
     var toastEl = document.getElementById('toast');
     var toastMsg = document.getElementById('toastMsg');
@@ -863,6 +974,12 @@
       }).catch(function() {
         showToast('复制失败，请手动复制');
       });
+    });
+
+    /* ═══════════ RESUME DOWNLOAD ═══════════ */
+    document.getElementById('downloadResume').addEventListener('click', function(e) {
+      e.preventDefault();
+      showToast('简历 PDF 准备中，敬请期待');
     });
 
     /* ═══════════ COMMAND PALETTE ═══════════ */
@@ -892,7 +1009,6 @@
       if (e.target === cmdOverlay) closeCmd();
     });
 
-    /* Keyboard shortcut: Cmd+K / Ctrl+K */
     document.addEventListener('keydown', function(e) {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
@@ -907,16 +1023,13 @@
       }
     });
 
-    /* Filter command items */
     function filterCmd(query) {
       var q = query.toLowerCase().trim();
-      var anyVisible = false;
       cmdItems.forEach(function(item) {
         var label = item.querySelector('.cmd-item-label').textContent.toLowerCase();
         var kw = (item.getAttribute('data-keywords') || '').toLowerCase();
         var match = !q || label.indexOf(q) !== -1 || kw.indexOf(q) !== -1;
         item.style.display = match ? 'flex' : 'none';
-        if (match) anyVisible = true;
       });
       selectedIdx = -1;
       clearSelected();
@@ -962,23 +1075,56 @@
       }
     });
 
-    /* Cmd action: toggle dark mode */
     document.getElementById('cmdDarkToggle').addEventListener('click', function() {
       document.getElementById('themeToggle').click();
       closeCmd();
       showToast('已切换主题模式');
     });
 
-    /* Cmd action: copy email */
     document.getElementById('cmdCopyEmail').addEventListener('click', function() {
       document.getElementById('copyEmailBtn').click();
       closeCmd();
     });
 
-    /* Close cmd on item click */
     cmdResults.querySelectorAll('a.cmd-item').forEach(function(item) {
       item.addEventListener('click', function() {
         closeCmd();
+      });
+    });
+
+    /* ═══════════ GALLERY LIGHTBOX ═══════════ */
+    var galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        var img = item.querySelector('img');
+        var caption = item.querySelector('.gallery-caption');
+        /* Create lightbox */
+        var lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = '<div class="lightbox-backdrop"></div>' +
+          '<div class="lightbox-content">' +
+          '<img src="' + img.src + '" alt="' + img.alt + '" />' +
+          '<p class="lightbox-caption">' + (caption ? caption.textContent : '') + '</p>' +
+          '<button class="lightbox-close" aria-label="关闭"><i class="fa fa-times"></i></button>' +
+          '</div>';
+        document.body.appendChild(lightbox);
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(function() { lightbox.classList.add('open'); });
+
+        function closeLightbox() {
+          lightbox.classList.remove('open');
+          document.body.style.overflow = '';
+          setTimeout(function() { lightbox.remove(); }, 300);
+        }
+
+        lightbox.querySelector('.lightbox-backdrop').addEventListener('click', closeLightbox);
+        lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', function handler(e) {
+          if (e.key === 'Escape') {
+            closeLightbox();
+            document.removeEventListener('keydown', handler);
+          }
+        });
       });
     });
 
