@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 0 * * *' # Daily build at midnight UTC
+  workflow_dispatch: # Allow manual rebuild from the Actions tab
 
 permissions:
   contents: read

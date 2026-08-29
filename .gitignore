@@ -93,3 +93,6 @@ logs/
 # Preview files
 .preview
 .codegraph
+
+# WorkBuddy workspace data
+.workbuddy/
