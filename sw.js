@@ -10,9 +10,7 @@ const DYNAMIC_CACHE = 'dynamic-v2';
 // Assets to pre-cache during installation
 const PRECACHE_ASSETS = [
     '/',
-    '/about/',
     '/blog/',
-    '/contact/',
     '/manifest.json',
     '/assets/css/style.css',
     '/assets/js/main.js'

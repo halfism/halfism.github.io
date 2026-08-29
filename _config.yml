@@ -75,11 +75,13 @@ defaults:
       lang: "en"
 
 # Analytics Settings
+# TODO: tracking_id 当前为占位符 G-XXXXXXXXXX，请替换为真实 GA4 ID 后才会实际收集数据
 google_analytics:
   enabled: true
   tracking_id: "G-XXXXXXXXXX"  # Replace with your Google Analytics 4 Measurement ID
 
 # Comments System (Giscus)
+# TODO: repo_id 与 category_id 当前为空，请到 https://giscus.app 获取后填入，否则评论区不显示
 comments:
   enabled: true
   provider: giscus  # Options: giscus, disqus, utterances
@@ -98,6 +100,7 @@ comments:
     loading: lazy
 
 # Contact Form Settings (Formspree)
+# TODO: form_id 当前为占位符，请提供真实 Formspree 表单 ID；当前联系区仅使用 mailto 与简历下载
 contact:
   form_id: "xxxxxxxxxxxx"  # Replace with your Formspree form ID
 

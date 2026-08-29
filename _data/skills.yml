@@ -28,13 +28,9 @@ dev_tools:
 languages:
   - name: JavaScript / TypeScript
     percentage: 45
-    color: bg-yellow-400
   - name: Python
     percentage: 25
-    color: bg-blue-500
   - name: Go
     percentage: 15
-    color: bg-cyan-500
   - name: Others
     percentage: 15
-    color: bg-gray-400

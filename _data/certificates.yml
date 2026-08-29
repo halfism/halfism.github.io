@@ -3,7 +3,6 @@
   issuer: Amazon Web Services
   date: "2025-06"
   icon: fa-aws
-  color: bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400
   url: https://aws.amazon.com/certification/
   
 - title_zh: Google Cloud 专业云架构师
@@ -11,7 +10,6 @@
   issuer: Google Cloud
   date: "2025-03"
   icon: fa-cloud
-  color: bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400
   url: https://cloud.google.com/certification/
   
 - title_zh: Kubernetes 管理员认证
@@ -19,5 +17,4 @@
   issuer: Cloud Native Computing Foundation
   date: "2024-11"
   icon: fa-dharmachakra
-  color: bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400
   url: https://www.cncf.io/certification/cka/

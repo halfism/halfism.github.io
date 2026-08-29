@@ -15,13 +15,13 @@
                 <p class="text-secondary mt-2 text-sm max-w-xs">{{ t.footer.bio }}</p>
             </div>
 
-            <!-- Social Links -->
+            <!-- Social Links (from site.socials) -->
             <div class="flex items-center gap-4">
-                {% for social in site.data.socials %}
-                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
-                   class="social-link {{ social.hover_class }} w-10 h-10 flex items-center justify-center rounded-full bg-tertiary text-muted hover:text-inverse transition-all"
-                   title="{{ social.name }}" aria-label="{{ social.name }}">
-                    <i class="fa {{ social.icon }} text-lg"></i>
+                {% for social in site.socials %}
+                <a href="{{ social[1].url }}" target="_blank" rel="noopener noreferrer"
+                   class="social-link w-10 h-10 flex items-center justify-center rounded-full bg-tertiary text-muted hover:text-primary transition-all"
+                   title="{{ social[0] | capitalize }}" aria-label="{{ social[0] | capitalize }}">
+                    <i class="fa {{ social[1].icon }} text-lg"></i>
                 </a>
                 {% endfor %}
             </div>
