@@ -3,9 +3,9 @@
  * Implements caching strategies for offline access
  */
 
-const CACHE_NAME = 'halfism-v2';
-const STATIC_CACHE = 'static-v2';
-const DYNAMIC_CACHE = 'dynamic-v2';
+const CACHE_NAME = 'halfism-v3';
+const STATIC_CACHE = 'static-v3';
+const DYNAMIC_CACHE = 'dynamic-v3';
 
 // Assets to pre-cache during installation
 const PRECACHE_ASSETS = [
@@ -13,14 +13,16 @@ const PRECACHE_ASSETS = [
     '/blog/',
     '/manifest.json',
     '/assets/css/style.css',
-    '/assets/js/main.js'
+    '/assets/js/main.js',
+    '/styles/main.css'  // 独立静态首页（B 体系 index.html）所用样式
 ];
 
 // External resources to cache (CDN)
-const EXTERNAL_CACHE = 'external-v2';
+const EXTERNAL_CACHE = 'external-v3';
 const EXTERNAL_URLS = [
-    'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css',
-    'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX' // Will be replaced with actual GA ID
+    'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
+    // TODO: 填入真实 GA4 ID 并启用 _config.yml 的 google_analytics 后，再取消下一行注释
+    // 'https://www.googletagmanager.com/gtag/js?id=<GA4_ID>'
 ];
 
 // Install event - Pre-cache static assets
